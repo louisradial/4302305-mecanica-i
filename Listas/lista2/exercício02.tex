@@ -1,0 +1,91 @@
+\section*{Exercício 2}
+
+\textbf{Considere um corpo submetido a um potencial central}
+    \begin{equation*}
+        U(r) = \frac12 \mu \omega^2r^2.
+    \end{equation*}
+
+\textbf{(a) Descreva qualitativamente os movimentos possíveis. }
+
+Consideremos o potencial efetivo
+\begin{equation}
+    U_\mathrm{ef}(r) = \frac{1}{2}\mu\omega^2 r^2 + \frac{L^2}{2\mu r^2}.
+\end{equation}
+Temos
+\begin{equation}
+    \diff{U_\mathrm{ef}}{r} = \mu\omega^2 r - \frac{L^2}{\mu r^3}\quad\text{e}\quad\diff[2]{U_\mathrm{ef}}{r} = \mu\omega^2 + 3\frac{L^2}{\mu r^4}.
+\end{equation}
+Notemos que \(\diff{U_\mathrm{ef}}{r} = 0\) apenas para \(r = r_0 \equiv \sqrt{\frac{L}{\mu\omega}}\), já que \(r > 0\). Ainda, temos
+\begin{equation}
+    U_\mathrm{ef}(r_0) \equiv U_0 = L\omega\quad\text{e}\quad\diff[2]{U_\mathrm{ef}}{r}[r=r_0] = 4\mu\omega^2 > 0,
+\end{equation}
+isto é, o valor mínimo do potencial efetivo é \(U_0\), que ocorre em \(r = r_0\).
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[domain=0.2:5,smooth,samples=100]
+        \draw[->] (-0.0,0) -- (5.2,0) node[right] {$r$};
+        \draw[->] (0,0) -- (0,5.2) node[left] {$U_{\mathrm{ef}}(r)$};
+        \draw[color=Mauve, thick]    plot (\x,{1/5*(\x^2 + 1/\x^2)});
+        \draw[dashed,gray, thin] (1,0) node[below]{\(r_0\)} -- (1, 0.4);
+        \draw[dashed,gray, thin] (0,0.4) node[left]{\(U_0\)} -- (1,0.4);
+        \draw[dashed,gray, thin] (0,3.2125) node[left]{\(E\)} -- (5,3.2125);
+        \draw[dashed,gray, thin] (0.25,0) node[below]{\(r_1\)} -- (0.25, 3.2125);
+        \draw[dashed,gray, thin] (4,0) node[below]{\(r_2\)} -- (4, 3.2125);
+    \end{tikzpicture}
+    \caption{Potencial efetivo para o potencial central \(U(r) = \frac12 \mu\omega^2r^2\).}
+\end{figure}
+
+
+Substituindo \(\mu = \frac{L}{\omega r_0^2}\) na expressão do potencial efetivo, podemos escrever
+\begin{equation}
+    U_\mathrm{ef}(r) = \frac{U_0}{2}\left[\left(\frac{r}{r_0}\right)^2 + \left(\frac{r}{r_0}\right)^{-2}\right].
+\end{equation}
+Nesta forma é fácil ver que se \(U_\mathrm{ef}(r_1) = U_\mathrm{ef}(r_2)\), então \(r_1 = r_2\) ou \(r_1r_2 = r_0^2\). Desta forma, dada uma energia \(E \geq U_0\) do sistema, ou a trajetória é circular, no caso de \(E = U_0\), ou o movimento é oscilatório entre os pontos de retorno \(r_1\) e \(r_2\), que satisfazem a relação descrita anteriormente e são dados por
+\begin{equation}
+    r_1 = r_0\sqrt{\frac{E}{U_0} - \sqrt{\left(\frac{E}{U_0}\right)^2 - 1}}\quad\text{e}\quad r_2 = r_0\sqrt{\frac{E}{U_0} + \sqrt{\left(\frac{E}{U_0}\right)^2 - 1}}.
+\end{equation}
+
+\textbf{(b) Dada a energia do corpo E, obtenha a sua trajetória.}
+
+Pelo \cref{lem:trajetória}, temos
+\begin{equation}
+    \pm\left(\theta - \theta_i\right) = \frac{L}{\sqrt\mu} \int_{\theta_i}^\theta\dl{\varphi} \frac{1}{r^2\sqrt{2E-U_0\left[\left(\frac{r}{r_0}\right)^2 + \left(\frac{r}{r_0}\right)^{-2}\right]}}\diff{r}{\varphi},
+\end{equation}
+para um ângulo inicial \(\theta_i\). Utilizando que \(\frac{L}{\sqrt{\mu}} = r_0\sqrt{U_0}\) e a substituição de variáveis \(r = r(\varphi)\), obtemos
+\begin{equation}
+\pm\left(\theta - \theta_i\right) = \int_{r_i}^{r(\theta)} \frac{r_0\dl{R}}{R^2} \sqrt{\frac{U_0}{2E-U_0\left[\left(\frac{R}{r_0}\right)^2 + \left(\frac{R}{r_0}\right)^{-2}\right]}},
+\end{equation}
+onde \(r_i = r(\theta_i)\)
+Com a substituição de variáveis \(\rho = \frac{r_0}{r}\), temos
+\begin{align}
+    \pm\left(\theta - \theta_i\right) &= -\int_{\frac{r_0}{r_i}}^{\frac{r_0}{r(\theta)}} \frac{\dl{\rho}}{\sqrt{2\frac{E}{U_0} - \rho^2 - \rho^{-2}}}\\
+                                      &= -\int_{\frac{r_0}{r_i}}^{\frac{r_0}{r(\theta)}} \frac{\rho\dl\rho}{\sqrt{2 \lambda \rho^2 - \rho^4 -1}},
+\end{align}
+onde \(\lambda = \frac{E}{U_0}\). Notando que
+\begin{align}
+    2 \lambda\rho^2 - \rho^4 - 1 &= \lambda^2 - 1 - \left(\rho^2 - \lambda\right)^2\\
+                                 &= \left(\lambda^2 - 1\right)\left[1 - \left(\frac{\rho^2 - \lambda}{\sqrt{\lambda^2 - 1}}\right)^2\right],
+\end{align}
+segue que
+\begin{equation}
+    \pm\left(\theta - \theta_i\right) = - \int_{\frac{r_0}{r_i}}^{\frac{r_0}{r(\theta)}} \frac{\rho\dl\rho}{\sqrt{\lambda^2 - 1}}\left[1 - \left(\frac{\rho^2 - \lambda}{\sqrt{\lambda^2 - 1}}\right)^2\right]^{-\frac12}.
+\end{equation}
+Com a substituição de variáveis \(\xi = \frac{\rho^2 - \lambda}{\sqrt{\lambda^2 - 1}}\), obtemos
+\begin{equation}
+    \pm2(\theta - \theta_i) = -\int_{\xi\left(\frac{r_0}{r_i}\right)}^{\xi\left(\frac{r_0}{r(\theta)}\right)} \frac{\dl\psi}{\sqrt{1-\psi^2}} = \arccos{\left(\frac{\left(\frac{r_0}{r(\theta)}\right)^2-\lambda}{\sqrt{\lambda^2 - 1}}\right)} - \arccos{\left(\frac{\left(\frac{r_0}{r_i}\right)^2-\lambda}{\sqrt{\lambda^2 - 1}}\right)}.
+\end{equation}
+
+Definimos
+\begin{equation}
+    \phi = 2\theta_i \mp \arccos{\left(\frac{\left(\frac{r_0}{r_i}\right)^2 - \lambda}{\sqrt{\lambda^2 - 1}}\right)}
+\end{equation}
+respeitando a escolha de sinal na equação anterior. Desse modo,
+\begin{equation}
+    \cos{(2\theta - \phi)} = \frac{\left(\frac{r_0}{r(\theta)}\right)^2-\lambda}{\sqrt{\lambda^2 - 1}}.
+\end{equation}
+Isolando \(r(\theta)\), obtemos a equação da trajetória
+\begin{equation}
+    r(\theta) = r_0\left[\frac{E}{U_0} + \sqrt{\left(\frac{E}{U_0}\right)^2 - 1}\cos{(2\theta - \phi)}\right]^{-\frac12}
+\end{equation}
+para este potencial central.

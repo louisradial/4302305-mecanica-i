@@ -1,0 +1,102 @@
+\section*{Exercício 3}
+\textbf{Considere um corpo submetido a um potencial central
+    \begin{equation*}
+        U(r) = -\frac{\alpha}{r} + \frac{\beta}{r^2}
+    \end{equation*}
+onde \(\alpha,\beta>0.\)}
+
+\textbf{(a) Existem órbitas circulares? Qual a condição para que isso ocorra?}
+
+Consideremos o potencial efetivo
+\begin{align}
+    U_\mathrm{ef}(r) &= -\frac{\alpha}{r} + \frac{\beta}{r^2} + \frac{L^2}{2\mu r^2}\\
+                     &= -\alpha r^{-1} + \frac{2\mu\beta + L^2}{2\mu}r^{-2}
+\end{align}
+Temos
+\begin{equation}
+    \diff{U_\mathrm{ef}}{r} = \alpha r^{-2} - \frac{2\mu\beta + L^2}{\mu}r^{-3}\quad\text{e}\quad\diff[2]{U_\mathrm{ef}}{r} = -\alpha r^{-3} + 3\frac{2\beta\mu + L^2}{\mu}r^{-4}.
+\end{equation}
+Notemos que \(\diff{U_\mathrm{ef}}{r} = 0\) apenas para \(r = r_0 \equiv \frac{2\beta\mu +L^2}{\mu \alpha}\). Ainda, temos
+\begin{equation}
+    U_\mathrm{ef}(r_0) \equiv U_0 = -\frac{\alpha}{2r_0}\quad\text{e}\quad\diff[2]{U_\mathrm{ef}}{r}[r=r_0] = \alpha r_0^3 > 0,
+\end{equation}
+isto é, o valor mínimo do potencial efetivo é \(U_0\), que ocorre em \(r = r_0\).
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[domain=0.41:12,smooth,samples=100]
+        \draw[->] (0.0,0) -- (12.2,0) node[right] {$r$};
+        \draw[->] (0,-2.2) -- (0,2.2) node[left] {$U_{\mathrm{ef}}(r)$};
+        \draw[color=Mauve, thick]    plot (\x,{-4/\x + 2/(\x^2)});
+        \draw[dashed,gray, thin] (1,0) node[below right]{\(r_0\)} -- (1, -2);
+        \draw[dashed,gray, thin] (0,-2) node[left]{\(U_0\)} -- (1, -2);
+        \draw[dashed,gray, thin] (0,{-240/169}) node[left]{\(E\)} -- (12,{-240/169});
+        \draw[dashed,gray, thin] (0.65,0) node[above]{\(r_1\)} -- (0.65, {-240/169});
+        \draw[dashed,gray, thin] ({13/6},0) node[above]{\(r_2\)} -- ({13/6}, {-240/169});
+    \end{tikzpicture}
+    \caption{Potencial efetivo para o potencial central \(U(r) = -\frac{\alpha}{r} + \frac{\beta}{r^2}\).}
+\end{figure}
+
+Substituindo \(\alpha r_0 = \frac{2\beta \mu + L^2}{\mu}\) na expressão do potencial efetivo, podemos escrever
+\begin{align}
+    U_\mathrm{ef}(r) &= -\alpha r^{-1} + \frac{\alpha r_0}{2}r^{-2}\\
+                     &= -\frac{\alpha}{r_0} \left(\frac{r}{r_0}\right)^{-1} + \frac{\alpha r_0}{2r_0^2}\left(\frac{r}{r_0}\right)^{-2}\\
+                     &= U_0\left[2\left(\frac{r}{r_0}\right)^{-1} - \left(\frac{r}{r_0}\right)^{-2}\right].
+\end{align}
+
+Se o sistema tiver energia total \(E \geq U_0,\) um ponto de retorno satisfaz
+\begin{equation}
+    U_\mathrm{ef}(r) = E \implies \frac{\lambda r^2 - 2r_0 r + r_0^2}{r^2} = 0,
+\end{equation}
+com \(\lambda = \frac{E}{U_0}.\) Caso \(\lambda = 0,\) há apenas um ponto de retorno em \(r = \frac{r_0}{2}\), de modo que a trajetória não é limitada. Caso \(\lambda \neq 0\), temos
+\begin{equation}
+    r = \frac{r_0}{1 \pm \epsilon},
+\end{equation}
+onde \(\epsilon = \sqrt{1 - \lambda} \neq 1\). No caso em que \(E < 0,\) temos \(1 > \epsilon \geq 0\), portanto há dois pontos de retorno
+\begin{equation}
+    r_1 = \frac{r_0}{1+\epsilon}\quad\text{e}\quad r_2 = \frac{r_0}{1 - \epsilon},
+\end{equation}
+de modo que a trajetória é limitada, com o caso especial de \(E = U_0\), em que a trajetória é circular \(r_1 = r_2 = r_0\). No caso em que \(E > 0\), temos \(\epsilon > 1\), de modo que há apenas um ponto de retorno
+\begin{equation}
+    r = \frac{r_0}{1+\epsilon},
+\end{equation}
+uma vez que \(r > 0\), portanto a trajetória não é limitada.
+
+\textbf{(b) Dada a energia do corpo \(E < 0\), obtenha a sua trajetória.}
+
+Pelo \cref{lem:trajetória}, temos
+\begin{align}
+    \pm \dl\theta &= \frac{L}{\sqrt{2\mu}}\cdot\frac{\dl{r}}{r^2\sqrt{E - 2U_0\left(\frac{r}{r_0}\right)^{-1} + U_0\left(\frac{r}{r_0}\right)^{-2}}}\\
+                  &= -\frac{L}{\sqrt{2\mu r_0^2}}\cdot\frac{\dl{\rho}}{\sqrt{E - 2U_0\rho + U_0 \rho^2}}\\
+                  &= -\frac{L}{\sqrt{\mu \alpha r_0}} \cdot \frac{\dl{\rho}}{\sqrt{2\rho - \rho^2 - \lambda}}
+\end{align}
+onde \(\rho = \frac{r_0}{r}\). Recordando que \(\mu \alpha r_0 = 2\mu\beta + L^2\) e notando que
+\begin{align}
+    2\rho - \rho^2 - \lambda &= \epsilon^2 - (\rho - 1)^2\\
+                             &= \epsilon^2\left[1 - \left(\frac{\rho - 1}{\epsilon}\right)^2\right],
+\end{align}
+obtemos
+\begin{align}
+    \pm\sqrt{1 + \frac{2\mu\beta}{L^2}}\dl\theta &= -\frac{\dl \rho}{\epsilon} \left[1 - \left(\frac{\rho - 1}{\epsilon}\right)\right]^{-\frac12}\\
+                                                 &= -\frac{\dl{\xi}}{\sqrt{1 - \xi^2}},
+\end{align}
+com \(\xi = \frac{\rho - 1}{\epsilon}\).
+
+Integrando e fazendo as devidas substituições, segue que
+\begin{equation}
+    \pm \sqrt{1 + \frac{2\mu \beta}{L^2}}\left(\theta - \theta_i\right) = \arccos{\left(\frac{\frac{r_0}{r(\theta)}-1}{\epsilon}\right)} - \arccos{\left(\frac{\frac{r_0}{r_i}-1}{\epsilon}\right)},
+    \label{eq:integral3}
+\end{equation}
+onde \(r(\theta) = r_i\). Seja
+\begin{equation}
+    \phi = \sqrt{1+\frac{2\mu\beta}{L^2}}\theta_i \mp \arccos{\left(\frac{\frac{r_0}{r_i}-1}{\epsilon}\right)},
+\end{equation}
+respeitando a escolha de sinal na \cref{eq:integral3}, de modo que
+\begin{equation}
+    \frac{\frac{r_0}{r(\theta)}-1}{\epsilon} = \cos\left(\sqrt{1 + \frac{2\mu\beta}{L^2}}\theta - \phi\right).
+\end{equation}
+Isolando \(r(\theta)\), obtemos a trajetória
+\begin{equation}
+    r(\theta) = \frac{r_0}{1 + \epsilon \cos{\left(\sqrt{1 + \frac{2\mu\beta}{L^2}}\theta - \phi\right)}}
+\end{equation}
+para este potencial.
