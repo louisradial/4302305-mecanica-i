@@ -5,15 +5,24 @@
 \end{equation*}
 \textbf{onde \(L\) é o momento angular e \(T\) o período. O termo extra na forma \(r^{-2}\) parece muito com a barreira centrífuga. Por que esse termo causa a precessão da órbita?}
 
+O teorema de Bertrand garante que os únicos potenciais centrais para os quais toda órbita limitada é fechada são os potenciais de Kepler e do oscilador harmônico radial
+\begin{equation}
+    U_{\mathrm{Kepler}}(r) = -\alpha r^{-1}\quad\text{e}\quad U_{\text{harmônico}} = \frac12m\omega^2r^2.
+\end{equation}
+Dessa forma, apesar do termo adicional em relação ao potencial de Kepler ser pequeno e do mesmo tipo de função da barreira centrífuga, não é necessário que uma órbita limitada seja fechada para este sistema.
+
 Após um período, a coordenada radial deve retornar ao seu valor inicial. Neste caso, da \cref{eq:integral3}, devemos ter
 \begin{equation}
     \sqrt{1 + \frac{2\mu\beta}{L^2}}\left(\theta - \theta_i\right) = \pm2\pi \implies \theta - \theta_i = \frac{\pm 2\pi}{\sqrt{1 + \frac{2\mu\beta}{L^2}}}.\label{eq:variação_ângulo}
 \end{equation}
-Se a constante \(\beta\) é pequena, a variação entre o ângulo final e o ângulo inicial deve ser próxima de \(2\pi,\) isto é,
+
+No caso em que \(\sqrt{1 + \frac{2\mu\beta}{L^2}} \in \mathbb{Q}\), a órbita para \(U_0 < E < 0\) será fechada, visto que após um número inteiro de períodos a variação angular será um múltiplo inteiro de \(2\pi\), como garante a \cref{eq:variação_ângulo}. Em contrapartida, se \(\sqrt{1 + \frac{2\mu\beta}{L^2}}\notin \mathbb{Q}\), não existe um número inteiro de períodos que torna a variação angular num múltiplo inteiro de \(2\pi\), logo não existem dois instantes distintos em que os pares de coordenadas \(r\) e \(\theta\) são os mesmos, isto é, a órbita não pode ser fechada.
+
+Tornemos nossa atenção para o caso em que a órbita não pode ser fechada. Se a constante \(\beta\) é pequena, a variação entre o ângulo final e o ângulo inicial deve ser próxima de \(2\pi,\) isto é,
 \begin{equation}
     \theta - \theta_i = \pm(2\pi - \dot\Omega T),
 \end{equation}
-com \(\abs{\dot\Omega} T \ll 2\pi\). Assim,
+com \(\abs{\dot\Omega} T \ll 2\pi\), onde \(T\) é o período. Assim,
 \begin{align}
     2\pi - \dot\Omega T = \frac{2\pi}{\sqrt{1 + \frac{2\mu\beta}{L^2}}} &\implies \dot\Omega = \frac{2\pi}{T}\left(1 - \frac{1}{\sqrt{1 + \frac{2\mu\beta}{L^2}}}\right)\\
                                                                         &\implies \dot\Omega \simeq \frac{2\pi\mu\beta}{L^2T},
@@ -23,10 +32,4 @@ onde foi utilizada a aproximação
     1 - \frac{1}{\sqrt{1 + \frac{2\mu\beta}{L^2}}} \simeq \frac{\mu\beta}{L^2} + O\left(\frac{\mu^2\beta^2}{L^4}\right).
 \end{equation}
 
-O teorema de Bertrand garante que os únicos potenciais centrais para os quais toda órbita limitada é fechada são os potenciais de Kepler e do oscilador harmônico radial
-\begin{equation}
-    U_{\mathrm{Kepler}}(r) = -\alpha r^{-1}\quad\text{e}\quad U_{\text{harmônico}} = \frac12m\omega^2r^2.
-\end{equation}
-Dessa forma, apesar do termo adicional em relação ao potencial de Kepler ser pequeno e do mesmo tipo de função da barreira centrífuga, não é necessário que uma órbita limitada seja fechada para este sistema.
 
-No caso em que \(\sqrt{1 + \frac{2\mu\beta}{L^2}} \in \mathbb{Q}\), a órbita para \(U_0 < E < 0\) será fechada, visto que após um número inteiro de períodos a variação angular será um múltiplo inteiro de \(2\pi\), como garante a \cref{eq:variação_ângulo}. Em contrapartida, se \(\sqrt{1 + \frac{2\mu\beta}{L^2}}\notin \mathbb{Q}\), não existe um par de instantes em que há a mesma distância radial e ângulo polar na trajetória, logo a órbita não pode ser fechada.

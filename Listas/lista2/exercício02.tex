@@ -21,12 +21,12 @@ Notemos que \(\diff{U_\mathrm{ef}}{r} = 0\) apenas para \(r = r_0 \equiv \sqrt{\
 \end{equation}
 isto é, o valor mínimo do potencial efetivo é \(U_0\), que ocorre em \(r = r_0\).
 
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \begin{tikzpicture}[domain=0.2:5,smooth,samples=100]
         \draw[->] (-0.0,0) -- (5.2,0) node[right] {$r$};
         \draw[->] (0,0) -- (0,5.2) node[left] {$U_{\mathrm{ef}}(r)$};
-        \draw[color=Mauve, thick]    plot (\x,{1/5*(\x^2 + 1/\x^2)});
+        \draw[color=Mauve, very thick]    plot (\x,{1/5*(\x^2 + 1/\x^2)});
         \draw[dashed,gray, thin] (1,0) node[below]{\(r_0\)} -- (1, 0.4);
         \draw[dashed,gray, thin] (0,0.4) node[left]{\(U_0\)} -- (1,0.4);
         \draw[dashed,gray, thin] (0,3.2125) node[left]{\(E\)} -- (5,3.2125);
@@ -36,7 +36,6 @@ isto é, o valor mínimo do potencial efetivo é \(U_0\), que ocorre em \(r = r_
     \caption{Potencial efetivo para o potencial central \(U(r) = \frac12 \mu\omega^2r^2\).}
 \end{figure}
 
-
 Substituindo \(\mu = \frac{L}{\omega r_0^2}\) na expressão do potencial efetivo, podemos escrever
 \begin{equation}
     U_\mathrm{ef}(r) = \frac{U_0}{2}\left[\left(\frac{r}{r_0}\right)^2 + \left(\frac{r}{r_0}\right)^{-2}\right].
@@ -45,7 +44,11 @@ Nesta forma é fácil ver que se \(U_\mathrm{ef}(r_1) = U_\mathrm{ef}(r_2)\), en
 \begin{equation}
     r_1 = r_0\sqrt{\frac{E}{U_0} - \sqrt{\left(\frac{E}{U_0}\right)^2 - 1}}\quad\text{e}\quad r_2 = r_0\sqrt{\frac{E}{U_0} + \sqrt{\left(\frac{E}{U_0}\right)^2 - 1}}.
 \end{equation}
+<<<<<<< HEAD
 Assim, para órbitas não circulares sempre há dois pontos distintos de retorno, portanto o movimento é sempre oscilatório.
+=======
+No caso particular em que \(E = U_0\), temos \(r_1 = r_2 = r_0,\) portanto a órbita é circular estável. De toda forma, para órbitas não circulares, sempre há dois pontos de retorno distintos, portanto o movimento é sempre oscilatório.
+>>>>>>> 0e3eaac (lista 2: terminar de verdade)
 
 \textbf{(b) Dada a energia do corpo E, obtenha a sua trajetória.}
 
@@ -86,7 +89,9 @@ respeitando a escolha de sinal na equação anterior. Desse modo,
     \cos{(2\theta - \phi)} = \frac{\left(\frac{r_0}{r(\theta)}\right)^2-\lambda}{\sqrt{\lambda^2 - 1}}.
 \end{equation}
 Isolando \(r(\theta)\), obtemos a equação da trajetória
-\begin{equation}
-    r(\theta) = r_0\left[\frac{E}{U_0} + \sqrt{\left(\frac{E}{U_0}\right)^2 - 1}\cos{(2\theta - \phi)}\right]^{-\frac12}
-\end{equation}
+\begin{align}
+    r(\theta) &= r_0\left[\frac{E}{U_0} + \sqrt{\left(\frac{E}{U_0}\right)^2 - 1}\cos{(2\theta - \phi)}\right]^{-\frac12}\\
+              &= r_0\sqrt{\frac{U_0}{E}}\left[1 + \sqrt{1 - \left(\frac{U_0}{E}\right)^2}\cos{(2\theta - \phi)}\right]^{-\frac12}\\
+              &= \frac{L}{\sqrt{\mu E}} \left[1 + \sqrt{1 - \left(\frac{L\omega}{E}\right)^2}\cos{(2\theta - \phi)}\right]^{-\frac12}
+\end{align}
 para este potencial central.

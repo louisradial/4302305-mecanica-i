@@ -22,12 +22,19 @@ Notemos que \(\diff{U_\mathrm{ef}}{r} = 0\) apenas para \(r = r_0 \equiv \frac{2
 \end{equation}
 isto é, o valor mínimo do potencial efetivo é \(U_0\), que ocorre em \(r = r_0\).
 
+Substituindo \(\alpha r_0 = \frac{2\beta \mu + L^2}{\mu}\) na expressão do potencial efetivo, podemos escrever
+\begin{align}
+    U_\mathrm{ef}(r) &= -\alpha r^{-1} + \frac{\alpha r_0}{2}r^{-2}\\
+                     &= -\frac{\alpha}{r_0} \left(\frac{r}{r_0}\right)^{-1} + \frac{\alpha r_0}{2r_0^2}\left(\frac{r}{r_0}\right)^{-2}\\
+                     &= U_0\left[2\left(\frac{r}{r_0}\right)^{-1} - \left(\frac{r}{r_0}\right)^{-2}\right].
+\end{align}
+
 \begin{figure}[H]
     \centering
     \begin{tikzpicture}[domain=0.41:12,smooth,samples=100]
         \draw[->] (0.0,0) -- (12.2,0) node[right] {$r$};
         \draw[->] (0,-2.2) -- (0,2.2) node[left] {$U_{\mathrm{ef}}(r)$};
-        \draw[color=Mauve, thick]    plot (\x,{-4/\x + 2/(\x^2)});
+        \draw[color=Mauve, very thick]    plot (\x,{-4/\x + 2/(\x^2)});
         \draw[dashed,gray, thin] (1,0) node[below right]{\(r_0\)} -- (1, -2);
         \draw[dashed,gray, thin] (0,-2) node[left]{\(U_0\)} -- (1, -2);
         \draw[dashed,gray, thin] (0,{-240/169}) node[left]{\(E\)} -- (12,{-240/169});
@@ -36,13 +43,6 @@ isto é, o valor mínimo do potencial efetivo é \(U_0\), que ocorre em \(r = r_
     \end{tikzpicture}
     \caption{Potencial efetivo para o potencial central \(U(r) = -\frac{\alpha}{r} + \frac{\beta}{r^2}\).}
 \end{figure}
-
-Substituindo \(\alpha r_0 = \frac{2\beta \mu + L^2}{\mu}\) na expressão do potencial efetivo, podemos escrever
-\begin{align}
-    U_\mathrm{ef}(r) &= -\alpha r^{-1} + \frac{\alpha r_0}{2}r^{-2}\\
-                     &= -\frac{\alpha}{r_0} \left(\frac{r}{r_0}\right)^{-1} + \frac{\alpha r_0}{2r_0^2}\left(\frac{r}{r_0}\right)^{-2}\\
-                     &= U_0\left[2\left(\frac{r}{r_0}\right)^{-1} - \left(\frac{r}{r_0}\right)^{-2}\right].
-\end{align}
 
 Se o sistema tiver energia total \(E \geq U_0,\) um ponto de retorno satisfaz
 \begin{equation}
@@ -96,7 +96,8 @@ respeitando a escolha de sinal na \cref{eq:integral3}, de modo que
     \frac{\frac{r_0}{r(\theta)}-1}{\epsilon} = \cos\left(\sqrt{1 + \frac{2\mu\beta}{L^2}}\theta - \phi\right).
 \end{equation}
 Isolando \(r(\theta)\), obtemos a trajetória
-\begin{equation}
-    r(\theta) = \frac{r_0}{1 + \epsilon \cos{\left(\sqrt{1 + \frac{2\mu\beta}{L^2}}\theta - \phi\right)}}
-\end{equation}
+\begin{align}
+    r(\theta) &= \frac{r_0}{1 + \epsilon \cos{\left(\sqrt{1 + \frac{2\mu\beta}{L^2}}\theta - \phi\right)}}\\
+              &= \frac{\frac{2 \beta \mu + L^2}{\mu \alpha}}{1 + \sqrt{1 + \frac{2E(2\beta\mu + L^2)}{\mu\alpha^2}}\cos{\left(\sqrt{1+\frac{2\mu \beta}{L^2}}\theta - \phi\right)}}
+\end{align}
 para este potencial.
