@@ -1,0 +1,36 @@
+\section*{Exercício 1}
+Como mostrado na FIGURA, \(x\) é a distância vertical da polia até a massa \(M\) e \(r\) é distância da polia até a massa \(m\). Então para um fio inextensível, devemos ter \(x + r = \ell,\) onde \(\ell = L - D\) é a constante dada pelo comprimento total \(L\) do fio menos a distância \(D\) entre as polias.
+
+Com isso, as coordenadas generalizadas escolhidas são \(r, \varphi\), de modo que as posições das massas \(M\) e \(m\) são dadas por
+\begin{equation*}
+    \vec{r}_M = (\ell - r)\hat{\imath}-D \hat{\jmath}\quad\text{e}\quad\vec{r}_m = r\left(\cos\varphi \hat{\imath} + \sin\varphi \hat{\jmath}\right).
+\end{equation*}
+Assim, a energia cinética do sistema é dada por
+\begin{equation*}
+    T = \frac12 M\dot{r}^2 + \frac12m \left(\dot{r}^2 + r^2\dot\varphi^2\right).
+\end{equation*}
+Colocando a referência do potencial gravitacional em \(\ell \hat{\imath}\), temos
+\begin{equation*}
+    U = Mgr + mg\left(\ell - r\cos\varphi\right).
+\end{equation*}
+Dessa forma, a lagrangiana \(\mathcal{L}\) do sistema é dada por
+\begin{align*}
+    \mathcal{L} &= \frac12 M\dot{r}^2 + \frac12m \left(\dot{r}^2 + r^2\dot\varphi^2\right) - Mgr - mg\left(\ell - r\cos\varphi\right)\\
+                &= \frac{M+m}{2}\dot{r}^2 + \frac{m}{2}r^2\dot\varphi^2 - (M - m\cos\varphi)gr - mg\ell.
+\end{align*}
+
+Utilizando as equações de Euler-Lagrange, obtemos as equações de movimento do sistema. Temos
+\begin{equation*}
+    \diff*{{\left[\diffp{\mathcal{L}}{\dot{r}}\right]}}{t} - \diffp{\mathcal{L}}{r} = 0 \implies (M+m)\ddot{r} - mr\dot\varphi^2 - (M - m\cos\varphi)g = 0
+\end{equation*}
+e
+\begin{equation*}
+    \diff*{{\left[\diffp{\mathcal{L}}{\dot{\varphi}}\right]}}{t} - \diffp{\mathcal{L}}{\varphi} = 0 \implies mr^2\ddot\varphi + 2mr\dot{r}\dot\varphi + mgr\sin\varphi = 0.
+\end{equation*}
+Assim, as equações de movimento são dadas por
+\begin{equation*}
+    \begin{cases}
+            (M+m)\ddot{r} - mr\dot\varphi^2 - (M - m\cos\varphi)g = 0\\
+            r\ddot\varphi + 2\dot{r}\dot\varphi + g\sin\varphi = 0
+    \end{cases}.
+\end{equation*}
