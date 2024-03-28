@@ -1,11 +1,62 @@
 \section*{Exercício 3}
-Sendo \(\vec{r}_M = x\hat{\jmath}\) a posição da partícula de massa \(M\), a posição da partícula de massa \(m\) é dada por
+Sendo \(\vetor{r}_M = x\vetor{\hat{\imath}}\) a posição da partícula de massa \(M\), a posição da partícula de massa \(m\) é dada por
 \begin{equation*}
-    \vec{r}_m = \vec{r}_M + \ell \left(\cos\varphi \hat\imath + \sin\varphi \hat\jmath\right),
+    \vetor{r}_m = \vetor{r}_M + \ell \left(\cos\varphi \vetor{\hat\imath} + \sin\varphi \vetor{\hat\jmath}\right),
 \end{equation*}
-onde \(\ell\) é o comprimento do fio inextensível. Assim, temos
+onde \(\ell\) é o comprimento da barra ideal. Assim, temos
 \begin{align*}
-    \dot{\vec{r}}_m &= \dot{\vec{r}}_M + \ell \dot\varphi(-\sin\varphi\hat\imath + \cos\varphi\hat\jmath)\\
-                    &= \left(-\ell\dot\varphi\sin\varphi\right)\hat\imath + \left(\dot{x} + \ell\dot\varphi\cos\varphi\right)\hat\jmath
+    \dot{\vetor{r}}_m &= \dot{\vetor{r}}_M + \ell \dot\varphi(-\sin\varphi\vetor{\hat\imath} + \cos\varphi\vetor{\hat\jmath})\\
+                      &= \left(-\ell\dot\varphi\sin\varphi\right)\vetor{\hat\imath} + \left(\dot{x} + \ell\dot\varphi\cos\varphi\right)\vetor{\hat\jmath}
 \end{align*}
 como a velocidade da partícula de massa \(m\).
+
+\begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[thick,scale=0.75, every node/.style={scale=0.75}]
+        \usetikzlibrary{quotes,angles}
+        \draw[->, gray, thin] (-5,0) -- (5,0) node[right]{\(x\)};
+        \draw[black,line width=1.4] (0,0) coordinate (M) -- (-120:5) coordinate (m);
+        \draw[Maroon!70!black,very thick,line cap=round,line width=1.1] (M) -- (m);
+        \draw[->, gray, thin] (0,0) -- (0,-6) coordinate (Y) node[right]{\(y\)};
+        \draw[dotted,thick, gray] (-3,-5) -- (3,-5);
+        \draw[dashed] (m) arc(-120:-90:5);
+        \path (M) -- (m) node[midway,left=1]{\(\ell\)};
+        % \fill[black] (0,0) circle(0.05);
+        \filldraw [fill=Mauve!5, draw=Mauve!50!black] (M) -- +(0:1)
+            arc [start angle = 0, end angle = -120, radius = 1] node[midway, below, Mauve] {\(\varphi\)};
+        \draw[line width=0.6,Mauve!30!black,fill=Mauve!40!black!10,rounded corners=1,top color=Mauve!40!black!20,bottom color=Mauve!40!black!10,shading angle=20] (M) circle(0.4) node{\(M\)};
+        \draw[line width=0.6,Pink!30!black,fill=Pink!40!black!10,rounded corners=1,top color=Pink!40!black!20,bottom color=Pink!40!black!10,shading angle=20] (m) circle(0.3) node{\(m\)};
+    \end{tikzpicture}
+    \caption{Pêndulo}
+\end{figure}
+
+Desse modo, a energia cinética do sistema é
+\begin{align*}
+    T &= \frac12 M\dot{x}^2 + \frac12m \left(\ell^2\dot{\varphi}^2 + \dot{x}^2 + 2\ell \dot{x}\dot{\varphi}\cos\varphi\right)\\
+      &= \frac12 (M + m) \dot{x}^2 + m\ell \dot{x} \dot\varphi\cos\varphi + \frac12 m\ell^2\dot\varphi^2.
+\end{align*}
+Colocando a referência do potencial gravitacional em \(\ell \vetor{\hat\jmath}\), temos
+\begin{equation*}
+    V = Mg\ell + mg\ell(1 - \cos\varphi)
+\end{equation*}
+como o potencial do sistema. Assim, podemos definir uma lagrangiana \(\mathcal{L}\) equivalente à \(T - V\), diferindo apenas por constantes, por
+\begin{align*}
+    \mathcal{L} &= \frac12 (M + m) \dot{x}^2 + m\ell \dot{x} \dot\varphi\cos\varphi + \frac12 m\ell^2\dot\varphi^2 + mg \ell \cos\varphi\\
+                &= \frac12 (M + m) \dot{x}^2 + m\ell \left(\dot{x} \dot\varphi+ g\right)\cos\varphi + \frac12 m\ell^2\dot\varphi^2.
+\end{align*}
+
+Utilizando as equações de Euler-Lagrange, obtemos as equações de movimento do sistema. Temos
+\begin{equation*}
+    \diff*{{\left[\diffp{\mathcal{L}}{\dot{x}}\right]}}{t} - \diffp{\mathcal{L}}{x} = 0 \implies (M + m) \ddot{x} + m\ell \ddot\varphi \cos\varphi - m\ell\dot\varphi^2\sin\varphi = 0
+\end{equation*}
+e
+\begin{equation*}
+    \diff*{{\left[\diffp{\mathcal{L}}{\dot{\varphi}}\right]}}{t} - \diffp{\mathcal{L}}{\varphi} = 0 \implies m \ell \ddot{x} \cos\varphi - m\ell \dot{x}\dot\varphi \sin\varphi + m\ell^2\ddot{\varphi} + m\ell\left(\dot{x}\dot\varphi + g\right)\sin\varphi = 0.
+\end{equation*}
+Assim, as equações de movimento são dadas por
+\begin{equation*}
+    \begin{cases}
+            (M+m)\ddot{x} + m\ell\ddot\varphi\cos\varphi - m\ell\dot\varphi^2\sin\varphi = 0\\
+            \ddot{x}\cos\varphi + \ell\ddot\varphi + g\sin\varphi = 0
+    \end{cases}.
+\end{equation*}
