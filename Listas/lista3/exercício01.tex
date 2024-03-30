@@ -19,8 +19,11 @@ Como mostrado na \cref{fig:exercício1}, \(x\) é a distância vertical da polia
        % Angle
        \draw[black, dashed, thick] (P) -- +(-90:6);
        \draw[dashed] (m) arc(-75:-90:6);
-        \filldraw [fill=Mauve!5, draw=Mauve!50!black] (P) -- +(-75:3)
-            arc [start angle = -75, end angle = -90, radius = 3] node[midway, below, Mauve] {\(\varphi\)};
+       \filldraw [fill=Mauve!5, draw=Mauve!50!black] (P) -- +(-75:3) arc [start angle = -75, end angle = -90, radius = 3] node[midway, below, Mauve] {\(\varphi\)};
+
+       % basis
+       \draw[->,Blue,thick] (P) -- +(0:2) node[right]{\(\vetor{\hat\jmath}\)};
+       \draw[->,Blue,thick] (P) -- +(-90:2) node[below left]{\(\vetor{\hat\imath}\)};
 
        % Pulley
        \draw[fill = gray] (P1) circle (0.75cm); % Big circle
@@ -34,8 +37,8 @@ Como mostrado na \cref{fig:exercício1}, \(x\) é a distância vertical da polia
        \draw[fill=white] ($(P2) + 0.5*(75:2.5)$) to[rounded corners=0.1cm] ($(P2)+0.5*(0.2,-0.25)$)
        to[rounded corners=0.1cm] ($(P2)+0.5*(-0.2,-0.25)$) -- ($(P2)+0.5*(105:2.5)$) -- cycle;
        \draw[fill=darkgray] (P2) circle (0.06cm); % Axle circle
-        \draw[line width=0.6,Mauve!30!black,fill=Mauve!40!black!10,rounded corners=1,top color=Mauve!40!black!20,bottom color=Mauve!40!black!10,shading angle=20] (M) circle(0.4) node{\(M\)};
-        \draw[line width=0.6,Pink!30!black,fill=Pink!40!black!10,rounded corners=1,top color=Pink!40!black!20,bottom color=Pink!40!black!10,shading angle=20] (m) circle(0.3) node{\(m\)};
+       \draw[line width=0.6,Mauve!30!black,fill=Mauve!40!black!10,rounded corners=1,top color=Mauve!40!black!20,bottom color=Mauve!40!black!10,shading angle=20] (M) circle(0.4) node{\(M\)};
+       \draw[line width=0.6,Pink!30!black,fill=Pink!40!black!10,rounded corners=1,top color=Pink!40!black!20,bottom color=Pink!40!black!10,shading angle=20] (m) circle(0.3) node{\(m\)};
    \end{tikzpicture}
    \caption{Máquina de Atwood}
    \label{fig:exercício1}
@@ -61,7 +64,7 @@ Dessa forma, a lagrangiana \(\mathcal{L}\) do sistema é dada por
 
 Utilizando as equações de Euler-Lagrange, obtemos as equações de movimento do sistema. Temos
 \begin{equation*}
-    \diff*{{\left[\diffp{\mathcal{L}}{\dot{r}}\right]}}{t} - \diffp{\mathcal{L}}{r} = 0 \implies (M+m)\ddot{r} - mr\dot\varphi^2 - (M - m\cos\varphi)g = 0
+    \diff*{{\left[\diffp{\mathcal{L}}{\dot{r}}\right]}}{t} - \diffp{\mathcal{L}}{r} = 0 \implies (M+m)\ddot{r} - mr\dot\varphi^2 + (M - m\cos\varphi)g = 0
 \end{equation*}
 e
 \begin{equation*}
@@ -70,7 +73,7 @@ e
 Assim, as equações de movimento são dadas por
 \begin{equation*}
     \begin{cases}
-            (M+m)\ddot{r} - mr\dot\varphi^2 - (M - m\cos\varphi)g = 0\\
+            (M+m)\ddot{r} - mr\dot\varphi^2 + (M - m\cos\varphi)g = 0\\
             r\ddot\varphi + 2\dot{r}\dot\varphi + g\sin\varphi = 0
     \end{cases}.
 \end{equation*}
