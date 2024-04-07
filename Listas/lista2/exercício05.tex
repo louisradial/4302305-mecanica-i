@@ -1,0 +1,32 @@
+\section*{Exercício 5}
+\textbf{No problema de Kepler \(U(r) = -\frac{\alpha}{r}\) com \(\alpha > 0\), obtenha as soluções com energia positiva.}
+
+O potencial efetivo no problema de Kepler é dado por
+\begin{equation*}
+    U_\mathrm{ef}(r) = -\frac{\alpha}{r} + \frac{L^2}{2\mu r^2}.
+\end{equation*}
+Podemos obter o ponto \(r_0\) que minimiza o potencial efetivo tomando \(\beta = 0\) nos resultados do exercício 3, então definimos
+\begin{equation*}
+    r_0 = \frac{L^2}{\mu \alpha}\quad\text{e}\quad U_0 = -\frac{\alpha}{2r_0}
+\end{equation*}
+de modo que o potencial efetivo pode ser escrito como
+\begin{equation*}
+    U_\mathrm{ef}(r) = U_0\left[2\left(\frac{r}{r_0}\right)^{-1} - \left(\frac{r}{r_0}\right)^{-2}\right],
+\end{equation*}
+como antes. Desse modo, a trajetória é dada por
+\begin{equation*}
+    r(\theta) = \frac{r_0}{1 + \epsilon \cos\left(\theta - \phi\right)},
+\end{equation*}
+onde \(\epsilon = \sqrt{1 - \frac{E}{U_0}}\), repetindo os argumentos do exercício anterior.
+
+Para simplificar, tomamos \(\phi = 0\). Para energias positivas temos \(\epsilon > 1\), portanto
+\begin{align*}
+    (1+\epsilon\cos\theta)r = r_0 &\implies r = r_0 - \epsilon x\\
+                                  &\implies x^2 + y^2 = r_0^2 + \epsilon^2 x^2 - 2 r_0 \epsilon x\\
+                                  &\implies \left(\frac{y}{r_0}\right)^2 = 1 + (\epsilon^2 - 1)\left(\frac{x}{r_0}\right)^2 - 2 \epsilon\frac{x}{r_0}\\
+                                  &\implies \left(\frac{y}{r_0\sqrt{\epsilon^2 - 1}}\right)^2 = \frac{1}{\epsilon^2 - 1} + \left(\frac{x}{r_0}\right)^2 - 2\frac{\epsilon}{\epsilon^2 - 1}\frac{x}{r_0}\\
+                                  &\implies \frac{1}{(\epsilon^2 - 1)^2} + \left(\frac{y}{r_0\sqrt{\epsilon^2 - 1}}\right)^2 = \left(\frac{x}{r_0} - \frac{\epsilon}{\epsilon^2 - 1}\right)^2\\
+                                  &\implies \left(\frac{\left(\epsilon^2 - 1\right)x}{r_0} - \epsilon\right)^2 - \left(\frac{y\sqrt{\epsilon^2 - 1}}{r_0}\right)^2 = 1\\
+                                  &\implies \left(\frac{x - \frac{\epsilon r_0}{\epsilon^2 - 1}}{\frac{r_0}{\epsilon^2 - 1}}\right)^2 - \left(\frac{y}{\frac{r_0}{\sqrt{\epsilon^2 - 1}}}\right)^2 = 1.
+\end{align*}
+Assim, para \(E > 0\), a trajetória descreve uma hipérbole.
