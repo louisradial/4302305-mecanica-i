@@ -1,7 +1,24 @@
 \section*{Exercício 6}
-\textbf{Obtenha a equação da trajetória de soluções com energia negativa para uma partícula de massa \(m\) na presença do potencial central \(U(r) = -\frac{\alpha}{r^2}\).}
+\textbf{Obtenha a equação da trajetória de soluções com energia negativa para uma partícula de massa \(\mu\) na presença do potencial central \(U(r) = -\frac{\alpha}{r^2}\).}
 
 O potencial efetivo para este sistema é
 \begin{equation*}
-    U_\mathrm{ef}(r) = -\frac{\alpha}{r^2} + \frac{L^2}{2\mu r^2}
+    U_\mathrm{ef}(r) = -\frac{\alpha}{r^2} + \frac{L^2}{2\mu r^2} = -\frac{2\mu\alpha - L^2}{2\mu r^2}.
+\end{equation*}
+Para energias negativas, devemos ter \(2\mu\alpha - L^2 > 0\), então pelo \cref{lem:trajetória}, segue que
+\begin{align*}
+    \pm \dl\theta &= \frac{L}{r^2\sqrt{2\mu(\beta^2 r^{-2}-\abs{E})}}\dl{r}\\
+                  &= \frac{L}{r^2\sqrt{2\mu\abs{E}\left(\frac{\beta^2}{\abs{E}} r^{-2}-1\right)}}\dl{r}
+\end{align*}
+onde \(\beta^2 = \frac{2\mu \alpha - L^2}{2\mu}\). Com a mudança de variáveis \(\rho = \frac{\beta}{\sqrt{\abs{E}}} r^{-1} > 1\), temos
+\begin{equation*}
+    \pm \dl\theta = -\frac{L}{\sqrt{2\mu\beta^2}} \frac{\dl\rho}{\sqrt{\rho^2 - 1}},
+\end{equation*}
+portanto
+\begin{equation*}
+    \arcosh{\left(\frac{\beta r^{-1}}{\sqrt{\abs{E}}}\right)} = \sqrt{\frac{L^2}{2\mu \alpha - L^2}}(\phi - \theta),
+\end{equation*}
+em que \(\phi\) é um valor que satisfaz as condições iniciais. Isolando \(r\), obtemos
+\begin{equation*}
+    r(\theta) = \sqrt{\frac{2\mu \alpha - L^2}{2\mu\abs{E}}}\sech{\left(\sqrt{\frac{L^2}{2\mu \alpha - L^2}}(\theta - \phi)\right)}.
 \end{equation*}
