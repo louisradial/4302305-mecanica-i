@@ -1,0 +1,40 @@
+\section*{Exercício 1}
+\textbf{Descreva qualitativamente o movimento de uma partícula na presença do potencial central}
+\begin{equation*}
+    U(r) = -\frac{\alpha}{r} - \frac{\gamma}{r^3},
+\end{equation*}
+\textbf{onde \(\alpha > 0\) e \(\gamma > 0\).}
+
+O potencial efetivo para este sistema é
+\begin{equation*}
+    U_\mathrm{ef}(r) = -\frac{\alpha}{r} + \frac{\beta}{r^2} - \frac{\gamma}{r^3},
+\end{equation*}
+onde \(\beta = \frac{L^2}{2\mu} > 0\). Neste caso, temos
+\begin{align*}
+    \diff{U_\mathrm{ef}}{r} &= \alpha r^{-2} - 2 \beta r^{-3} + 3 \gamma r^{-4} &
+    \diff[2]{U_\mathrm{ef}}{r} &= -2 \alpha r^{-3} + 6 \beta r^{-4} - 12 \gamma r^{-5}\\
+                               &= \frac{\alpha r^2 - 2 \beta r + 3 \gamma}{r^4}&
+                               &= -2\frac{\alpha r^2 -3 \beta r + 6 \gamma}{r^5}.
+\end{align*}
+
+Notemos que para \(\beta^2 - 3 \alpha \gamma \geq 0\), existe \(r_*>0\) tal que \(\diff{U_\mathrm{ef}}{r}[r=r_*] = 0\), dado por
+\begin{equation*}
+    r_*= \frac{\beta \pm \sqrt{\beta^2 - 3 \alpha \gamma}}{\alpha},
+\end{equation*}
+isto é, \(r_*\) é um ponto crítico do potencial efetivo. Neste caso, temos
+\begin{align*}
+    U_\mathrm{r_*} &= -\frac{2\beta^2 \pm 2 \beta \sqrt{\beta^2 - 3 \alpha \gamma} - 3 \alpha \gamma -\beta^2 \mp \beta\sqrt{\beta^2 - 3 \alpha \gamma} +\alpha \gamma}{\alpha r_*^3}\\
+                   &= - \frac{\beta^2 - 3 \alpha \gamma \pm \beta\sqrt{\beta^2 - 3 \alpha \gamma}}{\alpha r_*^3} - \frac{\gamma}{r_*^3}\\
+                   &= \mp\frac{\sqrt{\beta^2 - 3 \alpha \gamma}}{r_*^2} - \frac{\gamma}{r_*^3}
+\end{align*}
+e
+\begin{align*}
+    \diff[2]{U_\mathrm{ef}}{r}[r=r_*] &= -2 \frac{2\beta^2 \pm 2 \beta \sqrt{\beta^2 - 3 \alpha \gamma} - 3 \alpha \gamma - 3 \beta^2 \mp 3 \beta \sqrt{\beta^2 - 3 \alpha \gamma} + 6 \gamma \alpha}{\alpha r_*^5}\\
+                                      &= 2\frac{\beta^2 - 3 \alpha \gamma \pm \beta \sqrt{\beta^2 - 3 \alpha \gamma} }{\alpha r_*^5}\\
+                                      &= \pm\frac{2\sqrt{\beta^2 - 3 \alpha \gamma}}{r_*^4}.
+\end{align*}
+Assim, se \(\beta^2 - 3 \alpha \gamma = 0\), o ponto crítico é um ponto de inflexão, caso contrário \(r_1\) é um ponto de máximo e \(r_2\) é um ponto de mínimo, onde
+\begin{equation*}
+    r_1 =\frac{\beta - \sqrt{\beta^2 - 3 \alpha \gamma}}{\alpha}\quad\text{e}\quad r_2 =\frac{\beta + \sqrt{\beta^2 - 3 \alpha \gamma}}{\alpha},
+\end{equation*}
+com \(r_1 \neq r_2\). Muita preguiça de continuar.
