@@ -1,0 +1,27 @@
+\section*{Exercício 2}
+\begin{exercício}{Energia de uma partícula em um campo eletromagnético externo}{exercício02}
+    Uma partícula encontra-se na presença de um campo eletromagnético independente do tempo. Utilizando o formalismo lagrangiano, obtenha a energia do sistema.
+\end{exercício}
+\begin{proof}[Resolução]
+    Para uma lagrangiana \(L\) qualquer, a função energia \(h\) é definida por
+    \begin{equation*}
+        h = \diffp{L}{\dot{q}^k}\dot{q}^k - L,
+    \end{equation*}
+    com a propriedade
+    \begin{equation*}
+        \diff{h}{t} = -\diffp{L}{t}.
+    \end{equation*}
+
+    Como a lagrangiana para uma partícula de massa \(m\) e carga \(Q\) em um campo eletromagnético externo com potencial escalar \(\phi\) e potencial vetor \vetor{A} é dada por
+    \begin{equation*}
+        L = \frac12 m g_{ij} \dot{x}^i \dot{x}^j - Q\phi + \frac{Q}{c} g_{ij} A^i \dot{x}^j,
+    \end{equation*}
+    onde \(x^i\) são as suas coordenadas cartesianas e \(g_{ij}\) o tensor métrico Euclidiano, a função energia neste caso é dada por
+    \begin{align*}
+        h &= \left(mg_{ij} \dot{x}^i \delta^j_k + \frac{Q}{c} g_{ij} A^i \delta^j_k\right)\dot{x}^k - \left( \frac12 m g_{ij} \dot{x}^i \dot{x}^j - Q\phi +\frac{Q}{c} g_{ij} A^i \dot{x}^j\right)\\
+          &= m g_{ik}\dot{x}^i \dot{x}^k + \frac{Q}{c}g_{ik}A^i\dot{x}^k - \left(\frac12 m g_{ik} \dot{x}^i \dot{x}^k - Q\phi + \frac{Q}{c}g_{ik} A^i \dot{x}^k\right)\\
+          &= \frac12 m g_{ik} \dot{x}^i\dot{x}^k + Q\phi\\
+          &= \frac12 m \inner{\vetor{v}}{\vetor{v}} + Q\phi.
+    \end{align*}
+    No caso em que o campo eletromagnético não depende do tempo, temos que a função energia é constante no tempo.
+\end{proof}

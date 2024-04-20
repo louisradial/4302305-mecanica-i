@@ -1,0 +1,81 @@
+\section*{Exercício 1}
+
+\begin{exercício}{Movimento em um campo magnético uniforme}{exercício01}
+    Uma partícula de massa \(m\) move-se na presença de um campo magnético constante \(\vetor{B} = B \vetor{e}_z\).
+    \begin{enumerate}[label=(\alph*)]
+        \item Mostre que o potencial vetor \(\vetor{A} = \frac{B}{2}(-y\vetor{e}_x + x \vetor{e}_y)\) está associado a este campo magnético.
+        \item Utilizando o formalismo Lagrangiano obtenha a equação de movimento desta partícula.
+        \item Obtenha a trajetória desta partícula utilizando a condição inicial que \(\vetor{r}(0) = \vetor{0}\) e que \(\vetor{v}(0) = a\vetor{e}_x + b\vetor{e}_y,\) onde \(a\) e \(b\) são constantes.
+    \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+    Notemos que
+    \begin{equation*}
+        \vetor{\nabla} \times \left(- y\vetor{e}_x + x\vetor{e}_y\right) = 2 \vetor{e}_z,
+    \end{equation*}
+    portanto o potencial vetor \(\vetor{A}\) dado é associado ao campo magnético uniforme \(\vetor{B}\).
+
+    Em unidades CGS gaussianas, a lagrangiana de uma partícula de carga \(Q\) e massa \(m\) em um campo eletromagnético é dada por
+    \begin{equation*}
+    L = \frac12 m\inner{\vetor{v}}{\vetor{v}} - Q\phi + \frac{Q}{c} \inner{\vetor{v}}{\vetor{A}},
+    \end{equation*}
+    onde \(\vetor{v}\) é a velocidade da partícula e \(\phi\) é o potencial escalar. Neste caso, como não há a presença de um campo elétrico, temos
+    \begin{equation*}
+        L(q^1,\dot{q}^1, q^2, \dot{q}^2) = \frac12 m g_{ij}\dot{q}^i \dot{q}^j + \frac{QB}{2c} \epsilon_{ij}q^i\dot{q}^j,
+    \end{equation*}
+    onde \(q^1 = x\), \(q^2 = y\), \(\epsilon_{ij}\) é o símbolo de Levi-Civita, e \(g_{ij}\) é o tensor métrico Euclidiano. Assim, pelas equações de Euler-Lagrange temos
+    \begin{align*}
+        \diff*{\left(\diffp{L}{\dot{q}^k}\right)}{t} - \diffp{L}{q^k} = 0 &\implies \diff*{\left(\frac12 g_{ij} \delta^i_k \dot{q}^j + \frac12 g_{ij} \dot{q}^i\delta^j_k + \frac{QB}{2c}\epsilon_{ij} q^i \delta^j_k\right)}{t} - \frac{QB}{2c} \epsilon_{ij}\delta^i_k \dot{q}^j = 0\\
+                                                                          &\implies \diff*{\left(g_{kj} \dot{q}^j + \frac{QB}{2c}\epsilon_{ik} q^i \right)}{t} - \frac{QB}{2c} \epsilon_{kj}\dot{q}^j = 0\\
+                                                                          &\implies g_{kj} \ddot{q}^j + \frac{QB}{2c}\epsilon_{ik} \dot{q}^i - \frac{QB}{2c} \epsilon_{kj}\dot{q}^j = 0\\
+                                                                          &\implies \ddot{q}_k + \frac{QB}{c}\epsilon_{ik} \dot{q}^i = 0.
+    \end{align*}
+    De forma explícita, temos as equações de movimento
+    \begin{equation*}
+        \begin{cases}
+            \ddot{q}_1 = \omega\dot{q}_2\\
+            \ddot{q}_2 = -\omega\dot{q}_1,
+        \end{cases} \implies
+        \begin{cases}
+            \ddot{x} = \omega\dot{y}\\
+            \ddot{y} = -\omega\dot{x},
+        \end{cases}
+    \end{equation*}
+    onde \(\omega = \frac{QB}{2m}\).
+
+    Integrando a primeira equação em relação ao tempo no intervalo \([0,t]\), temos
+    \begin{equation*}
+        \dot{x}(t) - \dot{x}(0) = \omega(y(t) - y(0)) \implies \dot{x}(t) = a + \omega y(t).
+    \end{equation*}
+    Substituindo na segunda equação, temos a equação diferencial linear não homogênea
+    \begin{equation*}
+        \ddot{y} + \omega^2 y = - \omega a,
+    \end{equation*}
+    cuja solução é
+    \begin{equation*}
+        y(t) = \alpha \cos(\omega t) + \beta \sin(\omega t) - \frac{a}{\omega},
+    \end{equation*}
+    para constantes de integração \(\alpha, \beta\). Como \(y(0) = 0\) e \(\dot{y}(0) = b\), temos
+    \begin{equation*}
+        y(t) = \frac{b}{\omega}\sin(\omega t) -  \frac{a}{\omega}\left[1 - \cos(\omega t)\right].
+    \end{equation*}
+    Assim,
+    \begin{equation*}
+        \dot{x}(t) = b\sin(\omega t) +  a \cos(\omega t) \implies x(t) = \frac{b}{\omega}\left[1 - \cos(\omega t)\right]+\frac{a}{\omega} \sin(\omega t).
+    \end{equation*}
+
+    Deste modo, a partícula tem posição dada por
+    \begin{align*}
+        \vetor{r}(t) &= \vetor{r}_0 + \left[\frac{a}{\omega} \sin(\omega t) - \frac{b}{\omega}\cos(\omega t)\right]\vetor{e}_x + \left[\frac{b}{\omega} \sin(\omega t) + \frac{a}{\omega}\cos(\omega t)\right]\vetor{e}_y\\
+                     &= \vetor{r}_0 + \rho\left[\cos(\varphi - \omega t)\vetor{e}_x + \sin(\varphi-\omega t)\vetor{e}_y\right],
+    \end{align*}
+    onde \(\vetor{r}_0 = \frac{b}{\omega}\vetor{e}_x - \frac{a}{\omega}\vetor{e}_y\), \(\rho = \sqrt{\frac{a^2 + b^2}{\omega^2}}\) e \(\varphi \in [0, 2\pi]\) é tal que
+    \begin{equation*}
+        \rho\cos\varphi = -\frac{b}{\omega}\quad\text{e}\quad\rho\sin\varphi = \frac{a}{\omega}.
+    \end{equation*}
+    Notemos que
+    \begin{equation*}
+        \inner{\vetor{r}(t) - \vetor{r}_0}{\vetor{r}(t) - \vetor{r}_0} = \rho^2,
+    \end{equation*}
+    portanto a a trajetória da partícula descreve um círculo de raio \(\rho\) centrado em \(\vetor{r}_0\) com frequência angular constante \(\omega\).
+\end{proof}
