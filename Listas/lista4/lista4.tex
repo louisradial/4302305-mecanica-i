@@ -165,63 +165,6 @@
 
 \begin{document}
 \maketitle
-\begin{lemma}{Partícula em um campo eletromagnético externo}{lagrangiana_lorentz}
-    A lagrangiana de uma partícula de massa \(m\) e carga \(e\) em um campo eletromagnético externo definido pelo potencial escalar \(\phi\) e pelo potencial vetor \(\vetor{A}\) é dada por
-    \begin{equation*}
-        L = \frac12 m g_{ij} \dot{x}^i \dot{x}^j - e \phi + e g_{ij} A^i \dot{x}^j,
-    \end{equation*}
-    onde \(g_{ij}\) é o tensor métrico Euclidiano.
-\end{lemma}
-\begin{proof}
-    Uma partícula de massa \(m\) e carga \(e\) em um campo eletromagnético externo está sujeita à força de Lorentz dada por
-    \begin{equation*}
-        \vetor{F} = e\left(\vetor{E} + \vetor{v}\times\vetor{B}\right),
-    \end{equation*}
-    onde \(\vetor{E}\) é o campo elétrico e \(\vetor{B}\) é o campo magnético.
-
-    Podemos definir os campos elétrico e magnético a partir de um potencial escalar \(\phi\) e um potencial vetor \(\vetor{A}\),
-    \begin{equation*}
-        \vetor{E} = -\vetor{\nabla}\phi - \diffp{\vetor{A}}{t}\quad\text{e}\quad\vetor{B} = \vetor{\nabla} \times \vetor{A},
-    \end{equation*}
-    de modo que as equações de Maxwell ainda sejam satisfeitas. Neste caso, a força de Lorentz é dada por
-    \begin{equation*}
-        \vetor{F} = e\left(-\vetor{\nabla}\phi - \diffp{\vetor{A}}{t} + \vetor{v}\times (\vetor{\nabla}\times \vetor{A})\right).
-    \end{equation*}
-
-    Notemos que
-    \begin{equation*}
-        \diff{\vetor{A}}{t} = \diffp{\vetor{A}}{x^i}\dot{x}^i + \diffp{\vetor{A}}{t} \implies -\diffp{A}{t} = \inner{\vetor{v}}{\vetor{\nabla}}\vetor{A} - \diff{\vetor{A}}{t}
-    \end{equation*}
-    e que
-    \begin{equation*}
-        \vetor{v} \times (\vetor{\nabla}\times \vetor{A}) = \vetor{\nabla}\inner{\vetor{v}}{\vetor{A}} - \inner{\vetor{v}}{\vetor{\nabla}}\vetor{A},
-    \end{equation*}
-    uma vez que \(\diffp{\vetor{v}}{x^i} = 0\). Dessa forma, segue que
-    \begin{align*}
-        \vetor{F} &= e\left(-\vetor{\nabla}\phi - \diff{\vetor{A}}{t} + \vetor{\nabla}\inner{\vetor{v}}{\vetor{A}}\right)\\
-                  &= e \left[- \vetor{\nabla}(\phi - \inner{\vetor{v}}{\vetor{A}}) - \diff{\vetor{A}}{t}\right].
-    \end{align*}
-
-    Definindo o operador \(\vetor{\nabla}_{\vetor{v}} = \vetor{e}_x\diffp*{}{v_x} + \vetor{e}_y\diffp*{}{v_y} + \vetor{e}_z\diffp*{}{v_z}\) e notando que tanto \(\vetor{A}\) quanto \(\phi\) não dependem das velocidades, temos
-    \begin{equation*}
-        -\vetor{A} = \vetor{\nabla}_{\vetor{v}}\left(\phi - \inner{\vetor{v}}{\vetor{A}}\right),
-    \end{equation*}
-    de modo que a força de Lorentz seja dada por
-    \begin{equation*}
-        \vetor{F} = e \left[- \vetor{\nabla}(\phi - \inner{\vetor{v}}{\vetor{A}}) + \diff*{\vetor{\nabla}_{\vetor{v}}\left(\phi - \inner{\vetor{v}}{\vetor{A}}\right)}{t}\right].
-    \end{equation*}
-
-    Isto é, mostramos que a força de Lorentz resulta de um potencial generalizado \(U = e\phi - e\inner{\vetor{v}}{\vetor{A}}\)
-    \begin{equation*}
-        F_k = - \diffp{U}{x^k} + \diff*{\left(\diffp{U}{\dot{x}^k}\right)}{t},
-    \end{equation*}
-    portanto a lagrangiana é dada por
-    \begin{align*}
-        L &= \frac12 m\inner{\vetor{v}}{\vetor{v}} - e\phi + e\inner{\vetor{v}}{\vetor{A}}\\
-          &= \frac12 mg_{ij} \dot{x}^i \dot{x}^j - e\phi + eg_{ij}A^i\dot{x}^j,
-    \end{align*}
-    o que conclui a demonstração.
-\end{proof}
 
 \input{exercício01}
 
