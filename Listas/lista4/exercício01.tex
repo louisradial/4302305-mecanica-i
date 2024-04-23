@@ -15,20 +15,20 @@
     \end{equation*}
     portanto o potencial vetor \(\vetor{A}\) dado é associado ao campo magnético uniforme \(\vetor{B}\).
 
-    Em unidades CGS gaussianas, a lagrangiana de uma partícula de carga \(Q\) e massa \(m\) em um campo eletromagnético é dada por
+    Pelo \cref{lem:lagrangiana_lorentz}, a lagrangiana de uma partícula de carga \(Q\) e massa \(m\) em um campo eletromagnético é dada por
     \begin{equation*}
-    L = \frac12 m\inner{\vetor{v}}{\vetor{v}} - Q\phi + \frac{Q}{c} \inner{\vetor{v}}{\vetor{A}},
+    L = \frac12 m\inner{\vetor{v}}{\vetor{v}} - Q\phi + Q \inner{\vetor{v}}{\vetor{A}},
     \end{equation*}
-    onde \(\vetor{v}\) é a velocidade da partícula e \(\phi\) é o potencial escalar. Neste caso, como não há a presença de um campo elétrico, temos
+    onde \(\vetor{v}\) é a velocidade da partícula e \(\phi\) é o potencial escalar. Neste caso, como não há a presença de um campo elétrico, e como \(\diffp{\vetor{A}}{t} = 0\), segue que \(\phi\) é constante. Desse modo, a lagrangiana pode ser escrita como
     \begin{equation*}
-        L(q^1,\dot{q}^1, q^2, \dot{q}^2) = \frac12 m g_{ij}\dot{q}^i \dot{q}^j + \frac{QB}{2c} \epsilon_{ij}q^i\dot{q}^j,
+        L(q^1,\dot{q}^1, q^2, \dot{q}^2) = \frac12 m g_{ij}\dot{q}^i \dot{q}^j + \frac{QB}{2} \epsilon_{ij}q^i\dot{q}^j,
     \end{equation*}
     onde \(q^1 = x\), \(q^2 = y\), \(\epsilon_{ij}\) é o símbolo de Levi-Civita, e \(g_{ij}\) é o tensor métrico Euclidiano. Assim, pelas equações de Euler-Lagrange temos
     \begin{align*}
-        \diff*{\left(\diffp{L}{\dot{q}^k}\right)}{t} - \diffp{L}{q^k} = 0 &\implies \diff*{\left(\frac12 g_{ij} \delta^i_k \dot{q}^j + \frac12 g_{ij} \dot{q}^i\delta^j_k + \frac{QB}{2c}\epsilon_{ij} q^i \delta^j_k\right)}{t} - \frac{QB}{2c} \epsilon_{ij}\delta^i_k \dot{q}^j = 0\\
-                                                                          &\implies \diff*{\left(g_{kj} \dot{q}^j + \frac{QB}{2c}\epsilon_{ik} q^i \right)}{t} - \frac{QB}{2c} \epsilon_{kj}\dot{q}^j = 0\\
-                                                                          &\implies g_{kj} \ddot{q}^j + \frac{QB}{2c}\epsilon_{ik} \dot{q}^i - \frac{QB}{2c} \epsilon_{kj}\dot{q}^j = 0\\
-                                                                          &\implies \ddot{q}_k + \frac{QB}{c}\epsilon_{ik} \dot{q}^i = 0.
+        \diff*{\left(\diffp{L}{\dot{q}^k}\right)}{t} - \diffp{L}{q^k} = 0 &\implies \diff*{\left(\frac12 mg_{ij} \delta^i_k \dot{q}^j + \frac12 g_{ij} \dot{q}^i\delta^j_k + \frac{QB}{2}\epsilon_{ij} q^i \delta^j_k\right)}{t} - \frac{QB}{2} \epsilon_{ij}\delta^i_k \dot{q}^j = 0\\
+                                                                          &\implies \diff*{\left(mg_{kj} \dot{q}^j + \frac{QB}{2}\epsilon_{ik} q^i \right)}{t} - \frac{QB}{2} \epsilon_{kj}\dot{q}^j = 0\\
+                                                                          &\implies mg_{kj} \ddot{q}^j + \frac{QB}{2}\epsilon_{ik} \dot{q}^i - \frac{QB}{2} \epsilon_{kj}\dot{q}^j = 0\\
+                                                                          &\implies m\ddot{q}_k + QB\epsilon_{ik} \dot{q}^i = 0.
     \end{align*}
     De forma explícita, temos as equações de movimento
     \begin{equation*}
@@ -41,7 +41,7 @@
             \ddot{y} = -\omega\dot{x},
         \end{cases}
     \end{equation*}
-    onde \(\omega = \frac{QB}{2m}\).
+    onde \(\omega = \frac{QB}{m}\).
 
     Integrando a primeira equação em relação ao tempo no intervalo \([0,t]\), temos
     \begin{equation*}

@@ -1,9 +1,6 @@
 \section*{Exercício 2}
-\begin{exercício}{Energia de uma partícula em um campo eletromagnético externo}{exercício02}
-    Uma partícula encontra-se na presença de um campo eletromagnético independente do tempo. Utilizando o formalismo lagrangiano, obtenha a energia do sistema.
-\end{exercício}
-\begin{proof}[Resolução]
-    Para uma lagrangiana \(L\) qualquer, a função energia \(h\) é definida por
+\begin{lemma}{Função energia}{energia}
+    Para uma lagrangiana \(L = L(q^1, \dots, q^n, \dot{q}^1, \dots, \dot{q}^n, t)\), a função energia \(h\) é definida por
     \begin{equation*}
         h = \diffp{L}{\dot{q}^k}\dot{q}^k - L,
     \end{equation*}
@@ -11,15 +8,28 @@
     \begin{equation*}
         \diff{h}{t} = -\diffp{L}{t}.
     \end{equation*}
+\end{lemma}
+\begin{proof}
+    Computemos a derivada total em relação ao tempo para a função energia. Temos
+    \begin{align*}
+        \diff{h}{t} &= \colorunderline{Lavender}{\diff*{\left(\diffp{L}{\dot{q}^k}\right)}{t}\dot{q}^k} + \colorunderline{Red}{\diffp{L}{\dot{q}^k}\diff{\dot{q}^k}{t}} - \diffp{L}{t} - \colorunderline{Lavender}{\diffp{L}{q^k}\diff{q^k}{t}} - \colorunderline{Red}{\diffp{L}{\dot{q}^k}\diff{\dot{q}^k}{t}}\\
+                    &= \left[\diff*{\left(\diffp{L}{\dot{q}^k}\right)}{t}- \diffp{L}{q^k}\right]\dot{q}^k - \diffp{L}{t}.
+    \end{align*}
+    Desse modo, para uma solução das equações de Euler-Lagrange, segue que \(\diff{h}{t} = -\diffp{L}{t}.\)
+\end{proof}
 
-    Como a lagrangiana para uma partícula de massa \(m\) e carga \(Q\) em um campo eletromagnético externo com potencial escalar \(\phi\) e potencial vetor \vetor{A} é dada por
+\begin{exercício}{Energia de uma partícula em um campo eletromagnético externo}{exercício02}
+    Uma partícula encontra-se na presença de um campo eletromagnético independente do tempo. Utilizando o formalismo lagrangiano, obtenha a energia do sistema.
+\end{exercício}
+\begin{proof}[Resolução]
+    Pelo \cref{lem:lagrangiana_lorentz}, a lagrangiana de uma partícula de massa \(m\) e carga \(Q\) em um campo eletromagnético externo com potencial escalar \(\phi\) e potencial vetor \vetor{A} é dada por
     \begin{equation*}
-        L = \frac12 m g_{ij} \dot{x}^i \dot{x}^j - Q\phi + \frac{Q}{c} g_{ij} A^i \dot{x}^j,
+        L = \frac12 m g_{ij} \dot{x}^i \dot{x}^j - Q\phi + Q g_{ij} A^i \dot{x}^j,
     \end{equation*}
     onde \(x^i\) são as suas coordenadas cartesianas e \(g_{ij}\) o tensor métrico Euclidiano, a função energia neste caso é dada por
     \begin{align*}
-        h &= \left(mg_{ij} \dot{x}^i \delta^j_k + \frac{Q}{c} g_{ij} A^i \delta^j_k\right)\dot{x}^k - \left( \frac12 m g_{ij} \dot{x}^i \dot{x}^j - Q\phi +\frac{Q}{c} g_{ij} A^i \dot{x}^j\right)\\
-          &= m g_{ik}\dot{x}^i \dot{x}^k + \frac{Q}{c}g_{ik}A^i\dot{x}^k - \left(\frac12 m g_{ik} \dot{x}^i \dot{x}^k - Q\phi + \frac{Q}{c}g_{ik} A^i \dot{x}^k\right)\\
+        h &= \left(mg_{ij} \dot{x}^i \delta^j_k + Q g_{ij} A^i \delta^j_k\right)\dot{x}^k - \left( \frac12 m g_{ij} \dot{x}^i \dot{x}^j - Q\phi +Q g_{ij} A^i \dot{x}^j\right)\\
+          &= m g_{ik}\dot{x}^i \dot{x}^k + Qg_{ik}A^i\dot{x}^k - \left(\frac12 m g_{ik} \dot{x}^i \dot{x}^k - Q\phi + Qg_{ik} A^i \dot{x}^k\right)\\
           &= \frac12 m g_{ik} \dot{x}^i\dot{x}^k + Q\phi\\
           &= \frac12 m \inner{\vetor{v}}{\vetor{v}} + Q\phi.
     \end{align*}
