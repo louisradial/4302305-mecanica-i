@@ -18,6 +18,65 @@
     Desse modo, para uma solução das equações de Euler-Lagrange, segue que \(\diff{h}{t} = -\diffp{L}{t}.\)
 \end{proof}
 
+\begin{lemma}{Invariância de calibre}{gauge}
+    Os campos elétrico \(\vetor{E} = - \vetor{\nabla}\phi - \diffp{\vetor{A}}{t}\) e magnético \(\vetor{B} = \vetor{\nabla}\times\vetor{A}\) são invariantes por transformações de calibre,
+    \begin{equation*}
+        \vetor{\tilde{A}} = \vetor{A} + \vetor{\nabla}f\quad\text{e}\quad\tilde{\phi} = \phi - \diffp{f}{t},
+    \end{equation*}
+    onde \(f\) é um campo escalar suave. Ainda, a lagrangiana
+    \begin{equation*}
+        \tilde{L} = \frac12 mg_{ij} \dot{x}^i\dot{x}^j - e\tilde{\phi} + e g_{ij} \tilde{A}^i \dot{x}^j
+    \end{equation*}
+    é equivalente à lagrangiana dada pelo \cref{lem:lagrangiana_lorentz}.
+\end{lemma}
+\begin{proof}
+    Como todo gradiente é irrotacional, temos
+    \begin{equation*}
+        \vetor{B} = \vetor{\nabla}\times \vetor{A} = \vetor{\nabla}\times\left(\vetor{A} + \vetor{\nabla}f\right) = \vetor{\nabla}\times\vetor{\tilde{A}},
+    \end{equation*}
+    para qualquer campo escalar diferenciável \(f\). Ainda, para \(f\) suave, as derivadas parciais em relação às posições e ao tempo comutam, de modo que
+    \begin{align*}
+        \vetor{E} &= -\vetor{\nabla}\phi - \diffp{\vetor{A}}{t}\\
+                  &= - \vetor{\nabla}{\phi} + \vetor{\nabla}\diffp{f}{t} - \diffp*{\vetor{\nabla}f}{t} - \diffp{\vetor{A}}{t}\\
+                  &= - \vetor{\nabla}\left(\phi + \diffp{f}{t}\right) - \diffp*{\left(\vetor{A} + \vetor{\nabla}f\right)}{t}\\
+                  &= -\vetor{\nabla}\tilde{\phi} - \diffp{\vetor{\tilde{A}}}{t},
+    \end{align*}
+    como desejado.
+
+    Como determinamos a lagrangiana a partir dos campos \(\vetor{E}\) e \(\vetor{B}\), é de se esperar que a invariância de calibre seja refletida nesta função também. Notemos que
+    \begin{align*}
+        -\tilde{\phi} + g_{ij} \tilde{A}^i \dot{x}^j &= -\phi + \diffp{f}{t} + g_{ij}\left(A^i + g^{ik}\diffp{f}{x^k}\right)\dot{x}^j\\
+                                                     &= -\phi + g_{ij}A^i\dot{x}^j + \diffp{f}{t} + \diffp{f}{x^j}\dot{x}^j\\
+                                                     &= - \phi + g_{ij}A^i\dot{x}^j + \diff{f}{t},
+    \end{align*}
+    portanto \(\tilde{L} = L + \diff{f}{t}\), com \(f\) só dependendo das posições e do tempo. Desse modo, as lagrangianas são de fato equivalentes.
+\end{proof}
+
+\begin{lemma}{Campo eletromagnético constante}{campo_constante}
+    Para um campo eletromagnético constante, isto é, \(\diffp{\vetor{E}}{t} = 0\) e \(\diffp{\vetor{B}}{t} = 0\), existe um potencial escalar \(\tilde{\phi}\) e um potencial vetor \(\vetor{\tilde{A}}\) que satisfazem \(\diffp{\tilde{\phi}}{t} = 0\) e \(\diffp{\vetor{\tilde{A}}}{t} = 0\).
+\end{lemma}
+\begin{proof}
+    Sejam \(\vetor{A}\) e \(\phi\) potenciais tais que \(\vetor{B} = \vetor{\nabla}\times\vetor{A}\) e \(\vetor{E} = -\vetor{\nabla}\phi - \diffp{\vetor{A}}{t}\). Como o campo magnético é constante, segue que \(\diffp{\vetor{A}}{t}\) é irrotacional. Portanto, como \(\mathbb{R}^3\) é simplesmente conexo, existe um campo escalar diferenciável \(\psi\) tal que \(\diffp{\vetor{A}}{t} = -\vetor{\nabla}\psi\).
+
+    Consideremos a transformação de calibre
+    \begin{equation*}
+        \vetor{\tilde{A}} = \vetor{A} + \vetor{\nabla}\psi\quad\text{e}\quad\tilde{\phi} = \phi -\diffp{\psi}{t},
+    \end{equation*}
+    de modo que \(\diffp{\vetor{\tilde{A}}}{t} = 0\) e
+    \begin{equation*}
+        \vetor{E} = -\vetor{\nabla}\tilde{\phi}.
+    \end{equation*}
+    Dessa forma, como \(\diffp{\vetor{E}}{t} = 0\), temos \(\diffp{\tilde{\phi}}{t}\) constante em relação ao tempo, isto é,
+    \begin{equation*}
+        \diffp{\tilde{\phi}}{t} = \alpha(\vetor{r}).
+    \end{equation*}
+    Ainda, como \(\vetor{\nabla}\alpha = \vetor{0}\), segue que \(\alpha\) é uma constante. Para que o potencial seja nulo no infinito, devemos ter \(\alpha = 0\), isto é
+    \begin{equation*}
+        \tilde{\phi} = \tilde{\phi}(\vetor{r}),
+    \end{equation*}
+    portanto o potencial escalar não depende do tempo.
+\end{proof}
+
 \begin{exercício}{Energia de uma partícula em um campo eletromagnético externo}{exercício02}
     Uma partícula encontra-se na presença de um campo eletromagnético independente do tempo. Utilizando o formalismo lagrangiano, obtenha a energia do sistema.
 \end{exercício}
@@ -33,5 +92,5 @@
           &= \frac12 m g_{ik} \dot{x}^i\dot{x}^k + Q\phi\\
           &= \frac12 m \inner{\vetor{v}}{\vetor{v}} + Q\phi.
     \end{align*}
-    No caso em que o campo eletromagnético não depende do tempo, temos pelo \cref{lem:energia} que a função energia é constante no tempo.
+    No caso em que o campo eletromagnético não depende do tempo, temos pelos \cref{lem:campo_constante,lem:gauge} que a lagrangiana não tem dependência explícita do tempo. Dessa forma, pelo \cref{lem:energia}, segue que \(h\) é uma quantidade conservada.
 \end{proof}
