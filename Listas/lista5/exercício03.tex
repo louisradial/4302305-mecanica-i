@@ -6,3 +6,33 @@
     \end{equation*}
     Obtenha a quantidade conservada associada a rotações.
 \end{exercício}
+\begin{proof}[Resolução]
+    Definimos \(\tilde{\vetor{x}}_{(i)}(s,t) = \vetor{x}_{(i)}(t) + \left[s\vetor{n}, \tilde{\vetor{x}}_{(i)}\right]\), notando que \(\tilde{\vetor{x}}_{(i)}(0,t) = \vetor{x}_{(i)}(t)\) para todo \(t\). Mostremos que a distância em relação à origem é a mesma para todo \(s\), em ordem linear em \(s\). Temos
+    \begin{align*}
+        \inner*{\tilde{\vetor{x}}_{(i)}}{\tilde{\vetor{x}}_{(i)}} &= \inner*{\vetor{x}_{(i)} + \left[s\vetor{n}, \vetor{x}_{(i)}\right]}{\vetor{x}_{(i)}+\left[s\vetor{n}, \vetor{x}_{(i)}\right]}\\
+                                                                  &= \inner*{\vetor{x}_{(i)}}{\vetor{x}_{(i)}} + 2 \inner*{\vetor{x}_{(i)}}{\left[s\vetor{n}, \vetor{x}_{(i)}\right]} + s^2\inner*{\left[\vetor{n},\vetor{x}_{(i)}\right]}{\left[\vetor{n},\vetor{x}_{(i)}\right]}\\
+                                                                  &= \inner*{\vetor{x}_{(i)}}{\vetor{x}_{(i)}} + O(s^2),
+    \end{align*}
+    portanto a transformação é uma rotação infinitesimal. Com isso, temos
+    \begin{align*}
+        \inner*{\tilde{x}_{(i)} - \tilde{x}_{(j)}}{\tilde{x}_{(i)} - \tilde{x}_{(j)}} &= \inner*{\vetor{x}_{(i)} - \vetor{x}_{(j)} + \left[s\vetor{n}, \vetor{x}_{(i)}\right] - \left[s\vetor{n}, \vetor{x}_{(j)}\right]}{\vetor{x}_{(i)} - \vetor{x}_{(j)} + \left[s\vetor{n}, \vetor{x}_{(i)}\right] - \left[s\vetor{n}, \vetor{x}_{(j)}\right]}\\
+                                                                                      &=\inner*{\vetor{x}_{(i)} - \vetor{x}_{(j)} + \left[s\vetor{n}, \vetor{x}_{(i)} - \vetor{x}_{(j)}\right]}{\vetor{x}_{(i)} - \vetor{x}_{(j)} + \left[s\vetor{n}, \vetor{x}_{(i)} - \vetor{x}_{(j)}\right]}\\
+                                                                                      &= \inner*{\vetor{x}_{(i)} - \vetor{x}_{(j)}}{\vetor{x}_{(i)} - \vetor{x}_{(j)}} + O(s^2),
+    \end{align*}
+    portanto as distâncias relativas entre pares de partículas é invariante em ordem linear de \(s\). Fica claro que esta transformação preserva a lagrangiana do sistema,
+    \begin{align*}
+        \tilde{L} = L(\tilde{\vetor{x}}_{(i)}, \dot{\tilde{\vetor{x}}}_{(i)}, t) &= \sum_{i = 1}^N \frac12 m_i \inner{\dot{\tilde{\vetor{x}}}_{(i)}}{\dot{\tilde{\vetor{x}}}_{(i)}} - \sum_{i\neq j}^{N} V\left(\norm{\tilde{\vetor{x}}_{(i)} - \tilde{\vetor{x}}_{(j)}}\right)\\
+                                                                                 &= \sum_{i = 1}^N \frac12 m_i \inner{\dot{{\vetor{x}}}_{(i)}}{\dot{{\vetor{x}}}_{(i)}} - \sum_{i\neq j}^{N} V\left(\norm{{\vetor{x}}_{(i)} - {\vetor{x}}_{(j)}}\right) = L(\vetor{x}_{(i)}, \dot{\vetor{x}}_{(i)}, t),
+    \end{align*}
+    isto é, \(\diffp{\tilde{L}}{s} = 0\) para todo \(s\) suficientemente pequeno. Assim, utilizando as coordenadas \(q_{(i)}^k\) definidas no \cref{lem:partículas_livres}, temos
+    \begin{equation*}
+        \tilde{\vetor{x}}_{(i)} = \tilde{q}_{(i)}^k\vetor{e}_k = \left(q_{(i)}^k + \epsilon^{k ab} s n_a q_{(i)b}\right)\vetor{e}_k \implies \diffp{\tilde{q}_{(i)}^k}{s}[s=0] = \epsilon^{kab} n_a q_{(i)b},
+    \end{equation*}
+    onde \(\vetor{n} = n^\ell \vetor{e}_\ell\), de modo que a quantidade \(Q = \sum_{i = 1}^N p_{(i)k} \epsilon^{kab}n_a q_{(i)b}\) seja conservada pelo \nameref{thm:noether}. Pelo \cref{lem:partículas_livres}, obtemos
+    \begin{align*}
+        Q = \sum_{i = 1}^N m_i g_{\ell k} \dot{q}_{(i)}^\ell \epsilon^{kab} n_aq_{(i)b} &= \sum_{i =1}^N m_i \inner*{\dot{q}_{(i)}^\ell\vetor{e}_\ell}{\epsilon^{kab}n_aq_{(i)b} \vetor{e}_k}\\
+          &= \sum_{i = 1}^N \inner*{m_i\dot{\vetor{x}}_{(i)}}{\left[\vetor{n}, \vetor{x}_{(i)}\right]} = \sum_{i = 1}^N \inner*{\vetor{n}}{\left[\vetor{x}_{(i)}, m_i\dot{\vetor{x}}_{(i)}\right]}\\
+          &= \inner*{\vetor{n}}{\sum_{i = 1}^N\left[\vetor{x}_{(i)}, m_i\dot{\vetor{x}}_{(i)}\right]},
+    \end{align*}
+    isto é, a projeção do momento angular total do sistema na direção \(\vetor{n}\) é conservada. Como esta relação é válida para qualquer direção \(\vetor{n}\), mostramos que a isotropia do espaço implica a conservação do momento angular total do sistema \(\sum_{i = 1}^N \left[\vetor{x}_{(i)}, m_i \dot{\vetor{x}}_{(i)}\right]\).
+\end{proof}
