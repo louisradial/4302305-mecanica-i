@@ -1,0 +1,56 @@
+\section*{Exercício 2}
+\begin{lemma}{Sistema de partículas livres}{partículas_livres}
+    Seja um sistema de \(N\) partículas livres de posições \(\vetor{x}_{(i)}\) e massas \(m_i\) com lagrangiana dada por
+    \begin{equation*}
+        L = \sum_{i = 1}^N \frac12m_i \inner{\dot{\vetor{x}}_{(i)}}{\dot{\vetor{x}}_{(i)}} - \sum_{i\neq j}^N V_{ij},
+    \end{equation*}
+    onde \(V_{ij} = V\left(\norm{\vetor{x}_{(i)} - \vetor{x}_{(j)}}\right)\). Definindo as coordenadas \(q_{(i)}^k\) tais que \(\vetor{x}_{(i)} = q_{(i)}^k\vetor{e}_k\), onde os vetores \(\vetor{e}_k\) formam uma base ortonormal para \(\mathbb{R}^3\), os momentos canonicamente conjugados a estas coordenadas são dados por
+    \begin{equation*}
+        {p}_{(i)k} = m_i g_{\ell k}\dot{q}_{(i)}^\ell,
+    \end{equation*}
+    para \(i = 1, \dots, N,\) e \(k = 1,2,3,\) onde \(g_{\ell k} = \inner{\vetor{e}_{\ell}}{\vetor{e}_k}\) é o tensor métrico Euclidiano.
+\end{lemma}
+\begin{proof}
+    Em termos dessas coordenadas, a lagrangiana do sistema é
+    \begin{equation*}
+        L = \sum_{i = 1}^{N}\frac12 m_i g_{\ell n}\dot{q}_{(i)}^\ell \dot{q}_{(i)}^n - \sum_{i\neq j}^N V_{ij}.
+    \end{equation*}
+
+    Assim, o momento canonicamente conjugado \(p_{(i)k}\) à coordenada \(q_{(i)}^k\) é dado por
+    \begin{equation*}
+        p_{(i)k} = \diffp{L}{\dot{q}_{(i)}^k} = \frac12 m_i g_{\ell n} \delta^\ell_{k} \dot{q}_{(i)}^n + \frac12 m_i g_{\ell n} \delta^n_k \dot{q}_{(i)}^\ell = m_i g_{\ell k} \dot{q}_{(i)}^\ell,
+    \end{equation*}
+    como proposto.
+\end{proof}
+
+\begin{exercício}{Homogeneidade do espaço}{exercício2}
+    Considere a lagrangiana do \cref{lem:partículas_livres}.
+    \begin{enumerate}[label=(\alph*)]
+        \item A transformação \(\vetor{x}_{(i)} \to \vetor{x}_{(i)} + s\vetor{n}\) é uma simetria do sistema?
+        \item Qual é a quantidade conservada e seu significado físico?
+    \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+    Definimos \(\tilde{\vetor{x}}_{(i)}(s,t) = \vetor{x}_{(i)}(t) + s\vetor{n}\), notando que \(\tilde{\vetor{x}}(0,t) = \vetor{x}_{(i)}(t)\) para todo \(t\). Assim, temos
+    \begin{equation*}
+        \dot{\tilde{\vetor{x}}}_{(i)} = \dot{\vetor{x}}_{(i)}\quad\text{e}\quad\tilde{\vetor{x}}_{(i)} - \tilde{\vetor{x}}_{(j)} = \vetor{x}_{(i)} - \vetor{x}_{(j)},
+    \end{equation*}
+    para todos \(i, j = 1, \dots, N.\) Dessa forma, é evidente que
+    \begin{align*}
+        \tilde{L} = L(\tilde{\vetor{x}}_{(i)}, \dot{\tilde{\vetor{x}}}_{(i)}, t) &= \sum_{i = 1}^N \frac12 m_i \inner{\dot{\tilde{\vetor{x}}}_{(i)}}{\dot{\tilde{\vetor{x}}}_{(i)}} - \sum_{i\neq j}^{N} V\left(\norm{\tilde{\vetor{x}}_{(i)} - \tilde{\vetor{x}}_{(j)}}\right)\\
+                                                                                 &= \sum_{i = 1}^N \frac12 m_i \inner{\dot{{\vetor{x}}}_{(i)}}{\dot{{\vetor{x}}}_{(i)}} - \sum_{i\neq j}^{N} V\left(\norm{{\vetor{x}}_{(i)} - {\vetor{x}}_{(j)}}\right) = L(\vetor{x}_{(i)}, \dot{\vetor{x}}_{(i)}, t),
+    \end{align*}
+    isto é, a lagrangiana é invariante por translações na direção \(\vetor{n}\), \(\diffp{\tilde{L}}{s} = 0\). Como não há dependência explícita com os cossenos diretores de \(\vetor{n}\), segue que a lagrangiana é invariante por translações espaciais.
+
+    Notemos que \(\diffp{\tilde{\vetor{x}}}{s} = \vetor{n}\), portanto \(\diffp{\tilde{q}_{(i)}^k}{s} = n^k,\) onde \(\vetor{n} = n^k\vetor{e}_k\). Pelo \nameref{thm:noether}, segue que a quantidade
+    \begin{equation*}
+        Q = \sum_{i = 1}^N p_{(i)k} \diffp{\tilde{q}_{(i)}^k}{s}[s=0]
+    \end{equation*}
+    é conservada. Pelo \cref{lem:partículas_livres}, obtemos
+    \begin{align*}
+        Q = \sum_{i=1}^N m_i g_{\ell k}\dot{q}_{(i)}^\ell n^k &= \sum_{i = 1}^N \inner{m_i \dot{q}_{(i)}^\ell\vetor{e}_\ell}{n^k\vetor{e}_k}\\
+                                                              &= \sum_{i = 1}^N \inner{m_i \dot{\vetor{x}}_{(i)}}{\vetor{n}}\\
+                                                              &= \inner*{\sum_{i = 1}^N m_i\dot{\vetor{x}}_{(i)}}{\vetor{n}},
+    \end{align*}
+    isto é, a projeção do momento total do sistema na direção \(\vetor{n}\) é conservada. Como esta relação é válida para qualquer direção \(\vetor{n}\), obtemos que a homogeneidade do espaço implica a conservação do momento total do sistema \(\sum_{i = 1}^N m_i \dot{\vetor{x}}_{(i)}\).
+\end{proof}
