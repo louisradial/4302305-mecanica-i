@@ -57,6 +57,40 @@
     o que conclui a demonstração.
 \end{proof}
 
+\begin{lemma}{Invariância de calibre}{gauge}
+    Os campos elétrico \(\vetor{E} = - \vetor{\nabla}\phi - \diffp{\vetor{A}}{t}\) e magnético \(\vetor{B} = \vetor{\nabla}\times\vetor{A}\) são invariantes por transformações de calibre,
+    \begin{equation*}
+        \vetor{\tilde{A}} = \vetor{A} + \vetor{\nabla}f\quad\text{e}\quad\tilde{\phi} = \phi - \diffp{f}{t},
+    \end{equation*}
+    onde \(f\) é um campo escalar suave. Ainda, a lagrangiana
+    \begin{equation*}
+        \tilde{L} = \frac12 mg_{ij} \dot{x}^i\dot{x}^j - e\tilde{\phi} + e g_{ij} \tilde{A}^i \dot{x}^j
+    \end{equation*}
+    é equivalente à lagrangiana dada pelo \cref{lem:lagrangiana_lorentz}.
+\end{lemma}
+\begin{proof}
+    Como todo gradiente é irrotacional, temos
+    \begin{equation*}
+        \vetor{B} = \vetor{\nabla}\times \vetor{A} = \vetor{\nabla}\times\left(\vetor{A} + \vetor{\nabla}f\right) = \vetor{\nabla}\times\vetor{\tilde{A}},
+    \end{equation*}
+    para qualquer campo escalar diferenciável \(f\). Ainda, para \(f\) suave, as derivadas parciais em relação às posições e ao tempo comutam, de modo que
+    \begin{align*}
+        \vetor{E} &= -\vetor{\nabla}\phi - \diffp{\vetor{A}}{t}\\
+                  &= - \vetor{\nabla}{\phi} + \vetor{\nabla}\diffp{f}{t} - \diffp*{\vetor{\nabla}f}{t} - \diffp{\vetor{A}}{t}\\
+                  &= - \vetor{\nabla}\left(\phi + \diffp{f}{t}\right) - \diffp*{\left(\vetor{A} + \vetor{\nabla}f\right)}{t}\\
+                  &= -\vetor{\nabla}\tilde{\phi} - \diffp{\vetor{\tilde{A}}}{t},
+    \end{align*}
+    como desejado.
+
+    Como determinamos a lagrangiana a partir dos campos \(\vetor{E}\) e \(\vetor{B}\), é de se esperar que a invariância de calibre seja refletida nesta função também. Notemos que
+    \begin{align*}
+        -\tilde{\phi} + g_{ij} \tilde{A}^i \dot{x}^j &= -\phi + \diffp{f}{t} + g_{ij}\left(A^i + g^{ik}\diffp{f}{x^k}\right)\dot{x}^j\\
+                                                     &= -\phi + g_{ij}A^i\dot{x}^j + \diffp{f}{t} + \diffp{f}{x^j}\dot{x}^j\\
+                                                     &= - \phi + g_{ij}A^i\dot{x}^j + \diff{f}{t},
+    \end{align*}
+    portanto \(\tilde{L} = L + \diff{f}{t}\), com \(f\) só dependendo das posições e do tempo. Desse modo, as lagrangianas são de fato equivalentes.
+\end{proof}
+
 \begin{exercício}{Movimento em um campo magnético uniforme}{exercício01}
     Uma partícula de massa \(m\) move-se na presença de um campo magnético constante \(\vetor{B} = B \vetor{e}_z\).
     \begin{enumerate}[label=(\alph*)]
@@ -76,7 +110,7 @@
     \begin{equation*}
     L = \frac12 m\inner{\vetor{v}}{\vetor{v}} - Q\phi + Q \inner{\vetor{v}}{\vetor{A}},
     \end{equation*}
-    onde \(\vetor{v}\) é a velocidade da partícula e \(\phi\) é o potencial escalar. Neste caso, como não há a presença de um campo elétrico, e como \(\diffp{\vetor{A}}{t} = 0\), segue que \(\phi\) é constante. Desse modo, a lagrangiana pode ser escrita como
+    onde \(\vetor{v}\) é a velocidade da partícula e \(\phi\) é o potencial escalar. Ainda, pelo \cref{lem:gauge}, a escolha de calibre não influencia as equações de movimento. Neste caso, como não há a presença de um campo elétrico, e como tomamos \(\diffp{\vetor{A}}{t} = 0\), segue que \(\phi\) é constante. Desse modo, a lagrangiana pode ser escrita como
     \begin{equation*}
         L(q^1,\dot{q}^1, q^2, \dot{q}^2) = \frac12 m g_{ij}\dot{q}^i \dot{q}^j + \frac{QB}{2} \epsilon_{ij}q^i\dot{q}^j,
     \end{equation*}
