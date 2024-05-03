@@ -1,0 +1,59 @@
+\section*{Exercício 4}
+\begin{exercício}{Transformação de escala}{exercício04}
+    Considere um sistema unidimensional com coordenada generalizada \(q\) cuja lagrangiana é
+    \begin{equation*}
+        L = \frac12 m \dot{q}^2 - V(q).
+    \end{equation*}
+    Uma transformação de escala modifica a variável independente tempo bem como a variável dinâmica \(q\) segundo
+    \begin{equation*}
+        t \to \tilde{t} = \rho t\quad\text{e}\quad q(t) \to \tilde{q}(\tilde{t}) = \rho^d q(\rho t),
+    \end{equation*}
+    onde a quantidade \(d\) é chamada \emph{dimensão de escala} da variável dinâmica \(q\).
+    \begin{enumerate}[label=(\alph*)]
+        \item Derive a forma infinitesimal desta transformação.
+        \item Qual o valor que a dimensão de escala \(d\) deve ter para que a teoria seja invariante por esta transformação para \(V = 0\)?
+        \item Para o valor de \(d\) encontrado, determine a forma mais geral de \(V\) para que a teoria seja invariante por transformações de escala.
+        \item Usando o teorema de Noether, obtenha a quantidade conservada \(D\) pela transformação de escala.
+    \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+    Para que a transformação seja a identidade, devemos ter \(\rho = 1\). Deste modo, podemos parametrizar a transformação ao redor da identidade por
+    \begin{equation*}
+        t \to \tilde{t} = e^\alpha t\quad\text{e}\quad q(t) \to \tilde{q}(\tilde{t}) = e^{\alpha d} q(\rho t),
+    \end{equation*}
+    para algum \(\alpha \in \mathbb{R}\). Assim, para \(\alpha \ll 1\) temos o gerador infinitesimal desta transformação dado por
+    \begin{align*}
+        t \to \tilde{t} &= (1 + \alpha)t& q(t) \to \tilde{q}(\tilde{t}) &= (1+d\alpha)q(t + \alpha t),\\
+                        &= t + \alpha t& &=(1+d \alpha)q(t) + \alpha t \dot{q}(t).
+    \end{align*}
+
+    Dessa forma, temos \(\diff{\tilde{t}}{t} = 1 + \alpha\) e \(\diff{t}{\tilde{t}} = 1 - \alpha\), portanto
+    \begin{align*}
+        \diff{\tilde{q}}{\tilde{t}} &= \diff{t}{\tilde{t}} \diff{\tilde{q}}{t} = (1 - \alpha)[(1+d\alpha)\dot{q}(t) + \alpha t\ddot{q}(t) + \alpha \dot{q}(t)]\\
+                                    &= (1 + d \alpha)\dot{q}(t) + \alpha t \ddot{q}(t).
+    \end{align*}
+    Definindo \(X = t,\) \(\psi = d q(t) + t \dot{q}(t)\), \(\xi = d \dot{q}(t) + t \ddot{q}(t)\), temos
+    \begin{equation*}
+        \tilde{t} = t + \alpha X,\quad\tilde{q}(\tilde{t}) = q(t) + \alpha \psi,\quad\text{e}\quad \diff{\tilde{q}}{\tilde{t}} = \dot{q}(t) + \alpha \xi.
+    \end{equation*}
+    Com isso a lagrangiana avaliada após a transformação infinitesimal de escala é
+    \begin{align*}
+        \tilde{L} &= L\left(\tilde{q}, \diff{\tilde{q}}{\tilde{t}}, \tilde{t}\right)\\
+                  &= L(q(t) + \alpha \psi, \dot{q}(t) + \alpha\xi, t + \alpha X)\\
+                  &= L + \alpha \left(\psi \diffp{L}{q} + \xi \diffp{L}{\dot{q}} + X\diffp{L}{t}\right),
+    \end{align*}
+    de modo que a variação da ação pela transformação é
+    \begin{align*}
+        \Delta S &= \int_{\tilde{t}_A}^{\tilde{t}_B}\dli{\tilde{t}} \tilde{L} - \int_{t_A}^{t_B} \dli{t} L\\
+                 &= \int_{t_A}^{t_B} \dli{t} \left(\tilde{L}\diff{\tilde{t}}{t} - L\right)\\
+                 &= \alpha\int_{t_A}^{t_B} \dli{t} \left(L + \psi\diffp{L}{q} + \xi\diffp{L}{\dot{q}} + X \diffp{L}{t}\right)\\
+                 &= \alpha\int_{t_A}^{t_B} \dli{t} \left[\frac12 m \dot{q}^2 - V(q) + \left(d q + t\dot{q}\right)\left(-\diff{V}{q}\right) + \left(d\dot{q} + t\ddot{q}\right)\left(m \dot{q}\right)\right]\\
+                 &= \alpha\int_{t_A}^{t_B} \dli{t} \left[\left(d + \frac12\right) m \dot{q}^2 - V(q) - \left(d q + 2t\dot{q}\right)\diff{V}{q}\right],
+    \end{align*}
+    onde utilizamos a equação de movimento \(m\ddot{q} = -\diff{V}{q}\).
+
+    Para que a ação seja invariante para um potencial identicamente nulo devemos ter a dimensão de escala \(d = -\frac12\). Neste caso, podemos ter potenciais não necessariamente nulos. Notemos que
+    \begin{equation*}
+        \diff*{V(q(t^2))}{t} = \diff{V}{q}
+    \end{equation*}
+\end{proof}
