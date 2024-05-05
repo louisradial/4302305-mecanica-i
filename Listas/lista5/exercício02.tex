@@ -1,4 +1,24 @@
 \section*{Exercício 2}
+\begin{theorem}{Teorema de Noether}{noether}
+    Seja \(L\) uma lagrangiana invariante em relação ao subgrupo a um parâmetro de difeomorfismos \(h^s\), isto é,
+    \begin{equation*}
+        h^0(q^k(t)) = q^k(t)\quad\text{e}\quad \diffp*{L\left(h^s(q^k), \diffp*{h^s(q^k)}{t}, t\right)}{s} = 0,
+    \end{equation*}
+    então a quantidade \(\diffp{L}{\dot{q}^k}\diffp{h^s\circ q^k}{s}[s=0]\) é conservada.
+\end{theorem}
+\begin{proof}
+    Sejam \(q^k(t)\) coordenadas generalizadas que satisfazem as equações de Euler-Lagrange. Como \(L\) é invariante por transformações de \(h^s\), segue que \(\tilde{q}^k(s,t) = h^s\circ q^k(t)\) também satisfazem as equações de Euler-Lagrange.
+
+    Ainda pela invariância pelo subgrupo a um parâmetro de difeomorfismos, temos
+    \begin{equation*}
+        \diffp{L(\tilde{q}^k, \dot{\tilde{q}}^k, t)}{s}[s=0] = \diffp{L}{q^k}\diffp{\tilde{q}^k}{s}[s=0] + \diffp{L}{\dot{q}^k}\diffp{\dot{\tilde{q}}^k}{s}[s=0] = 0.
+    \end{equation*}
+    Como \(\tilde{q}^k\) satisfazem as equações de Euler-Lagrange, temos
+    \begin{equation*}
+        \diff*{\left(\diffp{L}{\dot{q}^k}\right)}{t}\diffp{\tilde{q}^k}{s}[s=0] + \diffp{L}{\dot{q}^k}\diffp*{\diffp{\tilde{q}}{t}}{s}[s=0] = \diff*{\left(\diffp{L}{\dot{q}^k}\diffp{\tilde{q}^k}{s}[s=0]\right)}{t} = 0,
+    \end{equation*}
+    como queríamos demonstrar.
+\end{proof}
 \begin{lemma}{Sistema de partículas livres}{partículas_livres}
     Seja um sistema de \(N\) partículas livres de posições \(\vetor{x}_{(i)}\) e massas \(m_i\) com lagrangiana dada por
     \begin{equation*}
