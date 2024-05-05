@@ -187,9 +187,64 @@
     como queríamos demonstrar.
 \end{proof}
 
-% \input{exercício01}
+\begin{theorem}{Teorema de Noether generalizado}{noether_generalizado}
+    Se a ação é \emph{quase-invariante} sob a transformação infinitesimal
+    \begin{align*}
+        t &\to \tilde{t} = t + \epsilon X(q(t), t)&q^k(t) &\to \tilde{q}^k(\tilde{t}) = q^k(t) + \epsilon \psi^k(q(t), \dot{q}(t), t),
+    \end{align*}
+    isto é, se existe uma função \(G = G(q(t), t)\) tal que
+    \begin{equation*}
+        \Delta S = \int_{\tilde{t}_A}^{\tilde{t}_B} \dli{\tilde{t}} \tilde{L} - \int_{t_A}^{t_B} \dli{t} \left(L + \epsilon \diff*{G(q(t), t)}{t}\right) = 0,
+    \end{equation*}
+    onde \(\tilde{L} = L\left(\tilde{q}(\tilde{t}), \diff{\tilde{q}}{\tilde{t}}, \tilde{t}\right)\) e \(L = L\left(q(t), \diff{q}{t}, t\right)\), então a quantidade
+    \begin{equation*}
+        I = hX - \diffp{L}{\dot{q}^k}\psi^k + G
+    \end{equation*}
+    é a integral de movimento associada à simetria, com a função energia dada por \(h = \diffp{L}{\dot{q}^k}\dot{q}^k - L\).
+\end{theorem}
+\begin{proof}
+    Notemos que
+    \begin{equation*}
+        \diff{\tilde{t}}{t} = 1 + \epsilon \dot{X}\quad{\text{e}}\quad\diff{t}{\tilde{t}} = 1 - \epsilon\dot{X}
+    \end{equation*}
+    em primeira ordem em \(\epsilon\). Assim, as velocidades generalizadas sob a transformação infinitesimal são dadas por
+    \begin{equation*}
+        \diff{\tilde{q}^k}{\tilde{t}} = \diff{t}{\tilde{t}}\diff{\tilde{q}}{t} = (1 - \epsilon \dot{X})(\dot{q}^k + \epsilon \dot{\psi^k}) = \dot{q}^k + \epsilon \xi^k,
+    \end{equation*}
+    onde definimos \(\xi^k = \dot{\psi^k} - \dot{X}\dot{q}^k\). Com isso a lagrangiana avaliada após a transformação é
+    \begin{align*}
+        \tilde{L} &= L(q(t) + \epsilon \psi, \dot{q}(t) + \epsilon\xi, t + \epsilon X)\\
+                  &= L + \epsilon \left(\psi^k \diffp{L}{q^k} + \xi^k \diffp{L}{\dot{q}^k} + X\diffp{L}{t}\right).
+    \end{align*}
+
+    Se a ação é quase-invariante por esta transformação, temos
+    \begin{align*}
+        \Delta S &= \int_{\tilde{t}_A}^{\tilde{t}_B}\dli{\tilde{t}} \tilde{L} - \int_{t_A}^{t_B} \dli{t} \left(L + \epsilon \dot{G}\right)\\
+                 &= \int_{t_A}^{t_B} \dli{t} \left(\tilde{L}\diff{\tilde{t}}{t} - L - \epsilon \dot{G}\right)\\
+                 &= \epsilon\int_{t_A}^{t_B} \dli{t} \left[L\dot{X} + \psi^k \diffp{L}{q^k} + \xi^k\diffp{L}{\dot{q}^k} + X \diffp{L}{t} - \dot{G}\right] = 0.
+    \end{align*}
+    Portanto, a condição necessária e suficiente para que a ação seja quase-invariante por esta transformação é
+    \begin{equation*}
+        \dot{G} = L \dot{X} + \psi^k \diffp{L}{q^k} + (\dot{\psi}^k - \dot{X}\dot{q}^k)\diffp{L}{\dot{q}^k} + X\diffp{L}{t},
+    \end{equation*}
+    isto é, o lado direito desta equação deve ser igual à alguma derivada total em relação ao tempo de uma função das posições e do tempo.
+
+    Pela definição da função energia temos
+    \begin{align*}
+        \diff{G}{t} &= \left(L - \diffp{L}{\dot{q}^k}\dot{q}^k\right)\dot{X} + X\diffp{L}{t} + \psi^k\diff*{\left(\diffp{L}{\dot{q}^k}\right)}{t} + \dot{\psi}^k\diffp{L}{\dot{q}^k}\\
+                    &= -h \dot{X} - \diff{h}{t}X + \diff*{\left(\psi^k\diffp{L}{\dot{q}^k}\right)}{t}\\
+                    &= \diff*{\left(-hX + \psi^k\diffp{L}{\dot{q}^k}\right)}{t},
+    \end{align*}
+    onde utilizamos as equações de Euler-Lagrange. Desse modo, temos que
+    \begin{equation*}
+        \diff{I}{t} = 0,
+    \end{equation*}
+    onde \(I = hX - \psi^k\diffp{L}{\dot{q}^k} + G\), como desejado.
+\end{proof}
+
+\input{exercício01}
 \input{exercício02}
 \input{exercício03}
 \input{exercício04}
-% \input{exercício05}
+\input{exercício05}
 \end{document}
