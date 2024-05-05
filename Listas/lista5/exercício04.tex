@@ -27,33 +27,49 @@
                         &= t + \alpha t& &=(1+d \alpha)q(t) + \alpha t \dot{q}(t).
     \end{align*}
 
-    Dessa forma, temos \(\diff{\tilde{t}}{t} = 1 + \alpha\) e \(\diff{t}{\tilde{t}} = 1 - \alpha\), portanto
-    \begin{align*}
-        \diff{\tilde{q}}{\tilde{t}} &= \diff{t}{\tilde{t}} \diff{\tilde{q}}{t} = (1 - \alpha)[(1+d\alpha)\dot{q}(t) + \alpha t\ddot{q}(t) + \alpha \dot{q}(t)]\\
-                                    &= (1 + d \alpha)\dot{q}(t) + \alpha t \ddot{q}(t).
-    \end{align*}
-    Definindo \(X = t,\) \(\psi = d q(t) + t \dot{q}(t)\), \(\xi = d \dot{q}(t) + t \ddot{q}(t)\), temos
+    % Dessa forma, temos \(\diff{\tilde{t}}{t} = 1 + \alpha\) e \(\diff{t}{\tilde{t}} = 1 - \alpha\), portanto
+    % \begin{align*}
+    %     \diff{\tilde{q}}{\tilde{t}} &= \diff{t}{\tilde{t}} \diff{\tilde{q}}{t} = (1 - \alpha)[(1+d\alpha)\dot{q}(t) + \alpha t\ddot{q}(t) + \alpha \dot{q}(t)]\\
+    %                                 &= (1 + d \alpha)\dot{q}(t) + \alpha t \ddot{q}(t).
+    % \end{align*}
+    Definindo \(X = t,\) \(\psi = d q(t) + t \dot{q}(t)\), temos
     \begin{equation*}
-        \tilde{t} = t + \alpha X,\quad\tilde{q}(\tilde{t}) = q(t) + \alpha \psi,\quad\text{e}\quad \diff{\tilde{q}}{\tilde{t}} = \dot{q}(t) + \alpha \xi.
+        \tilde{t} = t + \alpha X\quad\text{e}\quad\tilde{q}(\tilde{t}) = q(t) + \alpha \psi.
     \end{equation*}
-    Com isso a lagrangiana avaliada após a transformação infinitesimal de escala é
+    Desse modo, para que a ação seja quase-invariante pela transformação, devemos ter
+    \begin{equation*}
+        L \dot{X} + \psi \diffp{L}{q} + (\dot{\psi} - \dot{X}\dot{q})\diff{L}{\dot{q}} + X \diffp{L}{t} = \dot{G}
+    \end{equation*}
+    para alguma função \(G = G(q, t)\). Computando diretamente vemos que
     \begin{align*}
-        \tilde{L} &= L\left(\tilde{q}, \diff{\tilde{q}}{\tilde{t}}, \tilde{t}\right)\\
-                  &= L(q(t) + \alpha \psi, \dot{q}(t) + \alpha\xi, t + \alpha X)\\
-                  &= L + \alpha \left(\psi \diffp{L}{q} + \xi \diffp{L}{\dot{q}} + X\diffp{L}{t}\right),
+        L \dot{X} + \psi \diffp{L}{q} + (\dot{\psi} - \dot{X}\dot{q})\diff{L}{\dot{q}} + X \diffp{L}{t} &= \frac12 m\dot{q}^2 - V(q) + (dq + t\dot{q})(-V'(q)) + (d\dot{q} + t\ddot{q})m\dot{q}\\
+                                                                                                                &= \left(d + \frac12\right)m\dot{q}^2 - V(q) - (dq + t\dot{q})V'(q) + m\ddot{q} t\dot{q}\\
+                                                                                                                &= \left(d + \frac12\right)m\dot{q}^2 -V(q) - (dq + 2t\dot{q})V'(q),
     \end{align*}
-    de modo que a variação da ação pela transformação é
-    \begin{align*}
-        \Delta S &= \int_{\tilde{t}_A}^{\tilde{t}_B}\dli{\tilde{t}} \tilde{L} - \int_{t_A}^{t_B} \dli{t} L\\
-                 &= \int_{t_A}^{t_B} \dli{t} \left(\tilde{L}\diff{\tilde{t}}{t} - L\right)\\
-                 &= \alpha\int_{t_A}^{t_B} \dli{t} \left(L + \psi\diffp{L}{q} + \xi\diffp{L}{\dot{q}} + X \diffp{L}{t}\right)\\
-                 &= \alpha\int_{t_A}^{t_B} \dli{t} \left[\frac12 m \dot{q}^2 - V(q) + \left(d q + t\dot{q}\right)\left(-\diff{V}{q}\right) + \left(d\dot{q} + t\ddot{q}\right)\left(m \dot{q}\right)\right]\\
-                 &= \alpha\int_{t_A}^{t_B} \dli{t} \left[\left(d + \frac12\right) m \dot{q}^2 - V(q) - \left(d q + 2t\dot{q}\right)\diff{V}{q}\right],
-    \end{align*}
-    onde utilizamos a equação de movimento \(m\ddot{q} = -\diff{V}{q}\).
+    onde utilizamos a equação de movimento \(m\ddot{q} = -V'(q)\). Notemos que
+    \begin{equation*}
+        \diff*{\left[tV(q)\right]}{t} = V(q) + t\dot{q}V'(q),
+    \end{equation*}
+    portanto
+    \begin{equation*}
+        L \dot{X} + \psi \diffp{L}{q} + (\dot{\psi} - \dot{X}\dot{q})\diff{L}{\dot{q}} + X \diffp{L}{t}  = \left(d + \frac12\right)m\dot{q}^2 + \left[V(q) - dqV'(q)\right] - \diff*{\left[2tV(q)\right]}{t},
+    \end{equation*}
+    isto é, se \(d = -\frac12\) e o potencial satisfizer a equação diferencial
+    \begin{equation*}
+        V(q) - dqV'(q) = 0,
+    \end{equation*}
+    obtemos \(G(q, t) = -2 tV(q)\), logo a ação é quase-invariante por transformações de escala.
 
-    Para que a ação seja invariante para um potencial identicamente nulo devemos ter a dimensão de escala \(d = -\frac12\). Neste caso, podemos ter potenciais não necessariamente nulos. Notemos que
+    Neste caso, integrando a equação diferencial, obtemos o potencial
     \begin{equation*}
-        \diff*{V(q(t^2))}{t} = \diff{V}{q}
+        V(q) = kq^{-2}
     \end{equation*}
+    para alguma constante de integração \(k \in \mathbb{R}\). Ainda, pelo \nameref{thm:noether_generalizado}, a quantidade
+    \begin{align*}
+        D &= hX - \diffp{L}{\dot{q}}\psi + G\\
+          &= ht - m\dot{q}\left(-\frac{1}{2}q + t\dot{q}\right) - 2t V(q)\\
+          &= ht + \frac12m\dot{q}q - mt \dot{q}^2 - 2t V(q)\\
+          &= \frac12 mq\dot{q}-ht
+    \end{align*}
+    é a integral de movimento associada à transformação de escala.
 \end{proof}
