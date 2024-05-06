@@ -1,1 +1,38 @@
 \section*{Exercício 2}
+\begin{exercício}{Multiplicadores de Lagrange}{exercício2}
+    No sistema da \cref{fig:exercício2}, a massa \(m_2\) move-se sem atrito sobre uma mesa horizontal, enquanto a massa \(m_1\) pode mover-se apenas na direção ortogonal à mesa.
+
+    \begin{center}
+        \includegraphics[width=0.25\textwidth]{exercício2.png}
+        \captionof{figure}{Sistema do \cref{ex:exercício2}\label{fig:exercício2}}
+    \end{center}
+
+    Utilizando o método dos multiplicadores de Lagrange, obtenha a tensão no fio, o qual é inextensível, em termos da quantidade conservada e de \(r\).
+\end{exercício}
+\begin{proof}[Resolução]
+    Utilizemos a lagrangiana \(L = \frac12m_1\dot{z}^2 + \frac12 m_2\left(\dot{r}^2 + r^2\dot{\theta}^2\right) + m_1gz,\) onde \(z\) é a distância da massa \(m_1\) à mesa, sujeita ao vínculo \( \dot{r} + \dot{z} = 0.\) Assim, as equações de movimento são dadas por
+    \begin{equation*}
+        \begin{cases}
+            m_1 \ddot{z} - m_1 g = \lambda\\
+            m_2 \ddot{r} - m_2r \dot{\theta}^2 = \lambda\\
+            \diff*{\left(m_2 r^2\dot{\theta}\right)}{t} = 0\\
+            \dot{r} + \dot{z} = 0
+        \end{cases}
+    \end{equation*}
+    com o multiplicador de Lagrange \(\lambda\).
+
+    Como a coordenada \(\theta\) é cíclica e não aparece em nenhum vínculo, temos a quantidade conservada \(J = m_2r^2\dot\theta,\) que é a projeção do momento angular da massa \(m_2\) na direção ortogonal à mesa. Com isso, a segunda equação pode ser escrita como
+    \begin{equation*}
+        m_2\ddot{r} - \frac{J^2}{m_2r^3} = \lambda.
+    \end{equation*}
+    Multiplicando esta equação por \(m_1\) e somando à primeira equação multiplicada por \(m_2\) temos
+    \begin{equation*}
+        m_1m_2(\ddot{z}+\ddot{r}) - m_1m_2g - \frac{m_1J^2}{m_2r^3} = (m_1 + m_2) \lambda.
+    \end{equation*}
+    Deste modo, derivando o vínculo em relação a \(t\) e substituindo nesta última equação, obtemos o multiplicador de Lagrange
+    \begin{equation*}
+        \lambda = - \frac{m_1 m_2}{m_1 + m_2}\left(\frac{J^2}{m_2^2 r^3} + g\right),
+    \end{equation*}
+    que corresponde à tensão no fio.
+\end{proof}
+
