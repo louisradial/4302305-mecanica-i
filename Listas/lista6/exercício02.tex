@@ -3,14 +3,21 @@
     No sistema da \cref{fig:exercício2}, a massa \(m_2\) move-se sem atrito sobre uma mesa horizontal, enquanto a massa \(m_1\) pode mover-se apenas na direção ortogonal à mesa.
 
     \begin{center}
-        \includegraphics[width=0.25\textwidth]{exercício2.png}
+        \includegraphics[width=0.3\textwidth]{exercício2.png}
         \captionof{figure}{Sistema do \cref{ex:exercício2}\label{fig:exercício2}}
     \end{center}
 
     Utilizando o método dos multiplicadores de Lagrange, obtenha a tensão no fio, o qual é inextensível, em termos da quantidade conservada e de \(r\).
 \end{exercício}
 \begin{proof}[Resolução]
-    Utilizemos a lagrangiana \(L = \frac12m_1\dot{z}^2 + \frac12 m_2\left(\dot{r}^2 + r^2\dot{\theta}^2\right) + m_1gz,\) onde \(z\) é a distância da massa \(m_1\) à mesa, sujeita ao vínculo \( \dot{r} + \dot{z} = 0.\) Assim, as equações de movimento são dadas por
+    Utilizemos a lagrangiana
+    \begin{equation*}
+        L = \frac12m_1\dot{z}^2 + \frac12 m_2\left(\dot{r}^2 + r^2\dot{\theta}^2\right) + m_1gz,
+    \end{equation*} onde \(z\) é a distância da massa \(m_1\) à mesa, sujeita ao vínculo
+    \begin{equation*}
+        \dot{r} + \dot{z} = 0.
+    \end{equation*}
+    Assim, as equações de movimento são dadas por
     \begin{equation*}
         \begin{cases}
             m_1 \ddot{z} - m_1 g = \lambda\\

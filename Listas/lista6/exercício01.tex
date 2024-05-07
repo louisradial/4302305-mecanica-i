@@ -1,40 +1,43 @@
 \section*{Exercício 1}
 \begin{exercício}{Movimento de uma partícula sujeita a um sistema de vínculos}{exercício 1}
     Considere o movimento de uma partícula em três dimensões que está sujeita aos vínculos
-    \begin{enumerate}[label=(\alph*)]
-        \item \((x^2 + y^2)\dl{x} + xy\dl{z} = 0\quad\text{e}\quad(x^2+y^2)\dl{y} + yz\dl{z} = 0;\)
-        \item \((x^2 + y^2)\dl{x} + xz\dl{z} = 0\quad\text{e}\quad(x^2+y^2)\dl{y} + yz\dl{z} = 0.\)
-    \end{enumerate}
-    Decida se cada um dos sistemas é holonômico.
+    \[(x^2 + y^2)\dl{x} + xz\dl{z} = 0\quad\text{e}\quad(x^2+y^2)\dl{y} + yz\dl{z} = 0.\]
+    Decida se o sistema é holonômico.
+    % \begin{enumerate}[label=(\alph*)]
+    %     \item \((x^2 + y^2)\dl{x} + xy\dl{z} = 0\quad\text{e}\quad(x^2+y^2)\dl{y} + yz\dl{z} = 0;\)
+    %     \item \((x^2 + y^2)\dl{x} + xz\dl{z} = 0\quad\text{e}\quad(x^2+y^2)\dl{y} + yz\dl{z} = 0.\)
+    % \end{enumerate}
+    % Decida se cada um dos sistemas é holonômico.
 \end{exercício}
-\begin{proof}[Resolução do item (a)]
-    Dividindo os vínculos por \(\dl{t}\) obtemos
-    \begin{equation*}
-        a_{11}\dot{x} + a_{13} \dot{z} = 0\quad\text{e}\quad a_{22}\dot{y} + a_{23}\dot{z} = 0,
-    \end{equation*}
-    onde \(a_{11} = a_{22} = x^2+y^2,\) \(a_{13} = xy,\) e \(a_{23} = yz\). Utilizando a lagrangiana \(L = \frac12 m \left(\dot{x}^2 + \dot{y}^2 + \dot{z}^2\right)\), obtemos as equações de movimento
-    \begin{equation*}
-        \begin{cases}
-            m\ddot{x} = \lambda^1a_{11}\\
-            m\ddot{y} = \lambda^2a_{22}\\
-            m\ddot{z} = \lambda^1a_{13} + \lambda^2a_{23}\\
-            a_{11}\dot{x} + a_{13} \dot{z} = 0\\
-            a_{22}\dot{y} + a_{23}\dot{z} = 0,
-        \end{cases}
-    \end{equation*}
-    para multiplicadores de Lagrange \(\lambda^1\) e \(\lambda^2\).
-
-    Multiplicando as duas últimas equações por \(\lambda^1\) e \(\lambda^2\) e somando-as, obtemos
-    \begin{equation*}
-        \lambda^1 a_{11} \dot{x} + \lambda^2 a_{22} \dot{y} + \left(\lambda^1 a_{13} + \lambda^2 a_{23}\right)\dot{z} = 0.
-    \end{equation*}
-    Substituindo as três primeiras equações temos
-    \begin{equation*}
-        m\left(\dot{x}\ddot{x} + \dot{y}\ddot{y} + \dot{z}\ddot{z}\right) = 0 \implies \diff*{\left(\frac12mv^2\right)}{t} = 0.
-    \end{equation*}
-    Isto é, a energia cinética é uma integral de movimento deste sistema, logo as forças não realizam trabalho. Dessa forma, as forças são de vínculo, portanto o sistema é holonômico.
-\end{proof}
-\begin{proof}[Resolução do item (b)]
+% \begin{proof}[Resolução do item (a)]
+%     Dividindo os vínculos por \(\dl{t}\) obtemos
+%     \begin{equation*}
+%         a_{11}\dot{x} + a_{13} \dot{z} = 0\quad\text{e}\quad a_{22}\dot{y} + a_{23}\dot{z} = 0,
+%     \end{equation*}
+%     onde \(a_{11} = a_{22} = x^2+y^2,\) \(a_{13} = xy,\) e \(a_{23} = yz\). Utilizando a lagrangiana \(L = \frac12 m \left(\dot{x}^2 + \dot{y}^2 + \dot{z}^2\right)\), obtemos as equações de movimento
+%     \begin{equation*}
+%         \begin{cases}
+%             m\ddot{x} = \lambda^1a_{11}\\
+%             m\ddot{y} = \lambda^2a_{22}\\
+%             m\ddot{z} = \lambda^1a_{13} + \lambda^2a_{23}\\
+%             a_{11}\dot{x} + a_{13} \dot{z} = 0\\
+%             a_{22}\dot{y} + a_{23}\dot{z} = 0,
+%         \end{cases}
+%     \end{equation*}
+%     para multiplicadores de Lagrange \(\lambda^1\) e \(\lambda^2\).
+%
+%     Multiplicando as duas últimas equações por \(\lambda^1\) e \(\lambda^2\) e somando-as, obtemos
+%     \begin{equation*}
+%         \lambda^1 a_{11} \dot{x} + \lambda^2 a_{22} \dot{y} + \left(\lambda^1 a_{13} + \lambda^2 a_{23}\right)\dot{z} = 0.
+%     \end{equation*}
+%     Substituindo as três primeiras equações temos
+%     \begin{equation*}
+%         m\left(\dot{x}\ddot{x} + \dot{y}\ddot{y} + \dot{z}\ddot{z}\right) = 0 \implies \diff*{\left(\frac12mv^2\right)}{t} = 0.
+%     \end{equation*}
+%     Isto é, a energia cinética é uma integral de movimento deste sistema, logo as forças não realizam trabalho. Dessa forma, as forças são de vínculo, portanto o sistema é holonômico.
+% \end{proof}
+% \begin{proof}[Resolução do item (b)]
+\begin{proof}[Resolução]
     Integremos diretamente o sistema, notando que podemos isolar \(z \dl{z}\) em ambas equações. Temos então a equação diferencial ordinária a variáveis separáveis
     \begin{equation*}
         \frac{\dl{x}}{x} = \frac{\dl{y}}{y},
