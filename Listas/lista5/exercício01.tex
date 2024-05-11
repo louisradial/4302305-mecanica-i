@@ -1,1 +1,70 @@
 \section*{Exercício 1}
+\begin{lemma}{Equações de Euler-Lagrange}{Euler-Lagrange}
+    Seja o funcional
+    \begin{equation*}
+        S[f] = \int_{t_1}^{t_2} \dli{t} L\left(t, f(t), \dot{f}(t), \dots, f^{(n)}(t)\right)
+    \end{equation*}
+    definido com as condições de contorno fixas para as primeiras \(n-1\) derivadas de \(f\) nas extremidades \(t = t_1\) e \(t = t_2\). Se \(q(t)\) é uma curva estacionária para o funcional \(S\), então
+    \begin{equation*}
+        \sum_{k = 0}^{n} (-1)^{k} \diff*[k]{\left(\diffp{L}{q^{(k)}}\right)}{t} = 0.
+    \end{equation*}
+\end{lemma}
+\begin{proof}
+    Calculemos a variação de \(S\) para uma curva \(f\) dada por \(f = q + \delta q\), com \(\delta q^{(k)} = 0\) em \(t_1\) e em \(t_2\) para \(k \leq n-1\). Temos
+    \begin{align*}
+        \delta S &= \int_{t_1}^{t_2} \dli{t} \left[L\left(t, q + \delta q, \dot{q} + \delta \dot{q}, \dots, q^{(n)} + \delta q^{(n)}\right) - L\left(t, q, \dot{q}, \dots, q^{(n)}\right)\right]\\
+                 &= \int_{t_1}^{t_2} \dli{t} \left( \diffp{L}{q} \delta q + \diffp{L}{q} \delta \dot{q}  + \dots + \diffp{L}{q^{(n)}}\delta q^{(n)}\right)\\
+                 &= \int_{t_1}^{t_2} \dli{t} \diffp{L}{q}\delta q + \sum_{k = 1}^n \int_{t_1}^{t_2}\dli{t} \diffp{L}{q^{(k)}}\delta q^{(k)}
+    \end{align*}
+
+    Mostremos por indução que para uma função suave \(\psi\) vale
+    \begin{equation*}
+        \int_{t_1}^{t_2} \dli{t} \psi \delta q^{(k)} = (-1)^k\diff[k]\psi{t} \delta q
+    \end{equation*}
+    para \(1 \leq k \leq n\). Para \(k = 1\), segue de integração por partes que
+    \begin{align*}
+        \int_{t_1}^{t_2} \dli{t} \psi \delta \dot{q} &= \left.\psi\delta q\right\rvert_{t_1}^{t_2} - \int_{t_1}^{t_2} \dli{t}\diff{\psi}{t} \delta q\\
+                                                                   &= - \int_{t_1}^{t_2} \dli{t} \diff{\psi}{t}\delta q,
+    \end{align*}
+    visto que \(\delta q(t_2) = \delta q(t_1) = 0\), portanto a expressão sugerida é válida para o caso \(k = 1\). Suponhamos que seja válida para algum \(k \leq n - 1\), então por integração por partes temos
+    \begin{equation*}
+        \int_{t_1}^{t_2} \dli{t} \psi \delta q^{({k+1})} = \left.\psi\delta q^{(k)}\right\rvert_{t_1}^{t_2} - \int_{t_1}^{t_2} \dli{t} \diff{\psi}{t} \delta q^{(k)},
+    \end{equation*}
+    portanto como \(\delta q^{(k)}(t_2) = \delta q^{(k)} = 0\) para todo \(k \leq n-1\), temos
+    \begin{align*}
+        \int_{t_1}^{t_2} \dli{t} \psi \delta q^{({k+1})} &= - (-1)^{k}\int_{t_1}^{t_2} \dli{t} \diff*[k]{\left(\diff{\psi}{t}\right)}{t}\delta q\\
+                                                         &= (-1)^{k+1} \int_{t_1}^{t_2} \dli{t} \diff[k+1]{\psi}{t} \delta q
+    \end{align*}
+    ao usar a hipótese indutiva, isto é, a expressão é válida para \(k+1 \leq n\) também. Dessa forma, pelo princípio de indução finita, segue que a expressão vale para todo \(1\leq k \leq n\).
+
+    Com este último resultado temos
+    \begin{equation*}
+        \int_{t_1}^{t_2} \dli{t} \diffp{L}{q^{(k)}}\delta q^{(k)} = (-1)^{k} \int_{t_1}^{t_2} \dli{t} \diff*[k]{\left(\diffp{L}{q^{(k+1)}}\right)}{t} \delta q,
+    \end{equation*}
+    para todo \(1 \leq k \leq n\). Assim, temos
+    \begin{align*}
+        \delta S &= \int_{t_1}^{t_2} \dli{t} \left(\diffp{L}{q} + \sum_{k=1}^n (-1)^k\diff*[k]{\left(\diffp{L}{q^{(k)}}\right)}{t}\right)\delta q\\
+                 &= \int_{t_1}^{t_2} \dli{t} \left[\sum_{k = 0}^n (-1)^k \diff*[k]{\left(\diffp{L}{q^{(k)}}\right)}{t}\right]\delta q,
+    \end{align*}
+    portanto pelo lema fundamental do cálculo de variações segue que
+    \begin{equation*}
+        \delta S = 0 \implies \sum_{k = 0}^n (-1)^k \diff*[k]{\left(\diffp{L}{q^{(k)}}\right)}{t} = 0,
+    \end{equation*}
+    visto que \(\delta q\) é arbitrário.
+\end{proof}
+
+\begin{exercício}{Lagrangiana para o oscilador harmônico}{exercício1}
+    A lagrangiana de um sistema é dada por
+    \begin{equation*}
+        L = -\frac12 m q \ddot{q} - \frac12 m \omega_0^2 q^2.
+    \end{equation*}
+    Determine as equações de movimento.
+\end{exercício}
+\begin{proof}[Resolução]
+    Pelas \nameref{lem:Euler-Lagrange}, temos
+    \begin{align*}
+        \diff*[2]{\left(\diffp{L}{\ddot{q}}\right)}{t} - \diff*{\left(\diffp{L}{\dot{q}}\right)}{t} + \diffp{L}{q} = 0 &\implies \diff*[2]{\left(-\frac12mq\right)}{t} + \left(-\frac12m\ddot{q} - m\omega_0^2q\right) = 0\\
+                                                                                                                               &\implies m\ddot{q} + m\omega_0^2 q = 0,
+    \end{align*}
+    isto é, a lagrangiana dada descreve um oscilador harmônico.
+\end{proof}
