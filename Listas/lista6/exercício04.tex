@@ -2,10 +2,53 @@
 \begin{exercício}{Transformações de calibre}{exercício4}
     O campo eletromagnético é invariante pela transformação de gauge
     \begin{equation*}
-        \vetor{A} \to \vetor{\tilde{A}} = \vetor{A} + \nabla f\quad\text{e}\quad\phi \to \tilde\phi = \phi - \diffp{f}{t},
+        \vetor{A} \to \vetor{\tilde{A}} = \vetor{A} + \vetor\nabla f\quad\text{e}\quad\phi \to \tilde\phi = \phi - \diffp{f}{t},
     \end{equation*}
     onde \(f(\vetor{r}, t)\) é uma função diferenciável arbitrária. Como essa transformação afeta a lagrangiana do sistema? E sua hamiltoniana?
 \end{exercício}
 \begin{proof}[Resolução]
+    A lagrangiana para uma partícula de massa \(m\) e carga \(q\) que se move em um campo eletromagnético externo é dada por
+    \begin{equation*}
+        L = \frac12 mg_{ij}\dot{q}^i\dot{q}^j - e\phi + eg_{ij}A^i\dot{q}^j
+    \end{equation*}
+    portanto o momento \(p_k\) canonicamente  conjugado à coordenada \(q^k\) é dado por
+    \begin{align*}
+        p_k = \diffp{L}{\dot{q}^k} = m g_{ik} \dot{q}^i + e g_{ik}A^i.
+    \end{align*}
+    Desse modo, a hamiltoniana é obtida ao expressar a quantidade \(H = p_k \dot{q}^k - L\) em termos de \(q^k\) e \(p_k\). Da expressão do momento, obtemos
+    \begin{equation*}
+        \dot{q}^j = \frac{g^{j\ell}p_\ell - e A^j}{m},
+    \end{equation*}
+    portanto
+    \begin{align*}
+        H &= p_k \frac{g^{k\ell}p_\ell - e A^k}{m} - \frac12 m g_{ij} \left(\frac{g^{in}p_n- e A^i}{m}\right)\left(\frac{g^{j\ell}p_\ell - e A^j}{m}\right) + e\phi - e g_{ij} A^i \frac{g^{j\ell}p_\ell - e A^j}{m}\\
+          &= e\phi + \frac{g^{k\ell}p_\ell - e A^k}{m}\left[p_k - \frac12 m g_{ik}\left(\frac{g^{in}p_n- e A^i}{m}\right) - e g_{ik}A^i\right]\\
+          &= e\phi + \frac{g^{k\ell}p_\ell - e A^k}{m}\left[p_k - \frac12 g_{ik}g^{in}p_n + e \frac12g_{ik}A^i - e g_{ik}A^i\right]\\
+          &= \frac1{2m} \left(g^{k\ell}p_\ell - eA^k\right)\left(p_k - e g_{ik}A^i\right) + e\phi%\\
+          % &= \frac{1}{2m}\left(g^{k\ell}p_kp_\ell - 2ep_\ell A^\ell + e^2 g_{ik} A^iA^k\right) + e\phi
+    \end{align*}
+    é a hamiltoniana do sistema.
 
+    Com uma transformação de calibre, obtemos a lagrangiana
+    \begin{align*}
+        \tilde{L} &= \frac12 mg_{ij}\dot{q}^i\dot{q}^j -e\tilde{\phi} + eg_{ij}\tilde{A}^i\dot{q}^j\\
+                  &= \frac12 mg_{ij}\dot{q}^i\dot{q}^j -e\left(\phi - \diffp{f}{t}\right) + eg_{ij}\left(A^i + g^{in}\diffp{f}{q^n}\right)\dot{q}^j\\
+                  &= \frac12 mg_{ij}\dot{q}^i\dot{q}^j -e\phi + e\diffp{f}{t} + eg_{ij}A^i\dot{q}^j + eg_{ij}g^{in}\diffp{f}{q^n}\dot{q}^j\\
+                  &= L + e\left(\diffp{f}{t} + \diffp{f}{q^j}\dot{q}^j\right)\\
+                  &= L + e \diff{f}{t}.
+    \end{align*}
+    Assim, lagrangianas obtidas por uma mudança de calibre são equivalentes! O momento \(\tilde{p}_k\) canonicamente conjugado à coordenada \(q^k\) é dado por
+    \begin{align*}
+        \tilde{p}_k = \diffp{\tilde{L}}{\dot{q}^k} &= \diffp{L}{\dot{q}^k} + e \diffp*{\left(\diffp{f}{t} + \diffp{f}{q^j}\dot{q}^j\right)}{\dot{q}^k}\\
+                                                   &= p_k + e\diffp{f}{q^k},
+    \end{align*}
+    portanto a hamiltoniana é
+    \begin{align*}
+        \tilde{H} &= \frac1{2m} \left(g^{k\ell}\tilde{p}_\ell - e\tilde{A}^k\right)\left(\tilde{p}_k - e g_{ik}\tilde{A}^i\right) + e\tilde{\phi}\\
+                  &=\frac1{2m} \left[g^{k\ell}\left(p_\ell + e \diffp{f}{q^\ell}\right)- e\left(A^k + g^{kn}\diffp{f}{q^n}\right)\right]\left[\left(p_k + e \diffp{f}{q^k}\right)- e g_{ik}\left(A^i + g^{is}\diffp{f}{q^s}\right)\right] + e\left(\phi - \diffp{f}{t}\right)\\
+                  &= \frac{1}{2m} \left[g^{k\ell}p_\ell - eA^k + e\left(g^{k\ell}\diffp{f}{q^\ell} - g^{kn}\diffp{f}{q^n}\right)\right]\left[p_k - eg_{ik}A^i + e\left(\diffp{f}{q^k} - g_{ik}g^{is}\diffp{f}{q^s}\right)\right] + e\phi - e\diffp{f}{t}\\
+                  &= \frac1{2m} \left(g^{k\ell}p_\ell - eA^k\right)\left(p_k - e g_{ik}A^i\right) + e\phi - e\diffp{f}{t}\\
+                  &= H - e\diffp{f}{t}.
+    \end{align*}
+    \todo[Mostrar que as hamiltonianas geram as mesmas equações de movimento.]
 \end{proof}
