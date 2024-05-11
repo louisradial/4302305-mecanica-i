@@ -1,1 +1,72 @@
 \section*{Exercício 5}
+\begin{exercício}{Esfera girando sobre cilindro fixo}{exercício5}
+    Uma esfera uniforme de massa \(m\) e raio \(r\) é colocada sobre um cilindro fixo de raio \(R\).
+    Sob a ação da gravidade, a esfera começa a rodar sem escorregar do equilíbrio a partir de uma altura do seu centro de massa \(r + R - \epsilon\) com \(\epsilon \ll r\) e \(\epsilon \ll R\). Encontre o ponto onde a esfera se descola do cilindro.
+\end{exercício}
+\begin{proof}[Resolução]
+    Se a esfera começa a girar a partir do repouso pela ação da gravidade, podemos tomar o seu eixo de rotação como paralelo ao eixo do cilindro, e podemos descrever a posição do centro de massa da esfera \(O'\) com o ângulo \(\theta\) em relação à posição de equilíbrio e com a distância \(\rho\) em relação ao eixo cilindro. Ainda, definimos o ângulo \(\phi\) a partir da rotação total do ponto de contato inicial.
+    \begin{figure}[h]
+        \centering
+        \includegraphics[width=0.4\linewidth]{exercício05.png}
+    \end{figure}
+
+    A energia cinética da esfera é dada pela energia cinética do seu centro de massa e sua energia cinética de rotação, isto é,
+    \begin{equation*}
+        T = \frac12 m\left(\dot\rho^2 + \rho^2\dot\theta^2\right) + \frac12 I\dot\phi^2,
+    \end{equation*}
+    onde \(I = \frac25 mr^2\) é o momento de inércia da esfera em relação ao eixo de rotação. Desse modo, a lagrangiana do sistema pode ser tomada como
+    \begin{equation*}
+        L =  \frac12 m\left(\dot\rho^2 + \rho^2\dot\theta^2\right) + \frac12 I\dot\phi^2 - mg\rho\cos\theta.
+    \end{equation*}
+
+    No ponto de contato, os planos tangentes das superfícies são coincidentes, de modo que a distância de \(O'\) até \(O\) é dada por \(\rho = r + R\). Ainda, como a esfera gira sem escorregar, devemos ter \(\rho\dot\theta = r\dot\phi\). Denotando \(q_1 = \rho, q_2 = \theta\) e \(q_3 = \phi\), temos os coeficientes de vínculos dados por
+    \begin{equation*}
+        a_{11} = 1,\quad a_{12} = a_{13} = 0, \quad a_{21} = 0,\quad a_{22} = \rho,\quad\text{e}\quad a_{23} = -r,
+    \end{equation*}
+    de forma que os vínculos possam ser escritos da forma \(a_{\ell k} \dot{q}^k = 0\), para \(\ell \in \set{1,2}\) e \(k \in \set{1,2,3}\).
+
+    Desse modo, as equações de movimento são dadas por
+    \begin{equation*}
+        \diff*{\left(\diffp{L}{\dot{q}^k}\right)}{t} - \diffp{L}{q^k} = a_{\ell k} \lambda^{\ell},
+    \end{equation*}
+    para multiplicadores de Lagrange \(\lambda^1\) e \(\lambda^2\). De forma explícita, temos
+    \begin{equation*}
+        \begin{cases}
+            m\ddot\rho - m\rho \dot\theta^2 + mg\cos\theta = \lambda^1\\
+            \diff*{\left(m\rho^2\dot\theta\right)}{t} - mg\rho\sin\theta = \rho\lambda^2\\
+            I\ddot\phi = - r \lambda^2
+        \end{cases}
+    \end{equation*}
+    com os vínculos \(\dot{\rho} = 0\) e \(\rho\dot\theta - r\dot\phi = 0\). Substituindo os vínculos nas equações de movimento, obtemos
+    \begin{equation*}
+        \begin{cases}
+            -m\rho \dot\theta^2 + mg \cos\theta = \lambda^1\\
+            m\rho^2 \ddot\theta - mg\rho\sin\theta = \rho \lambda^2\\
+            \frac{\rho}{r}I\ddot{\theta} = -r \lambda^2
+        \end{cases}.
+    \end{equation*}
+    % Multiplicando a segunda equação por \(r\) e multiplicando a terceira por \(\rho\) e somando os resultados, obtemos
+    % \begin{equation*}
+    %     m\rho r \ddot\theta - mg r\sin\theta  + \frac{\rho}{r}I\ddot\theta= 0
+    % \end{equation*}
+    % Substituindo \(\rho = R+ r\) e \(I = \frac25 mr^2\), temos
+    % \begin{equation*}
+    %     \frac75\rho\ddot\theta = g\sin\theta.
+    % \end{equation*}
+
+    Das equações de movimento, vemos que \(\lambda^1\) é a força de contato normal, de modo que a partir do instante em que \(\lambda^1 = 0\), isto é,
+    \begin{equation*}
+        \rho \dot\theta^2 = mg\cos\theta,
+    \end{equation*}
+    as superfícies não estão mais em contato. Como não há atrito de deslizamento, a energia se conserva, isto é
+    \begin{align*}
+        mg(\rho - \epsilon) &= \frac12\left(\dot\rho^2+\rho^2\dot\theta^2\right) + \frac12I\dot\phi^2 + mg\rho\cos\theta\\
+                             &= \frac7{10}m\rho^2\dot\theta^2 + mg\rho\cos\theta.
+    \end{align*}
+    Para o instante em que a força de contato se anula, temos
+    \begin{equation*}
+        mg(\rho - \epsilon) = \frac{17}{10} m\rho g \cos\theta \implies  \cos\theta = \frac{10}{17}\left(1 - \frac{\epsilon}{\rho}\right).
+    \end{equation*}
+    Isto é, a esfera se descola do cilindro em \(\theta \approx \ang{53.97}\).
+\end{proof}
+
