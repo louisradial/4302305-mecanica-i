@@ -1,1 +1,23 @@
 \section*{Exercício 5}
+\begin{exercício}{Variável cíclica e lagrangiana equivalente}{exercício5}
+    Seja \(q^k\) uma variável cíclica da lagrangiana \(L(q,\dot{q}, t)\), logo sabemos que seu momento conjugado \(p_k\) é uma constante de movimento. Se trocarmos \(L\) por \(\tilde{L} = L + \diff{f(q,t)}{t}\) sabemos que as equações de movimento não são alteradas. Por outro lado, \(q^k\) não é uma coordenada cíclica de \(\tilde{L}\) e seu momento canonicamente conjugado não é conservado! Resolva este paradoxo aparente.
+\end{exercício}
+\begin{proof}[Resolução]
+    Para a lagrangiana \(\tilde{L}\), o momento \(\tilde{p}_k\) canonicamente conjugado a \(q^k\) é dado por
+    \begin{align*}
+        \tilde{p}_k = \diffp{\tilde{L}}{\dot{q}^k} &= \diffp{L}{\dot{q}^k} + \diffp*{\left(\diffp{f}{t} + \dot{q}^\ell\diffp{f}{q^\ell}\right)}{\dot{q}^k}\\
+                                                   &= p_k + \diffp{f}{q^k}.
+    \end{align*}
+    Desta forma, a equação de movimento para esta coordenada é
+    \begin{align*}
+        \diff{\tilde{p}_k}{t} - \diffp{\tilde{L}}{q^k} = 0 &\implies \diff*{\left(p_k + \diffp{f}{q^k}\right)}{t} - \diffp*{\left(L + \diff{f}{t}\right)}{q^k} = 0\\
+                                                           &\implies \diff{p_k}{t} + \diff*{\left(\diffp{f}{q^k}\right)}{t} - \diffp*{\left(\diff{f}{t}\right)}{q^k} = 0\\
+                                                           &\implies \diff{p_k}{t} + \diffp{f}{t,q^k} + \diffp{f}{q^j,q^k}\dot{q}^j - \diffp{f}{q^k,t} - \diffp{f}{q^k,q^j}\dot{q}^j = 0\\
+                                                           &\implies \diff{p_k}{t} + \left(\diffp{f}{t,q^k} - \diffp{f}{q^k,t}\right) + \left(\diffp{f}{q^j,q^k} - \diffp{f}{q^k,q^j}\right)\dot{q}^j= 0.
+    \end{align*}
+    Portanto, se \(f\) for de classe \(\mathcal{C}^2\), segue pelo teorema de Schwarz que as derivadas parciais de \(f\) comutam, portanto a equação de movimento para esta coordenada que
+    \begin{equation*}
+        \diff{p_k}{t} = 0,
+    \end{equation*}
+    portanto a lei de conservação obtida pela lagrangiana original é também expressa nesta lagrangiana equivalente.
+\end{proof}
