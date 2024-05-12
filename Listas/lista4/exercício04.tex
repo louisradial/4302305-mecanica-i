@@ -8,5 +8,49 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
+    Seja \(\vetor{R} = X\vetor{e}_x\) a posição do vértice de ângulo \(\alpha\) da cunha e seja
+    \begin{align*}
+        \vetor{r} &= \vetor{R} + h\left(-\sin\alpha\vetor{e}_x + \cos\alpha \vetor{e}_y\right) + d\left(\cos\alpha \vetor{e}_x + \sin\alpha\vetor{e}_y\right)\\
+                  &= \left(X - h\sin\alpha + d\cos\alpha\right)\vetor{e}_x + \left(h\cos\alpha + d\sin \alpha\right)\vetor{e}_y
+    \end{align*}
+    a posição do centro de massa do corpo de massa \(m\), que se encontra à uma altura \(h\) do plano inclinado e uma distância \(d\) do eixo ortogonal ao plano inclinado que passa pelo vértice de posição \(\vetor{R}\). Deste modo, a velocidade de cada corpo é
+    \begin{equation*}
+        \dot{\vetor{R}} = \dot{X} \vetor{e_x}\quad\text{e}\quad\dot{\vetor{r}} = \left(\dot{X} + \dot{d}\cos\alpha\right)\vetor{e}_x + \dot{d}\sin \alpha\vetor{e}_y.
+    \end{equation*}
+    Portanto, a lagrangiana que descreve o sistema é dada por
+    \begin{equation*}
+        L = \frac12 M\dot{X}^2 + \frac12 m \left(\dot{X}^2 + \dot{d}^2 + 2\dot{X}\dot{d}\cos\alpha\right) - mgd\sin\alpha,
+    \end{equation*}
+    em que removemos os termos constantes.
 
+    As equações de movimento do sistema são dadas pelas equações de Euler-Lagrange,
+    \begin{equation*}
+        \left\{\begin{aligned}
+            \diff*{\left(\diffp{L}{\dot{X}}\right)}{t} - \diffp{L}{X} = 0 &\implies (M+m)\ddot{X} + m\ddot{d}\cos\alpha = 0\\
+            \diff*{\left(\diffp{L}{\dot{d}}\right)}{t} - \diffp{L}{d} = 0 &\implies m\ddot{d} + m\ddot{X}\cos\alpha + mg\cos\alpha = 0
+        \end{aligned}\right..
+    \end{equation*}
+    Isolando \(\ddot{X}\) na primeira equação, encontramos
+    \begin{equation*}
+        \ddot{X} = -\frac{m}{M+m} \ddot{d}\cos\alpha,
+    \end{equation*}
+    portanto o sistema de equações se torna
+    \begin{equation*}
+        \ddot{d} = - \frac{(M+m)\cos\alpha}{M+m\sin^2\alpha}g\quad\text{e}\quad\ddot{X} = \frac{m \cos^2\alpha}{M+m \sin^2\alpha}g,
+    \end{equation*}
+    cuja solução partindo do repouso é
+    \begin{equation*}
+        d = d_0 - \frac{(M+m)\cos \alpha}{2\left(M + m\sin^2\alpha\right)}gt^2\quad\text{e}\quad X = X_0 + \frac{m\cos^2\alpha}{2\left(M+m\sin^2\alpha\right)}gt^2,
+    \end{equation*}
+    em que as posições iniciais são dadas a partir de \(d_0\) e \(X_0\).
+
+    Notemos que como a lagrangiana não depende explicitamente do tempo, temos que a energia do sistema,
+    \begin{equation*}
+        E = \frac12M\dot{X}^2 + \frac12m\left(\dot{X}^2 + \dot{d}^2 + 2\dot{X}\dot{d}\cos\alpha\right) + mgd\sin\alpha,
+    \end{equation*}
+    é uma integral de movimento. De forma semelhante, como \(X\) é uma variável cíclica, temos que o seu momento canonicamente conjugado,
+    \begin{equation*}
+        p_X = \diffp{L}{\dot{X}} = M \dot{X} + m\left(\dot{X} + \dot{d}\cos\alpha\right),
+    \end{equation*}
+    é uma outra integral de movimento, que é igual a componente \(\vetor{e}_x\) do momento total do sistema.
 \end{proof}
