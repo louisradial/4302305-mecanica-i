@@ -1,1 +1,81 @@
 \section*{Exercício 3}
+\begin{exercício}{Osciladores harmônicos sujeitos a um vínculo}{exercício3}
+    Considere \(N\) osciladores harmônicos de massa unitária cujas posições são \(x_k\). As frequências dos osciladores são distintas, isto é, se \(k \neq j\) então \(\omega_k \neq \omega_j\). Este sistema está sujeito ao vínculo
+    \begin{equation*}
+        \sum_{k=1}^N x_k^2 = 1.
+    \end{equation*}
+    \begin{enumerate}[label=(\alph*)]
+        \item Utilizando multiplicadores de Lagrange, mostre que as equações de movimento são
+            \begin{equation*}
+                \ddot{x}_k + \omega_k^2x_k = \lambda x_k.
+            \end{equation*}
+        \item Mostre que
+            \begin{equation*}
+                \sum_{k = 1}^N \left(x_k \ddot{x}_k + \dot{x}_k^2\right) = 0
+            \end{equation*}
+            e obtenha as equações de movimento eliminando o multiplicador de Lagrange.
+        \item Mostre que as \(N\) quantidades
+            \begin{equation*}
+                F_k(x_k,\dot{x}_k) = x_k^2 + \sum_{\ell\neq k}\frac{\left(x_\ell \dot{x}_k - \dot{x}_\ell x_k\right)^2}{\omega_k^2 - \omega_\ell^2}
+            \end{equation*}
+            são constantes de movimento.
+    \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+    Consideramos a lagrangiana
+    \begin{equation*}
+        L = \frac12 \sum_{k=1}^N \left(\dot{x}_k^2 - \omega_k^2 x_k^2\right)
+    \end{equation*}
+    sujeita ao vínculo
+    \begin{equation*}
+        \sum_{k=1}^N x_k\dot{x}_k = 0.
+    \end{equation*}
+    Assim, as equações de movimento são dadas por
+    \begin{equation*}
+        \ddot{x}_k + \omega_k^2x_k = \lambda x_k,
+    \end{equation*}
+    para um multiplicador de Lagrange \(\lambda\).
+
+    Multiplicando esta equação por \(x_k\) e somando sobre \(k\), temos
+    \begin{equation*}
+        \sum_{k=1}^N \left(x_k\ddot{x}_k + \omega_k^2x_k^2\right) = \lambda\sum_{k=1}^Nx_k^2,
+    \end{equation*}
+    então de \(\sum_{k=1}^Nx_k^2 = 1\), segue que
+    \begin{equation*}
+        \lambda = \sum_{\ell = 1}^N \left(x_\ell\ddot{x}_\ell + \omega_\ell^2x_\ell^2\right).
+    \end{equation*}
+    Derivando o vínculo em relação ao tempo, temos
+    \begin{equation*}
+        \sum_{\ell=1}^N \left(x_\ell\ddot{x}_\ell + \dot{x}_\ell^2\right) = 0 \implies \sum_{\ell=1}^N x_\ell \ddot{x}_\ell = - \sum_{\ell=1}^N \dot{x}_\ell^2,
+    \end{equation*}
+    portanto
+    \begin{equation*}
+        \lambda = \sum_{\ell=1}^N \left(\omega_\ell^2 x_\ell^2 - \dot{x}_\ell^2\right).
+    \end{equation*}
+    Substituindo nas equações de movimento, temos
+    \begin{equation*}
+        \ddot{x}_k + \left[\omega_k^2 - \sum_{\ell=1}^N \left(\omega_\ell^2 x_\ell^2 - \dot{x}_\ell^2\right)\right]x_k = 0.
+    \end{equation*}
+
+    Mostremos que a quantidade
+    \begin{equation*}
+        F_k(x_k,\dot{x}_k) = x_k^2 + \sum_{\ell\neq k}\frac{\left(x_\ell \dot{x}_k - \dot{x}_\ell x_k\right)^2}{\omega_k^2 - \omega_\ell^2}
+    \end{equation*}
+    é conservada. Notemos que
+    \begin{align*}
+        \sum_{\ell \neq k}\diff*{\left[\left(x_\ell \dot{x}_k - \dot{x}_\ell x_k\right)^2\right]}{t}
+        &= \sum_{\ell \neq k}\diff*{\left[\left(x_\ell \dot{x}_k - \dot{x}_\ell x_k\right)^2\right]}{t}\\
+        &= 2 \sum_{\ell \neq k} \left(x_\ell\dot{x}_k - \dot{x}_\ell x_k\right)\left(x_\ell \ddot{x}_k - \ddot{x}_\ell x_k\right)\\
+        &= 2 \sum_{\ell \neq k} \left(x_\ell\dot{x}_k - \dot{x}_\ell x_k\right)\left[x_\ell \left(\lambda x_k - \omega_k^2 x_k\right) - \left(\lambda x_\ell - \omega_\ell^2 x_\ell\right) x_k\right]\\
+        &= 2 \sum_{\ell \neq k} \left(x_\ell\dot{x}_k - \dot{x}_\ell x_k\right)\left(\omega_\ell^2 - \omega_k^2\right)x_\ell x_k\\
+        &= -2\sum_{\ell \neq k} \left(\omega_k^2 - \omega_\ell^2\right)\left(x_\ell^2 x_k \dot{x}_k - x_\ell \dot{x}_\ell x_k^2\right),
+    \end{align*}
+    portanto
+    \begin{align*}
+        \frac12\diff{F_k}{t} &= x_k \dot{x}_k - \sum_{\ell \neq k} \left(x_\ell^2 x_k\dot{x}_k - x_\ell \dot{x}_\ell x_k^2\right)\\
+                             &= x_k \dot{x}_k  - \sum_{\ell = 1}^N \left(x_\ell^2 x_k\dot{x}_k - x_\ell \dot{x}_\ell x_k^2\right)\\
+                             &= x_k \dot{x}_k - x_k \dot{x}_k\\
+                             &= 0,
+    \end{align*}
+    como desejado.
+\end{proof}
