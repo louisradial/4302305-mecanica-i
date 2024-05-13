@@ -1,6 +1,6 @@
 \section*{Exercício 5}
 \begin{exercício}{Massas oscilando em um eixo livre}{exercício5}
-    Dois corpos idênticos de massa \(m\) podemo mover-se sem atrito ao longo de uma haste e de forma simétrica como mostra a \cref{fig:teste}.
+    Dois corpos idênticos de massa \(m\) podem mover-se sem atrito ao longo de uma haste e de forma simétrica como mostra a \cref{fig:teste}.
     \begin{center}
         \includegraphics[width=0.3\linewidth]{exercício05.png}
         \captionof{figure}{Sistema do \cref{ex:exercício5}}
@@ -14,5 +14,35 @@
     \end{enumerate}
 \end{exercício}
 \begin{proof}[Resolução]
+    Como os corpos se encontram ao longo da haste, temos
+    \begin{equation*}
+        \vetor{r}_1 = r_1\vetor{e}_r\quad\text{e}\quad \vetor{r}_2 = - r_2 \vetor{e}_r,
+    \end{equation*}
+    onde \(\vetor{e}_r = \cos\phi\sin\theta \vetor{e}_x + \sin\phi\sin\theta \vetor{e}_y + \cos\theta \vetor{e}_z\). Segue que a energia potencial do sistema é dada por
+    \begin{equation*}
+        U = \frac14 m \omega_0^2\left(r_1^2 + r_2^2\right) + mg\left(r_1 - r_2\right)\cos\theta
+    \end{equation*}
+    e a energia cinética por
+    \begin{equation*}
+        T = \frac12 m\left[\dot{r}_1^2 + \dot{r}_2^2 + \left(r_1^2 + r_2^2\right)\left(\dot{\theta}^2 + \dot{\phi}\sin^2\theta\right)\right].
+    \end{equation*}
+    Utilizando o vínculo de que o movimento ocorre de forma simétrica, \(r \equiv r_1 = r_2\), temos a lagrangiana
+    \begin{equation*}
+        L = m\left[\dot{r}^2 + r^2\left(\dot{\theta}^2 + \dot{\phi}^2\sin^2\theta\right)\right] - \frac12 m \omega_0^2r^2
+    \end{equation*}
+    para descrever o sistema.
 
+    Pelas equações de Euler-Lagrange, temos
+    \begin{equation*}
+        \left\{\begin{aligned}
+                \diff*{\left(\diffp{L}{\dot{r}}\right)}{t} - \diffp{L}{r} = 0 &\implies 2m\ddot{r} - 2mr\left(\dot{\theta}^2 + \dot\phi^2\sin^2\theta\right) + m\omega_0^2 r = 0\\
+                \diff*{\left(\diffp{L}{\dot{\theta}}\right)}{t} - \diffp{L}{\theta} = 0 &\implies 2mr^2\ddot{\theta} + 4mr\dot{r}\dot{\theta} - 2mr^2\dot\phi^2\sin\theta\cos\theta = 0\\
+                \diff*{\left(\diffp{L}{\dot{\phi}}\right)}{t} - \diffp{L}{\phi} = 0 &\implies \diff*{\left(2mr^2\dot\phi\sin^2\theta\right)}{t} = 0
+        \end{aligned}\right.
+    \end{equation*}
+    Como a lagrangiana não depende de forma explícita do tempo e como \(\phi\) é uma coordenada cíclica temos que a energia e a componente \(\vetor{e}_z\) do momento angular do sistema,
+    \begin{equation*}
+        E = T + U\quad\text{e}\quad J_z = 2mr^2\dot\phi\sin^2\theta
+    \end{equation*}
+    são conservadas.
 \end{proof}
