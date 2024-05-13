@@ -3,5 +3,25 @@
     Obtenha as geodésicas de um cone dado por \(\theta = \alpha\) em coordenadas esféricas.
 \end{exercício}
 \begin{proof}[Resolução]
+    Em \(\mathbb{R}^3\), a métrica em uma superfície \(S\) é induzida pela métrica Euclidiana, isto é, em um ponto \(p\in S\) a métrica é obtida pela restrição do produto interno de \(\mathbb{R}^3\) ao espaço tangente \(T_pS\). Dessa forma, a métrica no cone é dada por
+    \begin{equation*}
+        \dl[2]{s} = \dl[2]{r} + r^2\sin^2\alpha\dl[2]\phi,
+    \end{equation*}
+    utilizando coordenadas esféricas, isto é, as componentes da métrica são \(g_{11} = 1\), \(g_{22} = r^2\sin^2\alpha\), e todas as outras são identicamente nulas.
 
+    Assim, os coeficientes da conexão são dados por
+    \begin{equation*}
+        \Gamma\indices{^k_{ij}} = \frac12 g^{k\ell}\left(\partial_i g_{\ell j} + \partial_j g_{\ell i} - \partial_\ell g_{ij}\right),
+    \end{equation*}
+    obtendo
+    \begin{equation*}
+        \Gamma\indices{^1_{22}} = - r\sin^2\alpha\quad\text{e}\quad \Gamma\indices{^2_{12}} = \frac1r = \Gamma\indices{^2_{21}},
+    \end{equation*}
+    com os outros termos todos nulos. Portanto, as geodésicas de um cone são soluções do sistema de equações diferenciais
+    \begin{equation*}
+        \left\{\begin{aligned}
+                &\ddot{r} - r\dot{\phi}^2\sin^2\alpha = 0\\
+                &\ddot{\phi} + \frac2r \dot{r}\dot{\phi} =0
+        \end{aligned}\right..
+    \end{equation*}
 \end{proof}
