@@ -44,5 +44,17 @@
     \begin{equation*}
         E = T + U\quad\text{e}\quad J_z = 2mr^2\dot\phi\sin^2\theta
     \end{equation*}
-    são conservadas.
+    são conservadas. De fato, o momento angular do sistema é dado por
+    \begin{align*}
+        \vetor{J} &= [\vetor{r}_1, m\dot{\vetor{r}}_1] + [\vetor{r}_2, m\dot{\vetor{r}}_2]\\
+                  &= 2mr\left[\vetor{e}_r, \dot{r}\vetor{e}_r + r\dot{\theta}\vetor{e}_\theta + r\sin\theta \vetor{e}_\phi\right]\\
+                  &= 2mr^2 \left(\dot\theta \vetor{e}_\phi - \dot\phi\sin\theta \vetor{e}_\theta\right),
+    \end{align*}
+    portanto
+    \begin{align*}
+        J_z &= \inner{\vetor{J}}{\vetor{e}_z}\\
+            &= 2mr^2\inner{\dot\theta \vetor{e}_\phi - \dot\phi\sin\theta \vetor{e}_\theta}{\vetor{e}_z}\\
+            &= 2mr^2\dot\phi\sin^2\theta,
+    \end{align*}
+    que é a quantidade conservada afirmada.
 \end{proof}
