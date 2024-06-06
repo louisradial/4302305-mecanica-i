@@ -1,0 +1,64 @@
+\section*{Exercício 4}
+\begin{exercício}{}{exercício04}
+    Um anel fino de massa \(m\) e raio \(R\) oscila num plano vertical em torno do ponto fixo \(O\), como mostrado na \cref{fig:exercício04}. Uma conta de massa \(m\) move-se sem atrito ao redor do anel.
+    \begin{center}
+        \includegraphics[width=0.3\linewidth]{exercício04.png}
+        \captionof{figure}{Sistema do \cref{ex:exercício04}}
+        \label{fig:exercício04}
+    \end{center}
+    \begin{enumerate}[label=(\alph*)]
+        \item Mostre que a lagrangiana do sistema é
+            \begin{equation*}
+                L = \frac32 mR^2\dot\theta_1^2 + \frac12 mR\dot\theta_2^2 + m R^2\dot\theta_1\dot\theta_2\cos{(\theta_1 - \theta_2)} + 2mgR \cos\theta_1 + mgR\cos\theta_2.
+            \end{equation*}
+        \item Considerando pequenas oscilações, obtenha os modos normais e respectivas frequências.
+        \item Obtenha a solução para a condição inicial \(\theta_1(0) = 0,\) \(\theta_2(0) = \theta_0,\) e \(\dot\theta_1(0) = \dot\theta_2(0) = 0.\)
+    \end{enumerate}
+\end{exercício}
+\begin{proof}[Resolução]
+    Tomando o ponto \(O\) como a origem do sistema de coordenadas, a posição da conta é dada por
+    \begin{equation*}
+        \vetor{r}_2 = \vetor{r}_1 + R\left(\sin\theta_2\vetor{e}_x - \cos\theta_2 \vetor{e}_y\right),
+    \end{equation*}
+    em que \(\vetor{r}_1 = R\left(\sin\theta_1\vetor{e}_x - \cos\theta_1\vetor{e}_y\right)\) é a posição do centro de massa do anel. As velocidades da conta e do centro de massa do anel são dadas por
+    \begin{equation*}
+        \dot{\vetor{r}}_1 = R\dot\theta_1\left(\cos\theta_1\vetor{e}_x + \sin\theta_1\vetor{e}_y\right)\quad\text{e}\quad\dot{\vetor{r}}_2 = \dot{\vetor{r}}_1 + R\dot\theta_2\left(\cos\theta_2\vetor{e}_x + \sin\theta_2\vetor{e}_y\right),
+    \end{equation*}
+    portanto a energia cinética da conta é
+    \begin{align*}
+        T_2 &= \frac12 m \left[R^2\dot\theta_1^2 + 2\inner*{\dot{\vetor{r}}_1}{R\dot\theta_2\left(\cos\theta_2\vetor{e}_x + \sin\theta_2\vetor{e}_y\right)} + R^2\dot\theta_2^2\right]\\
+        &= \frac12 m R^2\left(\dot\theta_1^2 + \dot\theta_2^2\right) + mR^2\dot\theta_1\dot\theta_2 \left(\cos\theta_1\cos\theta_2 + \sin\theta_1 \sin\theta_2\right)\\
+        &= \frac12 m R^2\left(\dot\theta_1^2 + \dot\theta_2^2\right) + mR^2\dot\theta_1\dot\theta_2 \cos\left(\theta_1-\theta_2\right).
+    \end{align*}
+    O momento de inércia do anel pelo eixo que passa por seu centro de massa é \(mR^2\), portanto o momento de inércia pelo ponto \(O\) é \(2mR^2\), pelo teorema dos eixos paralelos. Assim, a energia cinética do anel é dada por \(T_1 = mR^2\dot\theta_1^2\), de forma que a energia cinética do sistema é
+    \begin{equation*}
+        T = \frac32 m R^2\dot\theta_1^2 + \frac12 m R^2\dot\theta_2^2+ mR^2\dot\theta_1\dot\theta_2 \cos\left(\theta_1-\theta_2\right).
+    \end{equation*}
+
+    A energia potencial do sistema é dada por
+    \begin{align*}
+        V &= mg \inner{\vetor{r}_1}{\vetor{e}_y} + mg\inner{\vetor{r}_2}{\vetor{e}_y}\\
+          &= -2 mgR \cos\theta_1 - mgR \cos\theta_2,
+    \end{align*}
+    portanto a lagrangiana do sistema é
+    \begin{equation*}
+        L = \frac32 mR^2\dot\theta_1^2 + \frac12 mR\dot\theta_2^2 + m R^2\dot\theta_1\dot\theta_2\cos{(\theta_1 - \theta_2)} + 2mgR \cos\theta_1 + mgR\cos\theta_2.
+    \end{equation*}
+
+    Para uma configuração de equilíbrio \(q^{(0)} = \left(\theta_1^{(0)}, \theta_2^{(0)}\right)\), devemos ter
+    \begin{equation*}
+        \diffp{V}{\theta_k}[q^{(0)}] = 0 \implies \theta^{(0)}_k = n_k\pi,
+    \end{equation*}
+    com \(n_k \in \mathbb{Z}\) e \(k \in \set{1,2}\). Definimos
+    \begin{equation*}
+        V_{k\ell} = \diffp{V}{\theta_k,\theta_\ell}[q^{(0)}]
+    \end{equation*}
+    e representamos matricialmente por
+    \begin{equation*}
+        \left[V_{k\ell}\right] = \begin{bmatrix}
+            2mgR(-1)^{n_1} && 0\\
+            0 && mgR(-1)^{n_2}
+        \end{bmatrix}.
+    \end{equation*}
+    Para que \(q^{(0)}\) seja um ponto de equilíbrio, devemos ter \(n_1\) e \(n_2\) pares, isto é, \(q^{(0)} \equiv (0,0)\). Em torno
+\end{proof}
