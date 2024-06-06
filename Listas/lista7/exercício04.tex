@@ -9,7 +9,7 @@
     \begin{enumerate}[label=(\alph*)]
         \item Mostre que a lagrangiana do sistema é
             \begin{equation*}
-                L = \frac32 mR^2\dot\theta_1^2 + \frac12 mR\dot\theta_2^2 + m R^2\dot\theta_1\dot\theta_2\cos{(\theta_1 - \theta_2)} + 2mgR \cos\theta_1 + mgR\cos\theta_2.
+                L = \frac32 mR^2\dot\theta_1^2 + \frac12 mR^2\dot\theta_2^2 + m R^2\dot\theta_1\dot\theta_2\cos{(\theta_1 - \theta_2)} + 2mgR \cos\theta_1 + mgR\cos\theta_2.
             \end{equation*}
         \item Considerando pequenas oscilações, obtenha os modos normais e respectivas frequências.
         \item Obtenha a solução para a condição inicial \(\theta_1(0) = 0,\) \(\theta_2(0) = \theta_0,\) e \(\dot\theta_1(0) = \dot\theta_2(0) = 0.\)
@@ -42,7 +42,7 @@
     \end{align*}
     portanto a lagrangiana do sistema é
     \begin{equation*}
-        L = \frac32 mR^2\dot\theta_1^2 + \frac12 mR\dot\theta_2^2 + m R^2\dot\theta_1\dot\theta_2\cos{(\theta_1 - \theta_2)} + 2mgR \cos\theta_1 + mgR\cos\theta_2.
+        L = \frac32 mR^2\dot\theta_1^2 + \frac12 mR^2\dot\theta_2^2 + m R^2\dot\theta_1\dot\theta_2\cos{(\theta_1 - \theta_2)} + 2mgR \cos\theta_1 + mgR\cos\theta_2.
     \end{equation*}
 
     Para uma configuração de equilíbrio \(q^{(0)} = \left(\theta_1^{(0)}, \theta_2^{(0)}\right)\), devemos ter
@@ -60,5 +60,187 @@
             0 && mgR(-1)^{n_2}
         \end{bmatrix}.
     \end{equation*}
-    Para que \(q^{(0)}\) seja um ponto de equilíbrio, devemos ter \(n_1\) e \(n_2\) pares, isto é, \(q^{(0)} \equiv (0,0)\). Em torno
+    Para que \(q^{(0)}\) seja um ponto de equilíbrio, devemos ter \(n_1\) e \(n_2\) pares, isto é, \(q^{(0)} \equiv (0,0)\).
+
+    Expandindo a lagrangiana em até segunda ordem de \(\theta_k\) em torno de \(q^{(0)}\), temos
+    \begin{equation*}
+        L = \frac12T_{k\ell} \dot{\theta_k} \dot{\theta_\ell} - \frac12 V_{k\ell} \theta_k \theta_\ell,
+    \end{equation*}
+    com
+    \begin{equation*}
+        [T_{k\ell}] = \begin{bmatrix}
+            3mR^2 && mR^2\\
+            mR^2 && mR^2
+        \end{bmatrix}
+        \quad\text{e}\quad[V_{k\ell}] = \begin{bmatrix}
+            2mgR && 0\\
+            0 && mgR
+        \end{bmatrix}.
+    \end{equation*}
+    Aplicando Euler-Lagrange, temos as equações de movimento dadas por
+    \begin{equation*}
+        T_{k n} \ddot{\theta}_k + V_{k n} \theta_k = 0.
+    \end{equation*}
+    Com o ansatz \(\theta_k = \vartheta_k e^{i\omega t}\), temos
+    \begin{equation*}
+        \left(V_{kn}-\omega^2T_{kn}\right)\vartheta_k e^{i\omega t} = 0.
+    \end{equation*}
+    Matricialmente,
+    \begin{equation*}
+        \begin{bmatrix}
+            2mgR-3mR^2\omega^2 && - mR^2 \omega^2\\
+            -mR^2\omega^2 && mgR - mR^2 \omega^2
+        \end{bmatrix}
+        \begin{bmatrix}
+            \vartheta_1\\\vartheta_2
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            0\\0
+        \end{bmatrix}.
+    \end{equation*}
+    Para uma solução não trivial, esta matriz deve ter determinante nulo, portanto temos a equação
+    \begin{equation*}
+        (2mgR - 3mR^2\omega^2)(mgR - mR^2\omega^2) = (mR^2\omega^2)^2 \iff 2R^2\omega^4 - 5gR\omega^2 + 2g^2 = 0,
+    \end{equation*}
+    cujas soluções são
+    \begin{equation*}
+        \omega^2 = \frac{5gR \pm 3gR}{4R^2} \implies \omega_+^2 = \frac{2g}{R}\quad\text{e}\quad\omega_-^2 = \frac{g}{2R}.
+    \end{equation*}
+    Substituindo esses resultados na matriz podemos determinar os autovetores associados à estas frequências de oscilação. Para \(\omega^2 = \omega_+^2\),
+    \begin{equation*}
+       \begin{bmatrix}
+           -4mgR && -2mgR\\
+           -2mgR && -mgR
+       \end{bmatrix}
+       \begin{bmatrix}
+           \vartheta^+_1\\\vartheta^+_2
+       \end{bmatrix}
+       =
+       \begin{bmatrix}
+           0\\0
+       \end{bmatrix}
+       \implies
+       \begin{bmatrix}
+           \vartheta^+_1\\\vartheta^+_2
+       \end{bmatrix}
+       =
+       c_+\begin{bmatrix}
+           -1\\2
+       \end{bmatrix},
+    \end{equation*}
+    para uma constante \(c_+ \in \mathbb{C}\) qualquer. Para \(\omega^2 = \omega_-^2\),
+    \begin{equation*}
+       \begin{bmatrix}
+           \frac12mgR && -\frac12mgR\\
+           -\frac12mgR && \frac12mgR
+       \end{bmatrix}
+       \begin{bmatrix}
+           \vartheta^-_1\\\vartheta^-_2
+       \end{bmatrix}
+       =
+       \begin{bmatrix}
+           0\\0
+       \end{bmatrix}
+       \implies
+       \begin{bmatrix}
+           \vartheta^-_1\\\vartheta^-_2
+       \end{bmatrix}
+       =
+       c_-\begin{bmatrix}
+           1\\1
+       \end{bmatrix},
+    \end{equation*}
+    para uma constante \(c_- \in \mathbb{C}\) qualquer.
+
+    Desse modo, tomando a parte real das soluções, obtemos os modos normais
+    \begin{equation*}
+        \begin{bmatrix}
+            \theta^+_1(t)\\\theta^+_2(t)
+        \end{bmatrix}
+        = \alpha \begin{bmatrix}
+            -1\\2
+        \end{bmatrix}
+        \cos\left(\sqrt{\frac{2g}{R}}t + \varphi_+\right)
+        \quad\text{e}\quad
+        \begin{bmatrix}
+            \theta^-_1(t)\\\theta^-_2(t)
+        \end{bmatrix}
+        = \beta \begin{bmatrix}
+            1\\1
+        \end{bmatrix}
+        \cos\left(\sqrt{\frac{g}{2R}}t + \varphi_-\right),
+    \end{equation*}
+    com frequências de oscilação \(\sqrt{\frac{2g}{R}}\) e \(\sqrt{\frac{g}{2R}}\). Logo, a solução geral é dada pela combinação linear dos modos normais,
+    \begin{equation*}
+        \begin{bmatrix}
+            \theta_1(t)\\\theta_2(t)
+        \end{bmatrix}
+        = \alpha \begin{bmatrix}
+            -1\\2
+        \end{bmatrix}
+        \cos\left(\sqrt{\frac{2g}{R}}t + \varphi_+\right)
+        + \beta \begin{bmatrix}
+            1\\1
+        \end{bmatrix}
+        \cos\left(\sqrt{\frac{g}{2R}}t + \varphi_-\right),
+    \end{equation*}
+    para constantes \(\alpha, \beta > 0\) e \(\varphi_+, \varphi_- \in [0, 2\pi]\) determinadas a partir das condições iniciais.
+
+    Para a condição inicial \(\theta_1(0) = 0,\) \(\theta_2(0) = \theta_0,\) e \(\dot\theta_1(0) = \dot\theta_2(0) = 0,\) temos
+    \begin{equation*}
+        \begin{bmatrix}
+            0\\\theta_0
+        \end{bmatrix}
+        = \alpha \begin{bmatrix}
+            -1\\2
+        \end{bmatrix}
+        \cos\left(\varphi_+\right)
+        + \beta \begin{bmatrix}
+            1\\1
+        \end{bmatrix}
+        \cos\left(\varphi_-\right)
+        \quad\text{e}\quad
+        \begin{bmatrix}
+            0\\0
+        \end{bmatrix}
+        = -\sqrt{\frac{2g}{R}}\alpha \begin{bmatrix}
+            -1\\2
+        \end{bmatrix}
+        \sin\left(\varphi_+\right)
+        - \sqrt{\frac{g}{2R}}\beta \begin{bmatrix}
+            1\\1
+        \end{bmatrix}
+        \sin\left(\varphi_-\right).
+    \end{equation*}
+    Definindo \(A_+ = \alpha \cos\varphi_+, B_+ = \alpha\sin\varphi_+,A_- = \beta \cos\varphi_-,\) e \(B_- = \beta\sin\varphi_-\), temos o sistema de equações lineares e soluções
+    \begin{equation*}
+        \begin{bmatrix}
+            -1 && 0 && 1 && 0\\
+            2 && 0 && 1 && 0\\
+            0 && \sqrt{\frac{2g}{R}} && 0 && -\sqrt{\frac{g}{2R}}\\
+            0 && -2\sqrt{\frac{2g}{R}} && 0 && -\sqrt{\frac{g}{2R}}\\
+        \end{bmatrix}
+        \begin{bmatrix}
+            A_+\\ B_+\\A_-\\B_-
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            0\\\theta_0\\0\\0
+        \end{bmatrix}
+        \implies
+        \begin{bmatrix}
+            A_+\\ B_+\\A_-\\B_-
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \frac13 \theta_0\\0\\\frac13\theta_0\\0
+        \end{bmatrix},
+    \end{equation*}
+    de modo que \(\alpha = \beta = \frac13\theta_0\) e \(\varphi_+ = \varphi_- = 0\). Assim,
+    \begin{equation*}
+        \theta_1(t) = \frac13\theta_0\left[-\cos\left(\sqrt{\frac{2g}{R}}t\right) + \cos\left(\sqrt{\frac{g}{2R}}t\right)\right]\quad\text{e}\quad
+        \theta_2(t) = \frac13\theta_0\left[2\cos\left(\sqrt{\frac{2g}{R}}t\right) + \cos\left(\sqrt{\frac{g}{2R}}t\right)\right]
+    \end{equation*}
+    é a solução para as condições iniciais dadas.
 \end{proof}
