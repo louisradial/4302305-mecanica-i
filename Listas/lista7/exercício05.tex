@@ -1,0 +1,147 @@
+\section*{Exercício 5}
+\begin{exercício}{Espalhamento de duas partículas}{exercício05}
+    Para a interação de duas partículas, obtenha a relação entre a seção de choque diferencial em relação ao ângulo de espalhamento \(\chi\) no centro de massa e ao ângulo de espalhamento \(\vartheta\) no referencial de laboratório.
+\end{exercício}
+\begin{proof}[Resolução]
+    A partícula de massa \(m_2\) se encontra em repouso no referencial de laboratório. A partícula de massa \(m_1\) tem velocidade inicial \(\vetor{v}_1\textsuperscript{inicial} = \vetor{u}\) é espalhada por um ângulo \(\vartheta\) e tem velocidade terminal \(\vetor{v}_1\textsuperscript{final}=\vetor{u}_1\). %A posição relativa \(\vetor{r}\) entre as partículas em um dado instante é representada na \cref{fig:lab}.
+
+    \begin{figure}[ht]
+        \centering
+        \begin{subfigure}{0.45\linewidth}
+            \centering
+            \begin{tikzpicture}[scale=0.9, every node/.style={scale=0.9}]
+                % axis
+                % \draw[help lines] (-4,-4) grid (4,4);
+                \draw [->] (-4,0) -- (4,0);
+                \draw [->] (0,-4) -- (0,4);
+                % nodes?
+                \coordinate (v0) at (-4,0.5);
+                \coordinate (v1) at (2.5, 2);
+                \coordinate (v2) at (2,-1.5);
+                \filldraw (v0) circle (1.5pt) node[below=7pt,right=0pt] {\(m_1\)};
+                \filldraw (0,0) circle (1.5pt) node[below=7pt,left=0pt] {\(m_2\)};
+                \filldraw (v1) circle (1.5pt) node[below=5pt,right=0pt] {};
+                \filldraw (v2) circle (1.5pt) node[below=5pt,left=0pt] {};
+                % vectors
+                \draw [arrows = {-Stealth[inset=0pt, angle=30:5pt]}, violet, thick] (v2) -- (v1) node[near end, right] {\(\vetor{r}\)};
+                \filldraw [fill=violet!20, draw=violet!50!black] (2.21,0) -- +(0:0.4)
+                    arc [start angle = 0, end angle = 81.87, radius = 0.4] node[midway, right, violet] {\(\Theta\)} -- cycle;
+                \draw [arrows = {-Stealth[inset=0pt, angle=30:5pt]}, very thick] (v0) -- +(0:0.5cm) node[above] {\(\vetor{u}\)};
+                \draw [arrows = {-Stealth[inset=0pt, angle=30:5pt]}, very thick] (v1) -- +(35:0.5cm) node[above,left = 2pt] {\(\vetor{v}_1\)};
+                \draw [arrows = {-Stealth[inset=0pt, angle=30:5pt]}, very thick] (v2) -- +(-55:0.5cm) node[below,left] {\(\vetor{v}_2\)};
+                % m1 path
+                \draw [thin] (v0) .. controls (0,0.5) .. (v1);
+                \draw [thin] (v1) -- (4,3.05);
+                \draw [magenta, dashed, thick] (0,0) -- (4,3);
+                \filldraw [fill=magenta!20, draw=magenta!50!black] (0,0) -- +(0:0.6)
+                    arc [start angle = 0, end angle = 36.87, radius = 0.6] node[midway, right, magenta] {\(\vartheta\)} -- cycle;
+                % m2 path
+                \draw [thin] (0,0) .. controls (1,0) .. (v2);
+                \draw [thin] (v2) -- (3.75, -4);
+                \draw [purple, thick, dashed] (1.1, 0) -- (3.8,-4);
+            \end{tikzpicture}
+            \caption{Referencial de laboratório.\label{fig:lab}}
+        \end{subfigure}%
+        \begin{subfigure}{0.45\linewidth}
+            \centering
+            \begin{tikzpicture}[scale=0.9, every node/.style={scale=0.9}]
+
+                % axis
+                \draw [->] (-4, 0) -- (4, 0);
+                \draw [->] (0, -4) -- (0, 4);
+
+                % nodes
+                % initial
+                \coordinate (10) at (-4, 1);
+                \coordinate (20) at (4, -1);
+
+                % middle
+                \coordinate (11) at (0.33, 3);
+                \coordinate (21) at (-0.33, -3);
+
+                % final
+                \coordinate (12) at (0.5, 4);
+                \coordinate (22) at (-0.5, -4);
+
+                \filldraw (10) circle (1.5pt) node[below=7pt,right=0pt] {\(m_1\)};
+                \filldraw (20) circle (1.5pt) node[below=7pt,left=0pt] {\(m_2\)};
+
+                \filldraw (11) circle (1.5pt);
+                \filldraw (21) circle (1.5pt);
+
+                % \filldraw (12) circle (1.5pt);
+                % \filldraw (22) circle (1.5pt);
+
+                % path
+                \draw [thin] (10) .. controls (0, 1) .. (12);
+                \draw [thin] (20) .. controls (0, -1) .. (22);
+                \draw [dashed, thick, violet] (-0.55, -4) -- (0.55, 4); %+(81.63: 8.5);
+                \filldraw [fill=violet!20, draw=violet!50!black] (0,0) -- +(0:0.4)
+                    arc [start angle = 0, end angle = 81.87, radius = 0.4] node[right=5pt, violet] {\(\chi\)} -- cycle;
+                % \draw (10) -- (20);
+                % \draw (12) -- (22);
+                \draw [arrows = {-Stealth[inset=0pt, angle=30:5pt]}, very thick] (10) -- +(0: 0.5) node[above] {\(\vetor{v}'_1\textsuperscript{inicial}\)};
+                \draw [arrows = {-Stealth[inset=0pt, angle=30:5pt]}, very thick] (20) -- +(180: 0.5) node[above] {\(\vetor{v}'_2\textsuperscript{inicial}\)};
+                \draw [arrows = {-Stealth[inset=0pt, angle=30:5pt]}, very thick] (11) -- +(81: 0.5) node[right] {\(\vetor{v}'_1\)};
+                \draw [arrows = {-Stealth[inset=0pt, angle=30:5pt]}, very thick] (21) -- +(-99: 0.5) node[left] {\(\vetor{v}'_2\)};
+            \end{tikzpicture}
+            \caption{Referencial do centro de massa.\label{fig:cm}}
+        \end{subfigure}
+        \caption{Espalhamento de duas partículas.}
+    \end{figure}
+
+    Sejam \(\vetor{r}_1\) e \(\vetor{r}_2\) as posições das partículas de massa \(m_1\) e \(m_2\) no referencial de laboratório, então a posição do centro de massa \(\vetor{R}\) e sua velocidade \(\vetor{V}\) são dadas por
+    \begin{equation*}
+        \vetor{R} = \frac{m_1\vetor{r}_1 + m_2\vetor{r}_2}{m_1+m_2}
+        \quad\text{e}\quad
+        \vetor{V} = \frac{m_1\vetor{v}_1 + m_2\vetor{v}_2}{m_1+m_2}
+    \end{equation*}
+    neste mesmo referencial. Da conservação de momento linear, temos
+    \begin{equation*}
+        \vetor{V} = \frac{m_1}{m_1 + m_2}\vetor{u} = \frac{\mu}{m_2}\vetor{u},
+    \end{equation*}
+    onde \(\mu\) é a massa reduzida definida por \(\frac1\mu = \frac1{m_1} + \frac1{m_2}\).
+
+    No referencial do centro de massa, a posição da partícula de massa \(m_i\) é \(\vetor{r}'_i = \vetor{r}_i - \vetor{R}\) e sua velocidade, \(\vetor{v}_i' = \vetor{v}_i - \vetor{V}\). Neste referencial, as velocidades das partículas satisfazem a relação
+    \begin{equation*}
+        \vetor{v}'_2 = -\frac{m_1}{m_2}\vetor{v}'_1,
+    \end{equation*}
+    visto que o centro de massa é o centro de momento. Subtraindo \(\vetor{v}_1'\), temos
+    \begin{equation*}
+        \vetor{v}_1' = \frac{\mu}{m_1}\left(\vetor{v}_1' - \vetor{v}_2'\right) = \frac{\mu}{m_1} \diff{\vetor{r}}{t},
+    \end{equation*}
+    onde \(\vetor{r} = \vetor{r}_1 - \vetor{r}_2 = \vetor{r}_1' - \vetor{r}_2'\) é a posição relativa entre as partículas. Seja \(\vetor{v}\) a velocidade relativa final, então
+    \begin{equation*}
+        \vetor{u}_1' = \frac{\mu}{m_1} \vetor{v}.
+    \end{equation*}
+
+    Tomando os produtos escalares das velocidades terminais com a direção da velocidade inicial e sua direção ortogonal, obtemos
+    \begin{equation*}
+        u_1' \cos\chi + V = u_1 \cos\vartheta \quad\text{e}\quad u_1' \sin\chi = u_1 \sin \vartheta,
+    \end{equation*}
+    portanto
+    \begin{equation*}
+        \tan \vartheta = \frac{\sin\chi}{\cos\chi + \rho},
+    \end{equation*}
+    onde \(\rho = \frac{V}{u_1'} = \frac{m_1 u}{m_2 v}.\) Podemos escrever as relações
+    \begin{equation*}
+        \sec^2 \vartheta = \frac{1 + 2 \rho \cos\chi + \rho^2}{(\cos\chi + \rho)^2}
+        \quad\text{e}\quad
+        \sin\vartheta = \pm \frac{\sin\chi}{\sqrt{1 + 2 \rho \cos\chi + \rho^2}}.
+    \end{equation*}
+    Derivando a expressão para \(\tan \vartheta\) em relação a \(\vartheta\) e utilizando as relações obtidas, temos
+    \begin{equation*}
+        \frac{1 + 2 \rho \cos\chi + \rho^2}{(\cos\chi + \rho)^2} = \left(\frac{\cos\chi}{\cos \chi + \rho} + \frac{\sin^2\chi}{(\cos\chi+\rho)^2}\right) \diff{\chi}{\vartheta} \implies \diff{\chi}{\vartheta} = \frac{1 + 2\rho \cos\chi + \rho^2}{1 + \cos\chi}.
+    \end{equation*}
+
+    O número de partículas espalhadas segundo o ângulo \(\vartheta\) definido na origem do referencial de laboratório e segundo o ângulo \(\chi\) definido na origem do referencial do centro de momento deve ser o mesmo, isto é
+    \begin{equation*}
+        2\pi\abs{\sin\vartheta \dl\vartheta} \sigma(\vartheta) = 2\pi \abs{\sin\chi \dl\chi} \sigma(\chi).
+    \end{equation*}
+    Logo,
+    \begin{align*}
+        \sigma(\vartheta) &= \abs*{\frac{\sin\chi}{\sin\vartheta} \diff\chi\vartheta} \sigma(\chi)\\
+                          &= \frac{(1 + 2\rho\cos\chi + \rho^2)^{\frac32}}{1+\cos\chi} \sigma(\chi)
+    \end{align*}
+    é a relação entre as seções de choque diferenciais segundo os diferentes ângulos.
+\end{proof}
