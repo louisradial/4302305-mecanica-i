@@ -1,0 +1,35 @@
+\section*{Exercício 5}
+\begin{exercício}{Espalhamento por um potencial repulsivo \(U = \alpha r^{-2}\)}{exercício05}
+    Determinar a seção de choque diferencial do espalhamento por um potencial repulsivo \(U(r) = \alpha r^{-2}\), com \(\alpha > 0\).
+\end{exercício}
+\begin{proof}[Resolução]
+    O ângulo \(\varphi\) dado pela distância de maior aproximação \(r_\mathrm{min}\) é
+    \begin{equation*}
+        \varphi = \int_{r_\mathrm{min}}^\infty \dli{r} \frac{\rho}{r^2\sqrt{1 - \frac{\rho^2}{r^2} - \frac{2\alpha}{mv_\infty^2 r^2}}},
+    \end{equation*}
+    para uma partícula de massa \(m\) com distância de visada \(\rho\) e velocidade inicial \(v_\infty\). Da conservação de energia, a distância de maior aproximação satisfaz
+    \begin{equation*}
+        1 = \frac{2 \alpha}{mr_\mathrm{min}^2 v_\infty^2} + \frac{\rho^2}{r_\mathrm{min}^2} \implies r_\mathrm{min} = \sqrt{\rho^2 + \frac{2 \alpha}{m v_\infty^2}}.
+    \end{equation*}
+    Logo, com a substituição de variáveis \(\xi = \frac{r_\mathrm{min}}{r}\), temos
+    \begin{equation*}
+        \varphi = \frac{\rho}{r_\mathrm{min}} \int_0^1 \frac{\dl\xi}{\sqrt{1-\xi^2}} = \frac{\pi\rho}{2r_\mathrm{min}}.
+    \end{equation*}
+
+    Assim, o ângulo de espalhamento \(\chi = \pi - 2 \varphi\) é tal que
+    \begin{equation*}
+        \frac{\pi - \chi}{\pi} = \frac{\rho}{\sqrt{\rho^2 + \frac{2 \alpha}{mv_\infty^2}}} \implies \rho^2 = \frac{2 \alpha}{m v_\infty^2} \frac{(\chi - \pi)^2}{\chi (2\pi - \chi)}.
+    \end{equation*}
+    Derivando em relação a \(\chi\),
+    \begin{align*}
+        \rho \diff\rho\chi &= \frac{\alpha}{mv_\infty^2} \left[\frac{2(\chi - \pi)}{\chi(2\pi - \chi)} - \frac{(\chi - \pi)^2}{\chi^2(2\pi - \chi)} + \frac{(\chi - \pi)^2}{\chi(2\pi - \chi)^2}\right]\\
+                             &= \frac{\alpha}{m v_\infty^2 } \frac{(\chi - \pi)\left[2\chi(2\pi-\chi) - (\chi - \pi)(2\pi - \chi) + \chi(\chi - \pi)\right]}{\chi^2(2\pi - \chi)^2}\\
+                             &= \frac{2\alpha}{m v_\infty^2 } \frac{(\chi - \pi)\left[2\pi\chi-\chi^2 + (\chi - \pi)^2\right]}{\chi^2(2\pi - \chi)^2}\\
+                             &= \frac{2\pi^2 \alpha}{mv_\infty^2}\frac{\chi - \pi}{\chi^2(2\pi - \chi)^2}.
+    \end{align*}
+    Portanto,
+    \begin{equation*}
+        \diff{\sigma}{\Omega} = \frac{2\pi^2 \alpha}{mv_\infty^2} \frac{\abs{\chi - \pi}}{\chi^2 ( 2\pi - \chi)^2\sin \chi}
+    \end{equation*}
+    é a seção de choque diferencial para este espalhamento.
+\end{proof}

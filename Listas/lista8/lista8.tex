@@ -125,7 +125,7 @@
 % References
 \usepackage{hyperref}
 \usepackage[brazilian,capitalize,nameinlink,noabbrev]{cleveref}
-\captionsetup[figure]{hypcap=false}
+% \captionsetup[figure]{hypcap=false}
 \makeatletter
 \hypersetup{
     pdftitle=\@title,
@@ -166,9 +166,11 @@
 
 \begin{document}
 \maketitle
-\include{exercício01}
-\include{exercício02}
-\include{exercício03}
-\include{exercício04}
+% \include{exercício01}
+% \include{exercício02}
+\setcounter{tcb@cnt@exercício}{2}
+\input{exercício03}
+% \include{exercício04}
+\setcounter{tcb@cnt@exercício}{4}
 \include{exercício05}
 \end{document}

@@ -1,0 +1,25 @@
+\section*{Exercício 3}
+\begin{exercício}{Espalhamento por uma esfera dura}{exercício03}
+    Determine a seção de choque diferencial do espalhamento de partículas por uma esfera dura de raio \(R\), isto é, a energia potencial de interação é \(U = \infty\) para \(r < R\) e \(U = 0\) para \(r > R\).
+\end{exercício}
+\begin{proof}[Resolução]
+    Para que haja colisão, a distância de visada deve ser tal que \(\abs{\rho} < R\). Neste caso, o ângulo \(\varphi\) dado pela distância de maior aproximação é
+    \begin{align*}
+        \varphi &= \int_{R}^\infty \dli{r} \frac{\rho}{r^2\sqrt{1 - \frac{\rho^2}{r^2}}}\\
+                &= \int_{0}^{\frac{\rho}{R}}\frac{\dl\xi}{\sqrt{1 - \xi^2}}\\
+                &= \arcsin\left(\frac{\rho}{R}\right).
+    \end{align*}
+    Dessa forma, o ângulo de espalhamento \(\chi = \pi - 2 \varphi\) satisfaz
+    \begin{equation*}
+        \rho = R \sin\left(\frac{\pi - \chi}{2}\right) = R \cos\left(\frac\chi2\right).
+    \end{equation*}
+    Diferenciando em relação à \(\chi\), temos
+    \begin{equation*}
+        \diff{\rho}{\chi} = -\frac{R}{2} \sin\left(\frac\chi 2\right) \implies \frac{\rho}{\sin\chi}\abs*{\diff{\rho}{\chi}} = \frac{R^2\sin\left(\frac\chi2\right)\cos\left(\frac\chi2\right)}{2\sin\chi} = \frac{R^2}{4}.
+    \end{equation*}
+    Logo,
+    \begin{equation*}
+        \diff{\sigma}{\Omega} = \frac{R^2}{4}
+    \end{equation*}
+    é a seção de choque diferencial.
+\end{proof}
