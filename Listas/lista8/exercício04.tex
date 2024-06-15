@@ -1,0 +1,86 @@
+\section*{Exercício 4}
+\begin{exercício}{Determinar potencial a partir da seção de choque diferencial}{exercício04}
+    Dada a seção de choque diferencial de espalhamento em função da energia \(E\), determine a energia potencial de interação \(U(r)\). Assuma que o potencial seja repulsivo e monotonicamente decrescente. Também assuma \(E > U(0)\) e \(U(\infty) = 0\).
+\end{exercício}
+\begin{proof}[Resolução]
+    Da definição da seção de choque diferencial, temos
+    \begin{equation*}
+        2\pi \rho \abs*{\diff{\rho}{\theta}} = \diff{\sigma}{\theta} \implies \pi \rho^2(\chi) = \int_{\chi}^\pi \dli{\theta} \diff{\sigma}{\theta}
+    \end{equation*}
+    para um ângulo de espalhamento \(\chi\), já que devemos ter \(\rho(\pi) = 0\) e a distância de visada deve diminuir com o ângulo de espalhamento. Desse modo, dada a seção de choque diferencial, podemos terminar \(\rho(\chi)\) e a função inversa \(\chi(\rho)\).
+
+    Seja \(r_0(\rho)\) a distância de maior aproximação para um espalhamento com distância de visada \(\rho\), então
+    \begin{equation*}
+        \pi - \chi(\rho) = 2 \rho \int_{r_0(\rho)}^\infty \frac{\dl{r}}{r^2\sqrt{1 - \left(\frac{\rho}{r}\right)^2 - \frac{U(r)}{E}}}.
+    \end{equation*}
+    Com a mudança de variáveis \(s = r^{-1},\) temos
+    \begin{align*}
+        \pi - \chi(\rho) &= 2\rho \int_{0}^{\frac1{r_0(\rho)}}\frac{\dl{s}}{\sqrt{1 - (s\rho)^2 - \frac{U(s^{-1})}{E}}}\\
+                         &= 2 \int_{0}^{\frac1{r_0(\rho)}} \frac{\dl{s}}{\sqrt{\rho^{-2}\left(1 - \frac{U(s^{-1})}{E}\right) - s^2}}.
+    \end{align*}
+    Definindo \(x = \rho^{-2}\), \(w(s) = \sqrt{1 - \frac{U(s^-1)}{E}}\), \(\psi(x) = \chi\left(x^{-\frac12}\right)\), e \(s_0(x) = \frac{1}{r_0\left(x^{-\frac12}\right)}\) segue que
+    \begin{equation*}
+        \pi - \psi(x) = 2\int_{0}^{s_0(x)} \frac{\dl{s}}{\sqrt{x w^2(s) - s^2}},
+    \end{equation*}
+    Utilizando o operador \(\int_{0}^{\alpha} \frac{\dl{x}}{\sqrt{\alpha - x}}\), temos
+    \begin{equation*}
+        \int_{0}^\alpha \dli{x}\frac{\pi - \psi(x)}{\sqrt{\alpha - x}} = 2\int_0^\alpha \dli{x} \int_{0}^{s_0(x)} \dli{s} \left[(xw^2(s) - s^2)(\alpha - x)\right]^{-\frac12}
+    \end{equation*}
+    Notemos que \(s_0(0) = 0\), então, usando o teorema de Fubini, obtemos
+    \begin{equation*}
+        \int_{0}^\alpha \dli{x} \frac{\pi - \psi(x)}{\sqrt{\alpha - x}} = 2\int_{0}^{s_0(\alpha)} \dli{s} \int_{x_0(s)}^\alpha \dli{x}\left[(xw^2(s) - s^2)(\alpha - x)\right]^{-\frac12},
+    \end{equation*}
+    onde \(s_0(x_0(s)) = s\). Como \(s_0\) é dada pela distância de maior aproximação, segue que
+    \begin{equation*}
+        w^2(s_0) x - s_0^2 = 0 \implies x_0(s) = \frac{s^2}{w^2(s)} = x_0(s),
+    \end{equation*}
+    então, notando que
+    \begin{equation*}
+        (xw^2(s) - s^2)(\alpha - x) = w^2(s)\left[\left(\frac{\alpha - x_0(s)}{2}\right)^2 - \left(x - \frac{\alpha + x_0(s)}{2}\right)\right],
+    \end{equation*}
+    obtemos
+    \begin{align*}
+        \int_0^\alpha \dli{x}\frac{\pi - \psi(x)}{\sqrt{\alpha - x}} &= 2\int_{0}^{s_0(\alpha)} \dli{s} \int_{x_0(s)}^\alpha\dli{x} \frac{2}{w(s)(\alpha - x_0(s))\sqrt{1 - \left(\frac{2x - \alpha - x_0(s)}{\alpha -x_0(s)}\right)^2}}\\
+                                                                     &= 2\int_0^{s_0(\alpha)} \frac{\dl{s}}{w(s)} \int_{-1}^{1} \frac{\dl{\xi}}{\sqrt{1 - \xi^2}}\\
+                                                                     &= 2\pi \int_0^{s_0(\alpha)} \frac{\dl{s}}{w(s)}.
+    \end{align*}
+
+    Integrando o lado direito por partes e notando que \(\lim_{x \to 0}\psi(x) = \lim_{\rho \to \infty} \chi(\rho) = 0\), temos a relação
+    \begin{equation*}
+        \pi \sqrt{\alpha} - \int_{0}^\alpha\dli{x} \sqrt{\alpha - x} \diff{\psi}{x} = \pi\int_0^{s_0(\alpha)} \frac{\dl{s}}{w(s)}.
+    \end{equation*}
+    Derivando em relação a \(\alpha\) em \(\alpha = x_0(s)\), temos
+    \begin{align*}
+        \frac{\pi}{2\sqrt{x_0(s)}} - \int_{0}^{x_0(s)} \dli{x} \frac{1}{2\sqrt{x_0(s) - x}} \diff{\psi}{x} &= \diff{s_0}{x}[x = x_0(s)] \frac{\pi}{w(s)}\\&=\left(\diff{x_0}{s}\right)^{-1} \frac{\pi}{w(s)}.
+    \end{align*}
+    Reescrevendo e substituindo \(x_0(s) = \frac{s^2}{w^2(s)}\),
+    \begin{align*}
+        \frac{\pi}{w(s)} &= \pi \diff*{\left(\frac{s}{w(s)}\right)}{s} - \diff*{\left(\frac{s^2}{w^2(s)}\right)}{s}\int_0^{\frac{s^2}{w^2(s)}} \frac{\dl{x}}{2\sqrt{\frac{s^2}{w^2(s)} - x}} \diff{\psi}{x}\\
+                         &= \pi \diff*{\left(\frac{s}{w(s)}\right)}{s} - \left(\frac{s}{w(s)}\right)\diff*{\left(\frac{s}{w(s)}\right)}{s}\int_0^{\frac{s^2}{w^2(s)}} \frac{\dl{x}}{\sqrt{\frac{s^2}{w^2(s)} - x}} \diff{\psi}{x},
+    \end{align*}
+    donde segue
+    \begin{equation*}
+        \diff*{\left(\frac{s}{w(s)}\right)}{s}\int_0^{\frac{s^2}{w^2(s)}} \frac{\dl{x}}{\sqrt{\frac{s^2}{w^2(s)} - x}} \diff{\psi}{x} = \frac{\pi}{w(s)} \diff{w}{s} = \pi\diff*{\ln w(s)}{s}.
+    \end{equation*}
+
+    Como \(w(0) = 1,\) temos ao integrar em \([0,s]\)
+    \begin{align*}
+        \pi \ln w(s) &= \int_0^s \dli{\zeta} \diff*{\left(\frac{\zeta}{w(\zeta)}\right)}{\zeta} \int_{0}^{\frac{\zeta^2}{w^2(\zeta)}} \frac{\dl{x}}{\sqrt{\frac{\zeta^2}{w^2(\zeta)} - x}}\diff{\psi}{x}\\
+                     &= \int_{0}^{\frac{s}{w(s)}} \dli{\xi} \int_{0}^{\xi^2} \frac{\dl{x}}{\sqrt{\xi^2 - x}}\diff{\psi}{x}.
+    \end{align*}
+    Invertendo a ordem de integração conseguimos calcular a integral em \(\xi\),
+    \begin{align*}
+        \pi \ln w(s) &= \int_{0}^{\frac{s^2}{w^2(s)}} \dli{x} \diff{\psi}{x} \int_{\sqrt{x}}^{\frac{s}{w(s)}}  \frac{\dl{\xi}}{\sqrt{\xi^2 - x}}\\&=  \int_{0}^{\frac{s^2}{w^2(s)}} \dli{x} \diff{\psi}{x} \int_{\sqrt{x}}^{\frac{s}{w(s)}}  \frac{\dl{\xi}}{\sqrt{\xi^2 - x}}\\
+                     &= \int_0^{\frac{s^2}{w^2(s)}} \dli{x} \diff{\psi}{x}\arcosh{\left(\frac{s}{w(s)\sqrt{x}}\right)}.
+    \end{align*}
+
+    Retornando às variáveis originais, temos
+    \begin{equation*}
+        \pi \ln w(r^{-1}) = \int_{\infty}^{rw(r^{-1})} \dli{\rho} \diff{\chi}{\rho} \arcosh\left(\frac{\rho}{rw(r^{-1})}\right),
+    \end{equation*}
+    que determina \(w(r^{-1}) = \sqrt{1 - \frac{U(r)}{E}}\) implicitamente e, portanto, o potencial \(U(r)\). \todo[Mostrar que podemos escrever
+    \begin{equation*}
+        w(r^{-1}) = \exp\left(\frac1\pi\int^\infty_{rw^{-1}} \dli{\rho} \frac{\chi(\rho)}{\sqrt{\rho^2 - r^2w^2(r^{-1})}}\right),
+    \end{equation*}
+    como o Landau diz.]
+\end{proof}
